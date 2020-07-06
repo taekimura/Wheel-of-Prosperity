@@ -1,0 +1,22 @@
+.child-question {
+  color: #ccdce7;
+}
+.child--result__component {
+  display: flex;
+}
+.child--box {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid #e88432;
+  background-color: #e88432;
+  margin: 3mm;
+  border-radius: 1mm;
+  padding: 2mm;
+}
+.child--rate {
+  margin: auto;
+}
+
+.child--rate > span > .badge {
+  font-size: 100%;
+}

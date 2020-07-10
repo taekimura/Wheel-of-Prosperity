@@ -1,5 +1,6 @@
 import React from "react";
 import Wheel from "../assets/Wheel.png";
+// import quizQuestions from "../data/questions";
 
 let Chart = props => {
     return (

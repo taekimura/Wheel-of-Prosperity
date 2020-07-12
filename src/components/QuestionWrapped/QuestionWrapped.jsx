@@ -45,8 +45,6 @@ class QuestionWrapped extends Component {
         this.setState({
             selectedAnwsers: objSelected
         });
-        // console.log("AnswerLength: " + selectedAnwsers.length);
-        // console.log("counter: " + counter);
         alert("your input is " + index);
         console.log("The array of User input: " + selectedAnwsers);
     };
@@ -71,43 +69,45 @@ class QuestionWrapped extends Component {
             });
 
             if ((answerArray % 2) === 0) {
-                let average = selectedAnwsers.reduce((acc, cur) => {
-                    return Math.ceil((acc + cur) / 2);
-                }, null);
-                //Comment:Trying to make the array of average scores, but I wasn't able to do it for now, I'm going to fix it:)
-                const array = [];
-                array.push(average);
-                console.log("The array of average:" + array);
+                var lastTwoNum = selectedAnwsers.slice(-2);
+                let averageCal = lastTwoNum.reduce((pre, curr) => {
+                    return pre + curr;
+                }, 0) / lastTwoNum.length;
+                let average = Math.round(averageCal);
+                let joined = this.state.averageAnswers.concat(average);
                 this.setState({
-                    averageAnswers: average,
-                    selectedAnwsers: [],
+                    averageAnswers: joined,
                 })
+                console.log("last 2 nums of the array" + lastTwoNum);
                 console.log("The Average number is " + average);
+                console.log("The array of average:" + joined);
                 alert("Average:" + average);
-                // console.log("A" + averageAnswers);
             }
         }
     };
 
     handleSubmitAnswers = () => {
-        if (!this.handleAnswerSelected) {
-            console.log("Input something")
+        let { selectedAnwsers, counter } = this.state;
+        const answerArray = selectedAnwsers.length;
+        if (selectedAnwsers.length === counter || answerArray === 0) {
+            alert("Please input a number:)")
         } else {
-            let { averageArray, selectedAnwsers } = this.state;
-            console.log("The array of User input: " + selectedAnwsers);
             const answerArray = selectedAnwsers.length;
             if ((answerArray % 2) === 0) {
-                const average = selectedAnwsers.reduce(function (acc, cur) {
-                    return Math.round((acc + cur) / 2);
-                });
-                console.log("The Average number is " + average);
-                alert("Average:" + average);
+                var lastTwoNum = selectedAnwsers.slice(-2);
+                let averageCal = lastTwoNum.reduce((pre, curr) => {
+                    return pre + curr;
+                }, 0) / lastTwoNum.length;
+                let average = Math.round(averageCal);
+                let joined = this.state.averageAnswers.concat(average);
                 this.setState({
-                    averageArray: average,
-                    selectedAnwsers: [],
+                    averageAnswers: joined,
                     result: true
                 })
-                console.log(averageArray);
+                console.log("last 2 nums of the array: " + lastTwoNum);
+                console.log("The Average number is " + average);
+                console.log("The array of average:" + joined);
+                alert("Average:" + average);
             }
         }
     };

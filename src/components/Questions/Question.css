@@ -1,0 +1,5 @@
+.quiz--question__component > p {
+  color: black;
+  margin: 5mm 0;
+  text-align: left;
+}

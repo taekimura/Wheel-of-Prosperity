@@ -1,8 +1,9 @@
 [
   {
-    "category": "ACCUEIL",
-    "color": "blue",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+    "id": 1,
+    "category": "Rejuvenation",
+    "color": "#00506d",
+    "question": "Are you ready to embark upon the \"biggest\" journey of your life… that of the head to the HEART?",
     "answers": [
       {
         "content": "0"
@@ -40,363 +41,149 @@
     ]
   },
   {
-    "category": "ACCUEIL",
-    "color": "blue",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+    "id": 2,
+    "category": "Rejuvenation",
+    "color": "#00506d",
+    "question": "Is Plenitude part of your daily life?"
+  },
+  {
+    "id": 3,
+    "category": "Embrace",
+    "color": "#006c8b",
+    "question": "Do you welcome and embrace the circumstances that life presents to you with fluidity?"
+  },
+  {
+    "id": 4,
+    "category": "Embrace",
+    "color": "#006c8b",
+    "question": "Do you feel ready to dive into the heart of Universal Prosperity?"
+  },
+  {
+    "id": 5,
+    "category": "Lifestyle",
+    "color": "#50959a",
+    "question": "In general, do you feel free in your life?"
+  },
+  {
+    "id": 6,
+    "category": "Lifestyle",
+    "color": "#50959a",
+    "question": "Do you appreciate each step of a project, as well as each day's activities?"
+  },
+  {
+    "id": 7,
+    "category": "Self",
+    "color": "#005c41",
+    "question": "Are you at peace with who you are and your life choices?"
+  },
+  {
+    "id": 8,
+    "category": "Self",
+    "color": "#005c41",
+    "question": "Do you allow love to fill you and flow within you before sharing it?"
+  },
+  {
+    "id": 9,
+    "category": "Relationship",
+    "color": "#32774b",
+    "question": "Are you in a romantic relationship? Yes:0/ No:10 (needs to change to the yes/no button)",
     "answers": [
-      {
-        "content": "0"
-      },
       {
         "content": "1"
       },
       {
         "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
       }
     ]
   },
   {
-    "category": "STYLE DE VIE",
-    "color": "green",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 10,
+    "category": "Relationship",
+    "color": "#32774b",
+    "question": "Do you feel joy in sharing your life without needing to be in symbiosis?"
   },
   {
-    "category": "STYLE DE VIE",
-    "color": "green",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 11,
+    "category": "Family",
+    "color": "#5b9e51",
+    "question": "Do you easily communicate the profound joy that lives within you with your family?"
   },
   {
-    "category": "SOI",
-    "color": "orange",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 12,
+    "category": "Family",
+    "color": "#5b9e51",
+    "question": "Do you enjoy preparing celebrations for others (birthdays, anniversaries, promotions, retirement, etc.)?"
   },
   {
-    "category": "SOI",
-    "color": "orange",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 13,
+    "category": "Inspiration",
+    "color": "#c547619",
+    "question": "Do you receive new inspirations with lightness and in total openness?"
   },
   {
-    "category": "COUPLE",
-    "color": "#8a2b7a",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 14,
+    "category": "Inspiration",
+    "color": "#c547619",
+    "question": "Do you dive right into the unknown with courage and certitude?"
   },
   {
-    "category": "COUPLE",
-    "color": "#8a2b7a",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 15,
+    "category": "Creativity",
+    "color": "#c45621",
+    "question": "Do you leave enough time and space for creativity in your life?"
   },
   {
-    "category": "FAMILLE",
-    "color": "#e78383",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 16,
+    "category": "Creativity",
+    "color": "#c45621",
+    "question": "Are you ready to fully shine brightly, all the while being an instrument of the universe?"
   },
   {
-    "category": "FAMILLE",
-    "color": "#e78383",
-    "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
-    "answers": [
-      {
-        "content": "0"
-      },
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      },
-      {
-        "content": "3"
-      },
-      {
-        "content": "4"
-      },
-      {
-        "content": "5"
-      },
-      {
-        "content": "6"
-      },
-      {
-        "content": "7"
-      },
-      {
-        "content": "8"
-      },
-      {
-        "content": "9"
-      },
-      {
-        "content": "10"
-      }
-    ]
+    "id": 17,
+    "category": "Health",
+    "color": "#e07c27",
+    "question": "Have you stopped holding on to the need for the approval/recognition of others?"
+  },
+  {
+    "id": 18,
+    "category": "Health",
+    "color": "#e07c27",
+    "question": "Do you allow vitality to flow within you with lightness?"
+  },
+  {
+    "id": 19,
+    "category": "Money",
+    "color": "#8c191c",
+    "question": "Do you feel wonder and awe for the money that flows through you?"
+  },
+  {
+    "id": 20,
+    "category": "Money",
+    "color": "#8c191c",
+    "question": "Do you feel free financially regardless of your assets?"
+  },
+  {
+    "id": 21,
+    "category": "Work",
+    "color": "#8c191c",
+    "question": "Do you easily express care to your work colleagues, even if they don't think the same way you do?"
+  },
+  {
+    "id": 22,
+    "category": "Work",
+    "color": "#8c191c",
+    "question": "Are you able to be detached from any specific tangible results to feel fulfilled?"
+  },
+  {
+    "id": 23,
+    "category": "Expansion",
+    "color": "#b92351",
+    "question": "Are you amazed to see the Universe at work, even if you're experiencing uncomfortable situations?"
+  },
+  {
+    "id": 24,
+    "category": "Expansion",
+    "color": "#b92351",
+    "question": "Are you ready to free yourself of your dreams, desires, and needs to be entirely satisfied?"
   }
 ]

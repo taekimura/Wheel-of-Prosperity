@@ -4,18 +4,18 @@ let QuestionCount = props => {
   let { total, counter } = props;
   return (
     <div className="quiz--number__component">
-      <h5>
+      <h6>
         Question.
-      </h5>
-      <h5 style={{ color: "red" }}>
+      </h6>
+      <h6>
         {counter}
-      </h5>
-      <h5>
+      </h6>
+      <h6>
         of
-      </h5>
-      <h5>
+      </h6>
+      <h6>
         {total}
-      </h5>
+      </h6>
     </div>
   );
 };

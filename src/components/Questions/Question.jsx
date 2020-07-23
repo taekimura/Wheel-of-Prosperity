@@ -4,7 +4,7 @@ let Question = props => {
   const { category, color, question } = props;
   return (
     <div className="quiz--question__component">
-      <h3 style={{ color: color }}>{category}</h3>
+      <h4 style={{ color: color }}>{category}</h4>
       <p>{question}</p>
     </div>
   );

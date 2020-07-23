@@ -1,5 +1,10 @@
 .quiz--question__component > p {
-  color: black;
-  margin: 5mm 0;
+  color: #272426;
+  font-size: 1.1em;
+  margin: 3mm 1%;
   text-align: left;
+}
+h4{
+  margin: 0 1%;
+  font-family: 'Playfair Display', serif;
 }

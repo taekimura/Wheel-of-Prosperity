@@ -45,29 +45,7 @@
   }
 }
 
-@media screen and (max-width:820px){
-  .btn-submit{
-    width: 35%;
-  }
-}
 
-@media screen and (max-width:760px){
-  .btn-submit{
-    width: 35%;
-  }
-}
-
-/* @media screen and (max-width:660px){
-  .btn-submit{
-    width: 35%;
-  }
-} */
-
-/* @media screen and (max-width:600px){
-  .btn-submit{
-    width: 35%;
-  }
-} */
 
 
 @media screen and (max-width:450px){

@@ -12,3 +12,45 @@ ul{
     padding: 0;
     text-align: left;
 }
+
+@media screen and (max-width:1024px){
+    .App{
+        display:block;
+    }
+}
+
+@media screen and (max-width:820px){
+    .App{
+        display:block;
+    }
+}
+
+@media screen and (max-width:760px){
+    .App{
+        display:block;
+    }
+}
+
+/* @media screen and (max-width:660px){
+    .App{
+        display: block;
+    }
+} */
+
+/* @media screen and (max-width:600px){
+    .App{
+        display: block;
+    }
+} */
+
+/* @media screen and (max-width:450px){
+    .App{
+        display: block;
+    }
+} */
+
+/* @media screen and (max-width:360px){
+    .App{
+        display: block;
+    }
+} */

@@ -3,3 +3,124 @@
   border-color: #e78330;
 }
 
+@media screen and (max-width:1200px){
+  .btn-selected{
+    /* margin: 2% !important;
+    width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    /* margin: 2% !important; */
+    /* width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+@media screen and (max-width:1024px){
+  .btn-selected{
+    /* margin: 2% !important;
+    width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    /* margin: 2% !important; */
+    /* width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+@media screen and (max-width:820px){
+  .btn-selected{
+    /* margin: 2% !important;
+    width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    /* margin: 2% !important; */
+    /* width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+
+@media screen and (max-width:760px){
+  .btn-selected{
+    /* margin: 2% !important;
+    width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    /* margin: 2% !important; */
+    /* width: 10% !important; */
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+
+/* @media screen and (max-width:660px){
+  .btn-selected{
+    margin: 2% !important;
+    width: 10% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    margin: 2% !important;
+    width: 10% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+} */
+
+/* @media screen and (max-width:600px){
+  .btn-selected{
+    margin: 2% !important;
+    width: 10% !important;
+    height: 40px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    margin: 2% !important;
+    width: 10% !important;
+    height: 40px !important;
+    padding: 0px !important;
+  }
+} */
+
+@media screen and (max-width:450px){
+  .btn-selected{
+    margin: 1% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    margin: 1% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+@media screen and (max-width:360px){
+  .btn-selected{
+    margin: 2% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    margin: 2% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}

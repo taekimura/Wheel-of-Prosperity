@@ -1,7 +1,11 @@
-.btn-selected {
-  background-color: #e78330 !important;
-  border-color: #e78330;
+.btn-secondary{
+  background-color: black;
 }
+.btn-selected {
+  background-color: #c05243 !important;
+  border-color: #c05243;
+}
+
 
 @media screen and (max-width:1200px){
   .btn-selected{
@@ -43,3 +47,5 @@
     padding: 0px !important;
   }
 }
+
+

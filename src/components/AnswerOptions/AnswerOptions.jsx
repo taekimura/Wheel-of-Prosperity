@@ -10,7 +10,7 @@ let AnswerOptions = props => {
       type="button"
       value={index}
       onClick={onSelectedAnwser}
-      className={selectedAnwser === index ? "btn-selected" : ""}
+      className={selectedAnwser === index ? "btn-selected" : "btn-unselected"}
     >
       {props.anwserContent}
     </Button>

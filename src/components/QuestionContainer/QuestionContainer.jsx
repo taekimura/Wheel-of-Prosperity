@@ -38,7 +38,7 @@ let QuestionContainer = props => {
       <Question category={category} color={color} question={question} />
 
       <ul>{anwserOptions.map(renderAnswerOption)}</ul>
-      <div style={{ textAlign: "right" }}>
+      <div style={{ textAlign: "right" }} className="apply-btn">
         {counterQuestion < 0 || counterQuestion === totalQuestion - 1 ? (
           <span />
         ) : (

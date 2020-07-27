@@ -38,3 +38,37 @@
 .child--rate > span > .badge {
   font-size: 100%;
 }
+
+@media screen and (max-width:1024px){
+  .btn-submit{
+    width: 35%;
+  }
+}
+
+
+
+
+@media screen and (max-width:450px){
+  h2{
+    font-size: 2.5rem;
+  }
+  .btn-submit{
+    width: 35%;
+  }
+}
+
+
+@media screen and (max-width:360px){
+  .btn-submit{
+    width: 35%;
+  }
+}
+
+@media screen and (max-width:300px){
+  h2{
+    font-size: 1.5rem !important;
+  }
+  .btn-submit{
+    width: 45%;
+  }
+}

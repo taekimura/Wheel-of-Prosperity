@@ -9,3 +9,9 @@ ul{
     padding: 0;
     text-align: left;
 }
+
+@media screen and (max-width:1024px){
+    .App{
+        display:block;
+    }
+}

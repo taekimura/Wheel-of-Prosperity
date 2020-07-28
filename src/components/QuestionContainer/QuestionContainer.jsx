@@ -27,6 +27,7 @@ const QuestionContainer = () => {
       <QuestionCount />
       <Question />
       <ul>{anwserOptions.map(renderAnswerOption)}</ul>
+
       <div style={{ textAlign: "right" }}>
         {counter < 0 || counter === totalQuestion - 1 ? (
           <span />

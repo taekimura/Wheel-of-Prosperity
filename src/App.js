@@ -22,22 +22,42 @@ const App = ({ children }) => {
   const [counter, setCounter] = useState(0);
   const [questionID, setQuestionID] = useState(1);
   const [selectedAnwsers, setSelectedAnswers] = useState([]);
-  const [question, setQuestion] = useState(quizQuestions[0].question);
+  const [question, setQuestion] = useState();
   const [anwserOptions, setAnwerOptions] = useState(quizQuestions[0].answers);
   const [allQuestion, setAllQuestion] = useState(quizQuestions);
   const [totalQuestion, setTotalQuestion] = useState(allQuestion.length);
   const [result, setResult] = useState(false);
+  const [lang, setLang] = useState("english");
 
   useEffect(() => {
     populateArray();
+    setLangage();
   }, [averageAnswers])
   // If you want the chart's bar to render only in the end of user input, 
   // chenge dependency from "averageAnswers" to "data"
 
-
   const populateArray = () => {
     setData(length);
   };
+
+  const setLangage = () => {
+    if (lang === "english") {
+      setQuestion(quizQuestions[counter].questionEngLish)
+    } else if (lang === "french") {
+      setQuestion(quizQuestions[counter].questionFrench)
+    }
+  }
+
+  const switchToFrench = () => {
+    setLang("french");
+    setQuestion(quizQuestions[counter].questionFrench)
+  };
+
+  const switchToEnglish = () => {
+    setLang("english");
+    setQuestion(quizQuestions[counter].questionEngLish)
+  };
+
 
   //handle get value selected for question
   const handleAnswerSelected = (e) => {
@@ -55,8 +75,7 @@ const App = ({ children }) => {
 
   //handle next questions & answer
   const handleNextQuestion = (e) => {
-    const answerArray = selectedAnwsers.length;
-    if (answerArray.length === counter || answerArray === 0) {
+    if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
       alert("Please input a number:)");
     } else {
       pushArray();
@@ -64,8 +83,11 @@ const App = ({ children }) => {
       const questionIDPlus = questionID + 1;
       setCounter(count);
       setQuestionID(questionIDPlus);
-      setQuestion(quizQuestions[count].question);
-      setQuestionID(quizQuestions[count].question);
+      if (lang === "english") {
+        setQuestion(quizQuestions[count].questionEngLish)
+      } else if (lang === "french") {
+        setQuestion(quizQuestions[count].questionFrench)
+      }
     }
   };
 
@@ -155,14 +177,16 @@ const App = ({ children }) => {
         selectedAnwsers, setSelectedAnswers,
         result, setResult,
         totalQuestion, setTotalQuestion,
+        lang, setLang,
 
         handleAnswerSelected,
         handleNextQuestion,
         handleSubmitAnswers,
         showResult,
         renderQuiz,
-        convertAverageToLength
-
+        convertAverageToLength,
+        switchToFrench,
+        switchToEnglish
       }}
     >
       {children}

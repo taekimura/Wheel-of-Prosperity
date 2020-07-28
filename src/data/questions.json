@@ -1,9 +1,10 @@
 [
   {
     "id": 1,
-    "category": "Rejuvenation",
+    "category": "Lifestyle",
     "color": "#00506d",
-    "question": "Are you ready to embark upon the \"biggest\" journey of your life… that of the head to the HEART?",
+    "questionEngLish": "In general, do you feel free in your life?",
+    "questionFrench": "Vous sentez-vous libre de façon générale dans votre vie?",
     "answers": [
       {
         "content": "0"
@@ -42,148 +43,171 @@
   },
   {
     "id": 2,
-    "category": "Rejuvenation",
+    "category": "Embrace",
     "color": "#00506d",
-    "question": "Is Plenitude part of your daily life?"
+    "questionEngLish": "Do you welcome and embrace the circumstances that life presents to you with fluidity?",
+    "questionFrench": "Accueillez-vous les circonstances que la vie vous présentent avec fluidité?"
   },
   {
     "id": 3,
-    "category": "Embrace",
+    "category": "Lifestyle",
     "color": "#006c8b",
-    "question": "Do you welcome and embrace the circumstances that life presents to you with fluidity?"
+    "questionEngLish": "Do you appreciate each step of a project, as well as each day's activities?",
+    "questionFrench": "Appréciez-vous chaque étape d'un projet et chaque activité de la journée?"
   },
   {
     "id": 4,
     "category": "Embrace",
     "color": "#006c8b",
-    "question": "Do you feel ready to dive into the heart of Universal Prosperity?"
+    "questionEngLish": "Do you feel ready to dive into the heart of Universal Prosperity?",
+    "questionFrench": "Vous sentez-vous prêt(e) à plonger dans le vide au coeur de la Prospérité Universelle?"
   },
   {
     "id": 5,
-    "category": "Lifestyle",
+    "category": "Rejuvenation",
     "color": "#50959a",
-    "question": "In general, do you feel free in your life?"
+    "questionEngLish": "Are you ready to embark upon the \"biggest\" journey of your life… that of the head to the HEART?",
+    "questionFrench": "Êtes-vous prêt à entreprendre le plus \"grand\" voyage de votre vie... celui de la tête au COEUR?"
   },
   {
     "id": 6,
-    "category": "Lifestyle",
+    "category": "Rejuvenation",
     "color": "#50959a",
-    "question": "Do you appreciate each step of a project, as well as each day's activities?"
+    "questionEngLish": "Is Plenitude part of your daily life?",
+    "questionFrench": "Est-ce que la Plénitude fait partie de votre quotidien?"
   },
   {
     "id": 7,
     "category": "Self",
     "color": "#005c41",
-    "question": "Are you at peace with who you are and your life choices?"
+    "questionEngLish": "Are you at peace with who you are and your life choices?",
+    "questionFrench": "Êtes-vous en paix avec qui vous êtes et vos choix de vie?"
   },
   {
     "id": 8,
-    "category": "Self",
+    "category": "Family",
     "color": "#005c41",
-    "question": "Do you allow love to fill you and flow within you before sharing it?"
+    "questionEngLish": "Do you easily communicate the profound joy that lives within you with your family?",
+    "questionFrench": "Communiquez-vous facilement la joie profonde qui vous habite à votre famille?"
   },
   {
     "id": 9,
-    "category": "Relationship",
+    "category": "Family",
     "color": "#32774b",
-    "question": "Are you in a romantic relationship? Yes:0/ No:10 (needs to change to the yes/no button)",
-    "answers": [
-      {
-        "content": "1"
-      },
-      {
-        "content": "2"
-      }
-    ]
+    "questionEngLish": "Do you enjoy preparing celebrations for others (birthdays, anniversaries, promotions, retirement, etc.)?",
+    "questionFrench": "Aimez-vous préparer des célébrations pour les autres (anniversaire, promotion, retraite etc)?"
   },
   {
     "id": 10,
     "category": "Relationship",
     "color": "#32774b",
-    "question": "Do you feel joy in sharing your life without needing to be in symbiosis?"
+    "questionEngLish": "Question to redirect to 10 or 10a : Are you in a romantic relationship?",
+    "questionFrench": "pour rediriger vers 10a ou 10b:  Êtes-vous en relation amoureuse?",
+    "answers": [
+      {
+        "content": "Yes"
+      },
+      {
+        "content": "No"
+      }
+    ]
   },
   {
     "id": 11,
-    "category": "Family",
+    "category": "Relationship",
     "color": "#5b9e51",
-    "question": "Do you easily communicate the profound joy that lives within you with your family?"
+    "questionEngLish": "Do you feel joy in sharing your life without needing to be in symbiosis?",
+    "questionFrench": "Ressentez-vous la joie de partager votre vie sans avoir besoin d'être en symbiose?"
   },
   {
     "id": 12,
-    "category": "Family",
+    "category": "Self",
     "color": "#5b9e51",
-    "question": "Do you enjoy preparing celebrations for others (birthdays, anniversaries, promotions, retirement, etc.)?"
+    "questionEngLish": "Do you allow love to fill you and flow within you before sharing it?",
+    "questionFrench": "Permettez-vous à l'amour de vous remplir et de circuler en vous avant de l'offrir?"
   },
   {
     "id": 13,
     "category": "Inspiration",
     "color": "#c547619",
-    "question": "Do you receive new inspirations with lightness and in total openness?"
+    "questionEngLish": "Do you receive new inspirations with lightness and in total openness?",
+    "questionFrench": "Recevez-vous les nouvelles inspirations avec légèreté et en pleine ouverture?"
   },
   {
     "id": 14,
-    "category": "Inspiration",
+    "category": "Creativity",
     "color": "#c547619",
-    "question": "Do you dive right into the unknown with courage and certitude?"
+    "questionEngLish": "Do you leave enough time and space for creativity in your life?",
+    "questionFrench": "Vous laissez-vous suffisamment de temps et d'espace de créativité dans votre vie?"
   },
   {
     "id": 15,
-    "category": "Creativity",
+    "category": "Inspiration",
     "color": "#c45621",
-    "question": "Do you leave enough time and space for creativity in your life?"
+    "questionEngLish": "Do you dive right into the unknown with courage and certitude?",
+    "questionFrench": "Plongez-vous dans l'inconnu avec courage et certitude?"
   },
   {
     "id": 16,
     "category": "Creativity",
     "color": "#c45621",
-    "question": "Are you ready to fully shine brightly, all the while being an instrument of the universe?"
+    "questionEngLish": "Are you ready to fully shine brightly, all the while being an instrument of the universe?",
+    "questionFrench": "Êtes-vous prêt(e) à briller pleinement en étant un instrument de l'Univers?"
   },
   {
     "id": 17,
     "category": "Health",
     "color": "#e07c27",
-    "question": "Have you stopped holding on to the need for the approval/recognition of others?"
+    "questionEngLish": "Have you stopped holding on to the need for the approval/recognition of others?",
+    "questionFrench": "Avez-vous cessé de retenir le besoin de l'approbation/reconnaissance des autres?"
   },
   {
     "id": 18,
     "category": "Health",
     "color": "#e07c27",
-    "question": "Do you allow vitality to flow within you with lightness?"
+    "questionEngLish": "Do you allow vitality to flow within you with lightness?",
+    "questionFrench": "Laissez-vous circuler la vitalité en vous avec légèreté?"
   },
   {
     "id": 19,
     "category": "Money",
     "color": "#8c191c",
-    "question": "Do you feel wonder and awe for the money that flows through you?"
+    "questionEngLish": "Do you feel wonder and awe for the money that flows through you?",
+    "questionFrench": "Ressentez-vous de l'émerveillement pour l'argent qui circule à travers vous?"
   },
   {
     "id": 20,
-    "category": "Money",
+    "category": "Expansion",
     "color": "#8c191c",
-    "question": "Do you feel free financially regardless of your assets?"
+    "questionEngLish": "Are you amazed to see the Universe at work, even if you're experiencing uncomfortable situations?",
+    "questionFrench": "Êtes-vous émerveillé de voir l'Univers à l'oeuvre, même si vous vivez des situations inconfortables?"
   },
   {
     "id": 21,
     "category": "Work",
     "color": "#8c191c",
-    "question": "Do you easily express care to your work colleagues, even if they don't think the same way you do?"
+    "questionEngLish": "Do you easily express care to your work colleagues, even if they don't think the same way you do?",
+    "questionFrench": "Exprimez-vous facilement de la bonté à vos collègues de travail, même s'ils ne pensent pas comme vous?"
   },
   {
     "id": 22,
-    "category": "Work",
+    "category": "Money",
     "color": "#8c191c",
-    "question": "Are you able to be detached from any specific tangible results to feel fulfilled?"
+    "questionEngLish": "Do you feel free financially regardless of your assets?",
+    "questionFrench": "Vous sentez-vous libre financièrement indépendamment de vos actifs?"
   },
   {
     "id": 23,
     "category": "Expansion",
     "color": "#b92351",
-    "question": "Are you amazed to see the Universe at work, even if you're experiencing uncomfortable situations?"
+    "questionEngLish": "Are you ready to free yourself of your dreams, desires, and needs to be entirely satisfied?",
+    "questionFrench": "Êtes-vous prêt à vous libérer de vos rêves, désirs et besoins pour être pleinement satisfait?"
   },
   {
     "id": 24,
-    "category": "Expansion",
+    "category": "Work",
     "color": "#b92351",
-    "question": "Are you ready to free yourself of your dreams, desires, and needs to be entirely satisfied?"
+    "questionEngLish": "Are you able to be detached from any specific tangible results to feel fulfilled?",
+    "questionFrench": "Êtes-vous en mesure d'être détaché(e) de résultats spécifiques pour vous sentir comblé(e)?"
   }
 ]

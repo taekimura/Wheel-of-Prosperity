@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../App";
 import "./Question.css";
-let Question = props => {
-  const { category, color, question } = props;
+
+const Question = () => {
+  const { question } = useContext(Context);
   return (
     <div className="quiz--question__component">
-      <h4 style={{ color: color }}>{category}</h4>
       <p>{question}</p>
     </div>
   );

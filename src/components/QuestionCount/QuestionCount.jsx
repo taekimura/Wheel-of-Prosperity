@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../App";
 import "./QuestionCount.css";
-let QuestionCount = props => {
-  let { total, counter } = props;
+
+const QuestionCount = () => {
+  const { totalQuestion, counter } = useContext(Context);
   return (
     <div className="quiz--number__component">
       <h6>
         Question.
       </h6>
       <h6>
-        {counter}
+        {counter + 1}
       </h6>
       <h6>
         of
       </h6>
       <h6>
-        {total}
+        {totalQuestion}
       </h6>
     </div>
   );

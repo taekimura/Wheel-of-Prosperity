@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../App";
 import { Button } from "reactstrap";
 import "./AnswerOptions.css";
-let AnswerOptions = props => {
 
-  const { selectedAnwser, index, onSelectedAnwser } = props;
+const AnswerOptions = (props) => {
+  const { selectedAnwsers, handleAnswerSelected } = useContext(Context);
   return (
-
     <Button style={{ width: "7%", margin: "0 1%" }}
       type="button"
-      value={index}
-      onClick={onSelectedAnwser}
-      className={selectedAnwser === index ? "btn-selected" : "btn-unselected"}
+      value={props.index}
+      onClick={handleAnswerSelected}
+      className={selectedAnwsers === props.index ? "btn-selected" : ""}
     >
       {props.anwserContent}
     </Button>

@@ -1,7 +1,13 @@
+.container3{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width:1024px){
     .row{
         text-align: center;
         padding-left: 30px;
     }
 }
-

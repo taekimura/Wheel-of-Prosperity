@@ -15,7 +15,7 @@ export const Provider = Context.Provider;
 const App = ({ children }) => {
   const [data, setData] = useState([]);
   const [averageAnswers, setAverageAnswers] = useState([]);
-  const [length, setLength] = useState([]);
+  const [lengthOfBar, setLengthOfBar] = useState([]);
   const [series, setSeries] = useState(seriesLabels);
   const [colors, setColors] = useState(groupOneColors);
   const [barHeight, setBarHeight] = useState(200);
@@ -34,15 +34,15 @@ const App = ({ children }) => {
     setLangage();
   }, [averageAnswers])
   // If you want the chart's bar to render only in the end of user input, 
-  // chenge dependency from "averageAnswers" to "data"
+  // change dependency from "averageAnswers" to "data"
 
   const populateArray = () => {
-    setData(length);
+    setData(lengthOfBar);
   };
 
   const setLangage = () => {
     if (lang === "english") {
-      setQuestion(quizQuestions[counter].questionEngLish)
+      setQuestion(quizQuestions[counter].questionEngLish);
     } else if (lang === "french") {
       setQuestion(quizQuestions[counter].questionFrench)
     }
@@ -50,14 +50,13 @@ const App = ({ children }) => {
 
   const switchToFrench = () => {
     setLang("french");
-    setQuestion(quizQuestions[counter].questionFrench)
+    setQuestion(quizQuestions[counter].questionFrench);
   };
 
   const switchToEnglish = () => {
     setLang("english");
-    setQuestion(quizQuestions[counter].questionEngLish)
+    setQuestion(quizQuestions[counter].questionEngLish);
   };
-
 
   //handle get value selected for question
   const handleAnswerSelected = (e) => {
@@ -77,6 +76,29 @@ const App = ({ children }) => {
   const handleNextQuestion = (e) => {
     if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
       alert("Please input a number:)");
+    } else if (selectedAnwsers.length === 9) {
+      const count = counter + 1;
+      const questionIDPlus = questionID + 1;
+      setCounter(count);
+      setQuestionID(questionIDPlus);
+      setAnwerOptions(quizQuestions[9].answers);
+      if (lang === "english") {
+        setQuestion(quizQuestions[count].questionEngLish)
+      } else if (lang === "french") {
+        setQuestion(quizQuestions[count].questionFrench)
+      }
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 1 && lang === "english") {
+      setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
+      setAnwerOptions(quizQuestions[0].answers);
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 1 && lang === "french") {
+      setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
+      setAnwerOptions(quizQuestions[0].answers);
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 0 && lang === "english") {
+      setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
+      setAnwerOptions(quizQuestions[0].answers);
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 0 && lang === "french") {
+      setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
+      setAnwerOptions(quizQuestions[0].answers);
     } else {
       pushArray();
       const count = counter + 1;
@@ -108,9 +130,9 @@ const App = ({ children }) => {
       AverageArray.push(average);
       LengthArray.push(convertAverageToLength(average));
       let joinedAverage = averageAnswers.concat(AverageArray);
-      let joinedLength = length.concat(LengthArray);
+      let joinedLength = lengthOfBar.concat(LengthArray);
       setAverageAnswers(joinedAverage);
-      setLength(joinedLength);
+      setLengthOfBar(joinedLength);
     }
   }
 
@@ -146,7 +168,7 @@ const App = ({ children }) => {
       alert("Please input a number:)");
     } else {
       pushArray();
-      setData(length);
+      setData(lengthOfBar);
       setResult(true);
     }
   };

@@ -101,8 +101,8 @@
     "id": 10,
     "category": "Relationship",
     "color": "#32774b",
-    "questionEngLish": "Question to redirect to 10 or 10a : Are you in a romantic relationship?",
-    "questionFrench": "pour rediriger vers 10a ou 10b:  Êtes-vous en relation amoureuse?",
+    "questionEngLish": "Are you in a romantic relationship?",
+    "questionFrench": "Êtes-vous en relation amoureuse?",
     "answers": [
       {
         "content": "Yes"

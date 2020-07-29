@@ -136,10 +136,20 @@
 		align-items: center;
 		position: absolute;
 		height: 200px; //have to be the same as "barHeight"
-		transform: translate(-50%,50%);
+		transform: translate(-51%,50%);
 		top:25%;
 		left:50%;
 		z-index: 100;
+	}
+	.goldenCircle11{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		height: 200px; //have to be the same as "barHeight"
+		transform: translate(-50.5%,50%);
+		top:25%;
+		left:50%;
+		z-index: -200;
 	}
 }
 

@@ -16,7 +16,7 @@ import ExternalCircle from "../assets/ExternalCircle.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, barHeight } = useContext(Context);
+    const { data, colors, barHeight, averageAnswers } = useContext(Context);
     let max = 0;
 
     for (let i = data.length; i--;) {
@@ -24,6 +24,327 @@ const Chart = () => {
             if (data[i][j] > max) {
                 max = data[i][j];
             }
+        }
+    }
+
+    const renderGoldenRings = () => {
+        const maxNumber = Math.max.apply(null, averageAnswers);
+        if (maxNumber === 1) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset6} width="270" alt="Asset6" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset5} width="305" alt="Asset5" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset4} width="345" alt="Asset4" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset3} width="390" alt="Asset3" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset2} width="425" alt="Asset2" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset1} width="465" alt="Asset1" />
+                    </div>
+                </>
+            );
+        } else if (maxNumber === 2) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset6} width="270" alt="Asset6" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset5} width="305" alt="Asset5" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset4} width="345" alt="Asset4" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset3} width="390" alt="Asset3" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset2} width="425" alt="Asset2" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 3) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset6} width="270" alt="Asset6" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset5} width="305" alt="Asset5" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset4} width="345" alt="Asset4" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset3} width="390" alt="Asset3" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 4) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset6} width="270" alt="Asset6" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset5} width="305" alt="Asset5" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset4} width="345" alt="Asset4" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 5) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset6} width="270" alt="Asset6" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset5} width="305" alt="Asset5" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 6) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset6} width="270" alt="Asset6" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 7) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 8) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 9) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                </>
+            )
+        } else if (maxNumber === 10) {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div className="goldenCircle11">
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                    </div>
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset9} width="150" alt="Asset9" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset8} width="190" alt="Asset8" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset7} width="230" alt="Asset7" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset6} width="270" alt="Asset6" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset5} width="305" alt="Asset5" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset4} width="345" alt="Asset4" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset3} width="390" alt="Asset3" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset2} width="425" alt="Asset2" />
+                    </div>
+                    <div className="middleCircle">
+                        <img src={Asset1} width="465" alt="Asset1" />
+                    </div>
+                </>
+            )
         }
     }
 
@@ -56,46 +377,10 @@ const Chart = () => {
                         </div>
                     );
                 })}
-                <div className="goldenCircle11">
-                    <img src={ExternalCircle} width="640" alt="Asset1" />
-                </div>
-                <div className="goldenCircle">
-                    <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                </div>
-                <div className="goldenCircle">
-                    <img src={centerWheelGold} width="110" alt="centerWheelGold" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset9} width="150" alt="Asset9" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset8} width="190" alt="Asset8" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset7} width="230" alt="Asset7" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset6} width="270" alt="Asset6" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset5} width="305" alt="Asset5" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset4} width="345" alt="Asset4" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset3} width="390" alt="Asset3" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset2} width="425" alt="Asset2" />
-                </div>
-                <div className="middleCircle">
-                    <img src={Asset1} width="465" alt="Asset1" />
-                </div>
+                {renderGoldenRings()}
             </div>
         </>
     );
-
 }
 
 const mapStateToProps = (state) => {

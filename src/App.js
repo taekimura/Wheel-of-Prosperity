@@ -32,7 +32,7 @@ const App = ({ children }) => {
   useEffect(() => {
     populateArray();
     setLangage();
-  }, [averageAnswers])
+  }, [averageAnswers, selectedAnwsers])
   // If you want the chart's bar to render only in the end of user input, 
   // change dependency from "averageAnswers" to "data"
 
@@ -208,7 +208,7 @@ const App = ({ children }) => {
         renderQuiz,
         convertAverageToLength,
         switchToFrench,
-        switchToEnglish
+        switchToEnglish,
       }}
     >
       {children}

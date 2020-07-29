@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Context } from "../App";
 import { connect } from "react-redux";
-import centerImg from "../assets/centerWheel1.png";
+import centerWheelGray from "../assets/centerWheel-gray.png";
+import centerWheelGold from "../assets/centerWheel-gold.png";
 import Asset9 from "../assets/Asset9.png";
 import Asset8 from "../assets/Asset8.png";
 import Asset7 from "../assets/Asset7.png";
@@ -11,6 +12,7 @@ import Asset4 from "../assets/Asset4.png";
 import Asset3 from "../assets/Asset3.png";
 import Asset2 from "../assets/Asset2.png";
 import Asset1 from "../assets/Asset1.png";
+import ExternalCircle from "../assets/ExternalCircle.png";
 import "./Chart.scss";
 
 const Chart = () => {
@@ -54,8 +56,14 @@ const Chart = () => {
                         </div>
                     );
                 })}
+                <div className="goldenCircle11">
+                    <img src={ExternalCircle} width="640" alt="Asset1" />
+                </div>
                 <div className="goldenCircle">
-                    <img src={centerImg} width="120" alt="centerImg" />
+                    <img src={centerWheelGray} width="119" alt="centerWheelGray" />
+                </div>
+                <div className="goldenCircle">
+                    <img src={centerWheelGold} width="110" alt="centerWheelGold" />
                 </div>
                 <div className="middleCircle">
                     <img src={Asset9} width="150" alt="Asset9" />

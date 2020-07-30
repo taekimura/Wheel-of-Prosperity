@@ -1,6 +1,7 @@
 .quiz--question__component > p {
+  font-family: 'sans serif';
   color: #272426;
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin: 3mm 1%;
   text-align: left;
 }

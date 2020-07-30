@@ -9,8 +9,8 @@ import "./QuestionContainer.css";
 const QuestionContainer = () => {
   const { handleNextQuestion, handleSubmitAnswers, anwserOptions, totalQuestion, counter, switchToFrench, switchToEnglish } = useContext(Context);
 
-  const nextButton = <Button onClick={handleNextQuestion} className="btn-submit">Apply</Button>;
-  const subButton = <Button onClick={handleSubmitAnswers} className="btn-submit">Apply</Button>;
+  const nextButton = <Button color="danger" onClick={handleNextQuestion} className="btn-submit">Apply</Button>;
+  const subButton = <Button color="danger" onClick={handleSubmitAnswers} className="btn-submit">Apply</Button>;
 
   const renderAnswerOption = (data, index) => {
     return (

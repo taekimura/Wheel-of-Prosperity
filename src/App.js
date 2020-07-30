@@ -12,9 +12,27 @@ import "./App.css";
 export const Context = React.createContext('this is context!');
 export const Provider = Context.Provider;
 
+const initialState = [
+  { category: "Rejuvenation", value: 10 },
+  { category: "Embrace", value: 10 },
+  { category: "Lifestyle", value: 10 },
+  { category: "Self", value: 10 },
+  { category: "Relationship", value: 10 },
+  { category: "Family", value: 10 },
+  { category: "Inspiration", value: 10 },
+  { category: "Creativity", value: 10 },
+  { category: "Health", value: 10 },
+  { category: "Money", value: 10 },
+  { category: "Work", value: 10 },
+  { category: "Expansion", value: 10 }
+];
+
 const App = ({ children }) => {
   const [data, setData] = useState([]);
+  const [aveAnswers] = useState(initialState);
+  const [ans, setAns] = useState([]);
   const [averageAnswers, setAverageAnswers] = useState([]);
+  const [test, setTest] = useState([]);
   const [lengthOfBar, setLengthOfBar] = useState([]);
   const [series, setSeries] = useState(seriesLabels);
   const [colors, setColors] = useState(groupOneColors);
@@ -32,9 +50,13 @@ const App = ({ children }) => {
   useEffect(() => {
     populateArray();
     setLangage();
-  }, [averageAnswers, selectedAnwsers])
+    //User Input (24 answers)
+    console.log(ans);
+    //Average Scores before convert to length for chart (12 answers)
+    console.log(aveAnswers);
+  }, [lengthOfBar])
   // If you want the chart's bar to render only in the end of user input, 
-  // change dependency from "averageAnswers" to "data"
+  // change dependency from "lengthOfBar" to "data"
 
   const populateArray = () => {
     setData(lengthOfBar);
@@ -68,8 +90,8 @@ const App = ({ children }) => {
     //object container & save anwsers after selected answer
     objSelected[quantityIndex] = index;
     setSelectedAnswers(objSelected);
+    // setAns([{ category: quizQuestions[counter].category, value: selectedAnwsers[counter] }]);
     console.log("The array of User input: " + selectedAnwsers);
-    console.log("Length of SelectedAnswers: " + selectedAnwsers.length);
   };
 
   //handle next questions & answer
@@ -84,8 +106,17 @@ const App = ({ children }) => {
       setAnwerOptions(quizQuestions[9].answers);
       if (lang === "english") {
         setQuestion(quizQuestions[count].questionEngLish)
+        const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
+        let join = ans.concat(newObj);
+        setAns(join);
+        checkPair(newObj.category, newObj.value);
       } else if (lang === "french") {
         setQuestion(quizQuestions[count].questionFrench)
+        const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
+        let join = ans.concat(newObj);
+        setAns(join);
+        console.log(ans);
+        checkPair(newObj.category, newObj.value);
       }
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 1 && lang === "english") {
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
@@ -100,11 +131,33 @@ const App = ({ children }) => {
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
     } else {
-      pushArray();
+      const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
+      let join = ans.concat(newObj);
+      setAns(join);
+      checkPair(newObj.category, newObj.value);
       const count = counter + 1;
       const questionIDPlus = questionID + 1;
       setCounter(count);
       setQuestionID(questionIDPlus);
+      pushArray();
+      const finalArray = [
+        convertAverageToLength(aveAnswers[0].value),
+        convertAverageToLength(aveAnswers[1].value),
+        convertAverageToLength(aveAnswers[2].value),
+        convertAverageToLength(aveAnswers[3].value),
+        convertAverageToLength(aveAnswers[4].value),
+        convertAverageToLength(aveAnswers[5].value),
+        convertAverageToLength(aveAnswers[6].value),
+        convertAverageToLength(aveAnswers[7].value),
+        convertAverageToLength(aveAnswers[8].value),
+        convertAverageToLength(aveAnswers[9].value),
+        convertAverageToLength(aveAnswers[10].value),
+        convertAverageToLength(aveAnswers[11].value),
+      ];
+      setLengthOfBar(finalArray);
+      setTest(finalArray);
+
+
       if (lang === "english") {
         setQuestion(quizQuestions[count].questionEngLish)
       } else if (lang === "french") {
@@ -112,6 +165,29 @@ const App = ({ children }) => {
       }
     }
   };
+
+
+  const checkPair = (category, value) => {
+    ans.filter((a, counter) => {
+      const index = Object.keys(ans)[counter];
+      if (ans[index].category === category) {
+        const averageNum = Math.round((ans[index].value + value) / 2);
+        console.log("Category: " + ans[index].category, "Average num:" + averageNum + "calculated!");
+        insertLength(category, averageNum);
+      }
+      return;
+    })
+  }
+
+  const insertLength = (category, average) => {
+    aveAnswers.filter((ave, counter) => {
+      const index = Object.keys(aveAnswers)[counter];
+      if (aveAnswers[index].category === category) {
+        aveAnswers[index].value = average;
+      }
+      return;
+    })
+  }
 
   const pushArray = () => {
     if (selectedAnwsers.length % 2 === 0) {
@@ -130,9 +206,9 @@ const App = ({ children }) => {
       AverageArray.push(average);
       LengthArray.push(convertAverageToLength(average));
       let joinedAverage = averageAnswers.concat(AverageArray);
-      let joinedLength = lengthOfBar.concat(LengthArray);
+      // let joinedLength = lengthOfBar.concat(LengthArray);
       setAverageAnswers(joinedAverage);
-      setLengthOfBar(joinedLength);
+      // setLengthOfBar(joinedLength);
     }
   }
 
@@ -167,9 +243,30 @@ const App = ({ children }) => {
     if (answerArray.length === counter || answerArray === 0) {
       alert("Please input a number:)");
     } else {
-      pushArray();
+      const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
+      let join = ans.concat(newObj);
+      setAns(join);
+      checkPair(newObj.category, newObj.value);
       setData(lengthOfBar);
       setResult(true);
+      pushArray();
+      const finalArray = [
+        convertAverageToLength(aveAnswers[0].value),
+        convertAverageToLength(aveAnswers[1].value),
+        convertAverageToLength(aveAnswers[2].value),
+        convertAverageToLength(aveAnswers[3].value),
+        convertAverageToLength(aveAnswers[4].value),
+        convertAverageToLength(aveAnswers[5].value),
+        convertAverageToLength(aveAnswers[6].value),
+        convertAverageToLength(aveAnswers[7].value),
+        convertAverageToLength(aveAnswers[8].value),
+        convertAverageToLength(aveAnswers[9].value),
+        convertAverageToLength(aveAnswers[10].value),
+        convertAverageToLength(aveAnswers[11].value),
+      ];
+      console.log("finalScoreforChart" + finalArray);
+      setLengthOfBar(finalArray);
+      setTest(finalArray);
     }
   };
 
@@ -200,6 +297,7 @@ const App = ({ children }) => {
         result, setResult,
         totalQuestion, setTotalQuestion,
         lang, setLang,
+        test,
 
         handleAnswerSelected,
         handleNextQuestion,

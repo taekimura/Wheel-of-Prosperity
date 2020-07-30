@@ -16,7 +16,7 @@ import ExternalCircle from "../assets/ExternalCircle.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, barHeight, averageAnswers } = useContext(Context);
+    const { data, colors, barHeight, averageAnswers, test } = useContext(Context);
     let max = 0;
 
     for (let i = data.length; i--;) {
@@ -28,8 +28,8 @@ const Chart = () => {
     }
 
     const renderGoldenRings = () => {
-        const maxNumber = Math.max.apply(null, averageAnswers);
-        if (maxNumber === 1) {
+        const minNumber = Math.min.apply(null, test);
+        if (minNumber === 9 || averageAnswers.length !== 12) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -70,7 +70,7 @@ const Chart = () => {
                     </div>
                 </>
             );
-        } else if (maxNumber === 2) {
+        } else if (minNumber === 8) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -108,7 +108,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 3) {
+        } else if (minNumber === 7) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -143,7 +143,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 4) {
+        } else if (minNumber === 6) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -175,7 +175,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 5) {
+        } else if (minNumber === 5) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -204,7 +204,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 6) {
+        } else if (minNumber === 4) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -230,7 +230,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 7) {
+        } else if (minNumber === 3) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -253,7 +253,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 8) {
+        } else if (minNumber === 2) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -273,7 +273,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 9) {
+        } else if (minNumber === 1) {
             return (
                 <>
                     <div className="goldenCircle11">
@@ -290,7 +290,7 @@ const Chart = () => {
                     </div>
                 </>
             )
-        } else if (maxNumber === 10) {
+        } else if (minNumber === 0) {
             return (
                 <>
                     <div className="goldenCircle11">

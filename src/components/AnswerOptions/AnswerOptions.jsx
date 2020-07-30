@@ -6,7 +6,7 @@ import "./AnswerOptions.css";
 const AnswerOptions = (props) => {
   const { selectedAnwsers, handleAnswerSelected } = useContext(Context);
   return (
-    <Button color="secondary" style={{ width: "8%", margin: "0 0.5%" }}
+    <Button color="secondary" style={{ width: "8%", margin: "0 0.5%", fontFamily: "Open sans" }}
       type="button"
       value={props.index}
       onClick={handleAnswerSelected}

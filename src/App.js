@@ -54,7 +54,7 @@ const App = ({ children }) => {
     console.log(ans);
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
-  }, [lengthOfBar])
+  }, [data])
   // If you want the chart's bar to render only in the end of user input, 
   // change dependency from "lengthOfBar" to "data"
 

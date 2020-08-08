@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import quizQuestions from "../src/data/questions.json";
-import QuestionWrapped from "../src/components/QuestionWrapped/QuestionWrapped";
 import QuestionContainer from "../src/components/QuestionContainer/QuestionContainer";
-import Result from "../src/components/Result/Result";
-import Chart from "../src/components/Chart";
+import Chart from "./components/Chart/Chart";
+import ModalExample from "./components/QuestionModal/QuestionModal";
 import { seriesLabels, groupOneColors } from "./constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -46,6 +45,12 @@ const App = ({ children }) => {
   const [totalQuestion, setTotalQuestion] = useState(allQuestion.length);
   const [result, setResult] = useState(false);
   const [lang, setLang] = useState("english");
+  const [open, setOpen] = useState(true);
+  const [starter, setStarter] = useState(false);
+  const [applyButton, setApplyButton] = useState("Apply");
+  const [startButton, setStartButton] = useState("Start");
+  const [instruction, setInstruction] = useState(quizQuestions[0].instructionEnglish);
+  const [yesNoQuestion, setYesNoQuestion] = useState(false);
 
   useEffect(() => {
     populateArray();
@@ -54,7 +59,7 @@ const App = ({ children }) => {
     console.log(ans);
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
-  }, [data])
+  }, [lengthOfBar])
   // If you want the chart's bar to render only in the end of user input, 
   // change dependency from "lengthOfBar" to "data"
 
@@ -63,21 +68,49 @@ const App = ({ children }) => {
   };
 
   const setLangage = () => {
-    if (lang === "english") {
+    if (lang === "english" && !yesNoQuestion) {
       setQuestion(quizQuestions[counter].questionEngLish);
-    } else if (lang === "french") {
-      setQuestion(quizQuestions[counter].questionFrench)
+      setApplyButton("Appliquer");
+      setStartButton("Start");
+      setInstruction(quizQuestions[0].instructionEnglish);
+    } else if (lang === "french" && !yesNoQuestion) {
+      setQuestion(quizQuestions[counter].questionFrench);
+      setApplyButton("Apply");
+      setStartButton("Début");
+      setInstruction(quizQuestions[0].instructionFrench);
     }
   }
 
   const switchToFrench = () => {
-    setLang("french");
-    setQuestion(quizQuestions[counter].questionFrench);
+    if (yesNoQuestion && selectedAnwsers[9] === 1) {
+      setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
+      setAnwerOptions(quizQuestions[0].answers);
+    } else if (yesNoQuestion && selectedAnwsers[9] === 0) {
+      setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
+      setAnwerOptions(quizQuestions[0].answers);
+    } else {
+      setLang("french");
+      setInstruction(quizQuestions[0].instructionFrench)
+      setQuestion(quizQuestions[counter].questionFrench);
+      setApplyButton("Appliquer");
+      setStartButton("Début");
+    }
   };
 
   const switchToEnglish = () => {
-    setLang("english");
-    setQuestion(quizQuestions[counter].questionEngLish);
+    if (yesNoQuestion && selectedAnwsers[9] === 1) {
+      setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
+      setAnwerOptions(quizQuestions[0].answers);
+    } else if (yesNoQuestion && selectedAnwsers[9] === 0) {
+      setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
+      setAnwerOptions(quizQuestions[0].answers);
+    } else {
+      setLang("english");
+      setInstruction(quizQuestions[0].instructionEnglish);
+      setQuestion(quizQuestions[counter].questionEngLish);
+      setApplyButton("Apply");
+      setStartButton("Start");
+    }
   };
 
   //handle get value selected for question
@@ -86,11 +119,9 @@ const App = ({ children }) => {
     let objSelected = selectedAnwsers;
     let index = parseInt(target.value, 10);
     let quantityIndex = counter;
-
     //object container & save anwsers after selected answer
     objSelected[quantityIndex] = index;
     setSelectedAnswers(objSelected);
-    // setAns([{ category: quizQuestions[counter].category, value: selectedAnwsers[counter] }]);
     console.log("The array of User input: " + selectedAnwsers);
   };
 
@@ -104,6 +135,7 @@ const App = ({ children }) => {
       setCounter(count);
       setQuestionID(questionIDPlus);
       setAnwerOptions(quizQuestions[9].answers);
+      setYesNoQuestion(true);
       if (lang === "english") {
         setQuestion(quizQuestions[count].questionEngLish)
         const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
@@ -156,13 +188,6 @@ const App = ({ children }) => {
       ];
       setLengthOfBar(finalArray);
       setTest(finalArray);
-
-
-      if (lang === "english") {
-        setQuestion(quizQuestions[count].questionEngLish)
-      } else if (lang === "french") {
-        setQuestion(quizQuestions[count].questionFrench)
-      }
     }
   };
 
@@ -206,9 +231,7 @@ const App = ({ children }) => {
       AverageArray.push(average);
       LengthArray.push(convertAverageToLength(average));
       let joinedAverage = averageAnswers.concat(AverageArray);
-      // let joinedLength = lengthOfBar.concat(LengthArray);
       setAverageAnswers(joinedAverage);
-      // setLengthOfBar(joinedLength);
     }
   }
 
@@ -270,8 +293,12 @@ const App = ({ children }) => {
     }
   };
 
+  const onOpenModal = () => {
+    setOpen(true);
+  };
+
   const showResult = () => {
-    return <Result />;
+    setOpen(false);
   };
 
   const renderQuiz = () => {
@@ -298,6 +325,11 @@ const App = ({ children }) => {
         totalQuestion, setTotalQuestion,
         lang, setLang,
         test,
+        open, setOpen,
+        starter, setStarter,
+        applyButton,
+        startButton,
+        instruction,
 
         handleAnswerSelected,
         handleNextQuestion,
@@ -307,11 +339,13 @@ const App = ({ children }) => {
         convertAverageToLength,
         switchToFrench,
         switchToEnglish,
+        onOpenModal,
       }}
     >
       {children}
+      <ModalExample />
       <Chart />
-      <QuestionWrapped />
+      {/* <QuestionWrapped /> */}
     </Provider>
   );
 }

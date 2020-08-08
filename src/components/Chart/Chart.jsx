@@ -1,18 +1,22 @@
 import React, { useContext } from "react";
-import { Context } from "../App";
+import { Context } from "../../App";
 import { connect } from "react-redux";
-import centerWheelGray from "../assets/centerWheel-gray.png";
-import centerWheelGold from "../assets/centerWheel-gold.png";
-import Asset9 from "../assets/Asset9.png";
-import Asset8 from "../assets/Asset8.png";
-import Asset7 from "../assets/Asset7.png";
-import Asset6 from "../assets/Asset6.png";
-import Asset5 from "../assets/Asset5.png";
-import Asset4 from "../assets/Asset4.png";
-import Asset3 from "../assets/Asset3.png";
-import Asset2 from "../assets/Asset2.png";
-import Asset1 from "../assets/Asset1.png";
-import ExternalCircle from "../assets/ExternalCircle.png";
+import centerWheelGray from "../../assets/centerWheel-gray.png";
+import centerWheelGold from "../../assets/centerWheel-gold.png";
+import Asset9 from "../../assets/Asset9.png";
+import Asset8 from "../../assets/Asset8.png";
+import Asset7 from "../../assets/Asset7.png";
+import Asset6 from "../../assets/Asset6.png";
+import Asset5 from "../../assets/Asset5.png";
+import Asset4 from "../../assets/Asset4.png";
+import Asset3 from "../../assets/Asset3.png";
+import Asset2 from "../../assets/Asset2.png";
+import Asset1 from "../../assets/Asset1.png";
+import ExternalCircle from "../../assets/ExternalCircle.png";
+import Harmonie from "../../assets/Harmonie.png";
+import Plentitude from "../../assets/Plentitude.png";
+import Vitalite from "../../assets/Vitalite.png";
+import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
@@ -27,19 +31,39 @@ const Chart = () => {
         }
     }
 
+    const renderLabel = () => {
+        return (
+            <>
+                <div className="harmonie">
+                    <img src={Harmonie} width="150" alt="Harmonie" />
+                </div>
+                <div className="plentitude">
+                    <img src={Plentitude} width="150" alt="Plentitude" />
+                </div>
+                <div className="vitalite">
+                    <img src={Vitalite} width="130" alt="Vitalite" />
+                </div>
+                <div className="prosperite">
+                    <img src={Prosperite} width="170" alt="Prosperite" />
+                </div>
+                <div className="goldenCircle11">
+                    <img src={ExternalCircle} width="640" alt="Asset1" />
+                </div>
+            </>
+        )
+    }
+
     const renderGoldenRings = () => {
         const minNumber = Math.min.apply(null, test);
         if (minNumber === 9 || averageAnswers.length !== 12) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -73,14 +97,12 @@ const Chart = () => {
         } else if (minNumber === 8) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -111,14 +133,12 @@ const Chart = () => {
         } else if (minNumber === 7) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -146,14 +166,12 @@ const Chart = () => {
         } else if (minNumber === 6) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -178,14 +196,12 @@ const Chart = () => {
         } else if (minNumber === 5) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -207,14 +223,12 @@ const Chart = () => {
         } else if (minNumber === 4) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -233,14 +247,12 @@ const Chart = () => {
         } else if (minNumber === 3) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -256,14 +268,12 @@ const Chart = () => {
         } else if (minNumber === 2) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -276,14 +286,12 @@ const Chart = () => {
         } else if (minNumber === 1) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -293,28 +301,24 @@ const Chart = () => {
         } else if (minNumber === 0) {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                 </>
             )
         } else {
             return (
                 <>
-                    <div className="goldenCircle11">
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    {renderLabel()}
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
                     </div>
                     <div className="goldenCircle">
-                        <img src={centerWheelGray} width="119" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="110" alt="centerWheelGold" />
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
                     </div>
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
@@ -347,6 +351,31 @@ const Chart = () => {
             )
         }
     }
+    const convertLengthToAverage = (length) => {
+        if (length === 0) {
+            return 10;
+        } else if (length === 1) {
+            return 9;
+        } else if (length === 2) {
+            return 8;
+        } else if (length === 3) {
+            return 7;
+        } else if (length === 4) {
+            return 6;
+        } else if (length === 5) {
+            return 5;
+        } else if (length === 6) {
+            return 4;
+        } else if (length === 7) {
+            return 3;
+        } else if (length === 8) {
+            return 2;
+        } else if (length === 9) {
+            return 1;
+        } else if (length === 10) {
+            return "";
+        }
+    }
 
     return (
         <>
@@ -371,7 +400,7 @@ const Chart = () => {
                             style={{ height: barHeight ? barHeight : "auto" }}
                         >
                             <div className={"Charts--item"} style={style} key={serieIndex}>
-                                <b style={{ color: color }}></b>
+                                <b style={{ color: color }}>{convertLengthToAverage(serie)}</b>
                             </div>
                             {/* <label>{labels[serieIndex]}</label> */}
                         </div>

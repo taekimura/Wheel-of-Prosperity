@@ -6,8 +6,7 @@
 	position: relative;
 	margin: 0 auto;
 	// background-color: #e67575;
-	width: 50%;
-	float: left;
+	width: 100%;
 	height: 100vh;
 	justify-content: center;
 	align-items: center;
@@ -148,6 +147,41 @@
 		height: 200px; //have to be the same as "barHeight"
 		transform: translate(-50.5%,50%);
 		top:25%;
+		left:50%;
+		z-index: -200;
+	}
+	.harmonie{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top:48%;
+		right: 17%;
+		z-index: -200;
+	}
+	.plentitude{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		transform: translate(-50.5%,50%);
+		top:3%;
+		left:50%;
+		z-index: -200;
+	}
+	.prosperite{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		transform: translate(-50.5%,50%);
+		top:47%;
+		left:21%;
+		z-index: -200;
+	}
+	.vitalite{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		transform: translate(-50.5%,50%);
+		bottom:7%;
 		left:50%;
 		z-index: -200;
 	}

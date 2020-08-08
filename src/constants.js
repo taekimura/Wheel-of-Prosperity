@@ -24,6 +24,6 @@ export const groupOneColors = [
     "#C45621",
     "#E07C27",
     "#8C191C",
-    "#8C191C",
+    "#84123c",
     "#B92351"
 ];

@@ -362,7 +362,7 @@ const Chart = () => {
                             style={{ height: barHeight ? barHeight : "auto" }}
                         >
                             <div className={"Charts--item"} style={style} key={serieIndex}>
-                                <b style={{ color: color, fontSize: "15px", padding: "2%" }}>{convertLengthToAverage(serie)}</b>
+                                <b style={{ color: color, fontSize: "15px", padding: "2%", fontFamily: "sans-serif" }}>{convertLengthToAverage(serie)}</b>
                             </div>
                             {/* <label>{labels[serieIndex]}</label> */}
                         </div>

@@ -129,7 +129,7 @@ const App = ({ children }) => {
   //handle next questions & answer
   const handleNextQuestion = (e) => {
     if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
-      alert("Please input a number:)");
+      alert("Please input a number. / Veuillez saisir un nombre.");
     } else if (selectedAnwsers.length === 9) {
       setCounter(counter + 1);
       setQuestionID(questionID + 1);
@@ -260,7 +260,7 @@ const App = ({ children }) => {
   const handleSubmitAnswers = () => {
     const answerArray = selectedAnwsers.length;
     if (answerArray.length === counter || answerArray === 0) {
-      alert("Please input a number:)");
+      alert("Please input a number. / Veuillez saisir un nombre.");
     } else {
       createNewObject();
       setData(lengthOfBar);

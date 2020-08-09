@@ -19,7 +19,7 @@ const ModalExample = () => {
     const setStarterOn = () => {
         setStarter(true);
         return (
-            <Modal open={open} >
+            <Modal open={open}  >
                 {renderQuiz()}
             </Modal>
         );
@@ -36,7 +36,7 @@ const ModalExample = () => {
                     {instruction}
                 </p>
                 <div style={{ textAlign: "center" }}>
-                    <Button color="danger" style={{ width: "300px", textAlign: "center" }} onClick={setStarterOn} className="btn-submit">{startButton}</Button>
+                    <Button style={{ width: "300px", textAlign: "center", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={setStarterOn} className="btn-submit">{startButton}</Button>
                 </div>
             </>
         )

@@ -348,6 +348,7 @@ const Chart = () => {
 
                     style = {
                         backgroundColor: colors[serieIndex],
+                        // backgroundColor: "radial-gradient"("red", "yellow", "green"),
                         zIndex: serie
                     };
 

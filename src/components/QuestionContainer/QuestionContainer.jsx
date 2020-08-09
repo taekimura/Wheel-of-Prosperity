@@ -9,8 +9,8 @@ import "./QuestionContainer.css";
 const QuestionContainer = () => {
   const { handleNextQuestion, handleSubmitAnswers, anwserOptions, totalQuestion, counter, switchToEnglish, switchToFrench, applyButton, instruction } = useContext(Context);
 
-  const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto" }} color="danger" onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
-  const subButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto" }} color="danger" onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;
+  const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
+  const subButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;
 
   const renderAnswerOption = (data, index) => {
     return (

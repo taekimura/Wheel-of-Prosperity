@@ -60,7 +60,7 @@ const App = ({ children }) => {
     console.log(ans);
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
-  }, [data])
+  }, [lengthOfBar])
   // If you want the chart's bar to render only in the end of user input, 
   // change dependency from "lengthOfBar" to "data"
 
@@ -71,12 +71,12 @@ const App = ({ children }) => {
   const setLangage = () => {
     if (lang === "english" && !yesNoQuestion) {
       setQuestion(quizQuestions[counter].questionEngLish);
-      setApplyButton("Appliquer");
+      setApplyButton("Apply");
       setStartButton("Start");
       setInstruction(quizQuestions[0].instructionEnglish);
     } else if (lang === "french" && !yesNoQuestion) {
       setQuestion(quizQuestions[counter].questionFrench);
-      setApplyButton("Apply");
+      setApplyButton("Appliquer");
       setStartButton("Début");
       setInstruction(quizQuestions[0].instructionFrench);
     }

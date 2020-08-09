@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../App";
 import { connect } from "react-redux";
+import { groupOneColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
 import centerWheelGold from "../../assets/centerWheel-gold.png";
 import Asset9 from "../../assets/Asset9.png";
@@ -341,7 +342,7 @@ const Chart = () => {
         <>
             <div className="Charts">
                 {data.map((serie, serieIndex) => {
-                    const color = colors[serieIndex];
+                    const color = groupOneColors[serieIndex];
                     let style;
                     let size = serie;
 
@@ -360,7 +361,7 @@ const Chart = () => {
                             style={{ height: barHeight ? barHeight : "auto" }}
                         >
                             <div className={"Charts--item"} style={style} key={serieIndex}>
-                                <b style={{ color: color }}>{convertLengthToAverage(serie)}</b>
+                                <b style={{ color: color, fontSize: "15px", padding: "2%" }}>{convertLengthToAverage(serie)}</b>
                             </div>
                             {/* <label>{labels[serieIndex]}</label> */}
                         </div>

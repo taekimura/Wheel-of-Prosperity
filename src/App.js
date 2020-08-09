@@ -4,7 +4,7 @@ import quizQuestions from "../src/data/questions.json";
 import QuestionContainer from "../src/components/QuestionContainer/QuestionContainer";
 import Chart from "./components/Chart/Chart";
 import ModalExample from "./components/QuestionModal/QuestionModal";
-import { seriesLabels, groupOneColors } from "./constants";
+import { seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "./constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -60,8 +60,7 @@ const App = ({ children }) => {
     console.log(ans);
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
-    console.log(setTotalScore(sumOfUserInput(ans)));
-  }, [lengthOfBar])
+  }, [data])
   // If you want the chart's bar to render only in the end of user input, 
   // change dependency from "lengthOfBar" to "data"
 
@@ -177,6 +176,8 @@ const App = ({ children }) => {
       ];
       setLengthOfBar(finalArray);
       setTest(finalArray);
+      sumOfUserInput(ans);
+      setColorsOfBars(totalScore);
     }
   };
 
@@ -185,14 +186,6 @@ const App = ({ children }) => {
     let join = ans.concat(newObj);
     setAns(join);
     checkPair(newObj.category, newObj.value);
-  }
-
-  const sumOfUserInput = (ans) => {
-    var total = 0;
-    for (var property in ans) {
-      total += ans[property].value;
-    }
-    return total;
   }
 
   const checkPair = (category, value) => {
@@ -290,8 +283,30 @@ const App = ({ children }) => {
       console.log("finalScoreforChart" + finalArray);
       setLengthOfBar(finalArray);
       setTest(finalArray);
+      sumOfUserInput(ans);
+      setColorsOfBars(totalScore);
     }
   };
+
+  const setColorsOfBars = (totalScore) => {
+    if (totalScore === 0) {
+      setColors(groupOneColors);
+    } else if (totalScore >= 1 && totalScore <= 80) {
+      setColors(groupTwoColors);
+    } else if (totalScore >= 81 && totalScore <= 120) {
+      setColors(groupThreeColors);
+    } else if (totalScore >= 121 && totalScore <= 240) {
+      setColors(groupFourColors);
+    }
+  }
+
+  const sumOfUserInput = (ans) => {
+    var total = 0;
+    for (var property in ans) {
+      total += ans[property].value;
+    }
+    return setTotalScore(total);
+  }
 
   const onOpenModal = () => {
     setOpen(true);

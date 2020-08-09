@@ -51,6 +51,7 @@ const App = ({ children }) => {
   const [startButton, setStartButton] = useState("Start");
   const [instruction, setInstruction] = useState(quizQuestions[0].instructionEnglish);
   const [yesNoQuestion, setYesNoQuestion] = useState(false);
+  const [totalScore, setTotalScore] = useState();
 
   useEffect(() => {
     populateArray();
@@ -59,6 +60,7 @@ const App = ({ children }) => {
     console.log(ans);
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
+    console.log(setTotalScore(sumOfUserInput(ans)));
   }, [lengthOfBar])
   // If you want the chart's bar to render only in the end of user input, 
   // change dependency from "lengthOfBar" to "data"
@@ -82,10 +84,10 @@ const App = ({ children }) => {
   }
 
   const switchToFrench = () => {
-    if (yesNoQuestion && selectedAnwsers[9] === 1) {
+    if (yesNoQuestion && selectedAnwsers[9] === 101) {
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
-    } else if (yesNoQuestion && selectedAnwsers[9] === 0) {
+    } else if (yesNoQuestion && selectedAnwsers[9] === 100) {
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
     } else {
@@ -98,10 +100,10 @@ const App = ({ children }) => {
   };
 
   const switchToEnglish = () => {
-    if (yesNoQuestion && selectedAnwsers[9] === 1) {
+    if (yesNoQuestion && selectedAnwsers[9] === 101) {
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
       setAnwerOptions(quizQuestions[0].answers);
-    } else if (yesNoQuestion && selectedAnwsers[9] === 0) {
+    } else if (yesNoQuestion && selectedAnwsers[9] === 100) {
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
       setAnwerOptions(quizQuestions[0].answers);
     } else {
@@ -130,47 +132,34 @@ const App = ({ children }) => {
     if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
       alert("Please input a number:)");
     } else if (selectedAnwsers.length === 9) {
-      const count = counter + 1;
-      const questionIDPlus = questionID + 1;
-      setCounter(count);
-      setQuestionID(questionIDPlus);
+      setCounter(counter + 1);
+      setQuestionID(questionID + 1);
       setAnwerOptions(quizQuestions[9].answers);
       setYesNoQuestion(true);
       if (lang === "english") {
-        setQuestion(quizQuestions[count].questionEngLish)
-        const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
-        let join = ans.concat(newObj);
-        setAns(join);
-        checkPair(newObj.category, newObj.value);
+        setQuestion(quizQuestions[counter + 1].questionEngLish)
+        createNewObject();
       } else if (lang === "french") {
-        setQuestion(quizQuestions[count].questionFrench)
-        const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
-        let join = ans.concat(newObj);
-        setAns(join);
-        console.log(ans);
-        checkPair(newObj.category, newObj.value);
+        setQuestion(quizQuestions[counter + 1].questionFrench);
+        createNewObject();
       }
-    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 1 && lang === "english") {
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "english") {
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
       setAnwerOptions(quizQuestions[0].answers);
-    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 1 && lang === "french") {
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "french") {
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
-    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 0 && lang === "english") {
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "english") {
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
       setAnwerOptions(quizQuestions[0].answers);
-    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 0 && lang === "french") {
+    } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "french") {
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
     } else {
-      const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
-      let join = ans.concat(newObj);
-      setAns(join);
-      checkPair(newObj.category, newObj.value);
-      const count = counter + 1;
-      const questionIDPlus = questionID + 1;
-      setCounter(count);
-      setQuestionID(questionIDPlus);
+      setYesNoQuestion(false);
+      createNewObject();
+      setCounter(counter + 1);
+      setQuestionID(questionID + 1);
       pushArray();
       const finalArray = [
         convertAverageToLength(aveAnswers[0].value),
@@ -191,18 +180,32 @@ const App = ({ children }) => {
     }
   };
 
+  const createNewObject = () => {
+    const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
+    let join = ans.concat(newObj);
+    setAns(join);
+    checkPair(newObj.category, newObj.value);
+  }
+
+  const sumOfUserInput = (ans) => {
+    var total = 0;
+    for (var property in ans) {
+      total += ans[property].value;
+    }
+    return total;
+  }
 
   const checkPair = (category, value) => {
     ans.filter((a, counter) => {
       const index = Object.keys(ans)[counter];
       if (ans[index].category === category) {
         const averageNum = Math.round((ans[index].value + value) / 2);
-        console.log("Category: " + ans[index].category, "Average num:" + averageNum + "calculated!");
         insertLength(category, averageNum);
       }
-      return;
+      return null;
     })
   }
+
 
   const insertLength = (category, average) => {
     aveAnswers.filter((ave, counter) => {
@@ -210,7 +213,7 @@ const App = ({ children }) => {
       if (aveAnswers[index].category === category) {
         aveAnswers[index].value = average;
       }
-      return;
+      return null;
     })
   }
 
@@ -266,10 +269,7 @@ const App = ({ children }) => {
     if (answerArray.length === counter || answerArray === 0) {
       alert("Please input a number:)");
     } else {
-      const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
-      let join = ans.concat(newObj);
-      setAns(join);
-      checkPair(newObj.category, newObj.value);
+      createNewObject();
       setData(lengthOfBar);
       setResult(true);
       pushArray();
@@ -330,6 +330,8 @@ const App = ({ children }) => {
         applyButton,
         startButton,
         instruction,
+        yesNoQuestion,
+        totalScore,
 
         handleAnswerSelected,
         handleNextQuestion,

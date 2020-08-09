@@ -13,7 +13,7 @@ const styles = {
 };
 
 const ModalExample = () => {
-    const { showResult, renderQuiz, result, onOpenModal, open, switchToEnglish, switchToFrench, startButton, instruction } = useContext(Context);
+    const { showResult, renderQuiz, result, open, switchToEnglish, switchToFrench, startButton, instruction } = useContext(Context);
     const [starter, setStarter] = useState(false);
 
     const setStarterOn = () => {
@@ -29,10 +29,10 @@ const ModalExample = () => {
         return (
             <>
                 <ButtonGroup className="float-right">
-                    <Button style={{ margin: "0" }} color="primary" onClick={switchToEnglish}>English</Button>
-                    <Button style={{ paddingLeft: "5%" }} color="success" onClick={switchToFrench}>Français</Button>
+                    <Button style={{ margin: "0", background: "#3c79c9", border: "none" }} onClick={switchToEnglish}>English</Button>
+                    <Button style={{ paddingLeft: "5%", background: "#5eaa3d", border: "none" }} onClick={switchToFrench}>Français</Button>
                 </ButtonGroup>
-                <p style={{ padding: "3em 0em 1em 0em" }}>
+                <p style={{ padding: "3em 0em 1em 0em", fontFamily: 'sans serif', fontSize: "1.2em" }}>
                     {instruction}
                 </p>
                 <div style={{ textAlign: "center" }}>

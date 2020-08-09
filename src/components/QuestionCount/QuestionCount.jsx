@@ -7,7 +7,7 @@ const QuestionCount = () => {
   const { counter } = useContext(Context);
   return (
     <div>
-      <Progress color="success" value={counter} max="24" >{counter}/24</Progress>
+      <Progress color="info" value={counter} max="24" >{counter}/24</Progress>
     </div>
   );
 };

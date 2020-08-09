@@ -9,8 +9,8 @@ import "./QuestionContainer.css";
 const QuestionContainer = () => {
   const { handleNextQuestion, handleSubmitAnswers, anwserOptions, totalQuestion, counter, switchToEnglish, switchToFrench, applyButton, instruction } = useContext(Context);
 
-  const nextButton = <Button color="danger" onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
-  const subButton = <Button color="danger" onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;
+  const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto" }} color="danger" onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
+  const subButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto" }} color="danger" onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;
 
   const renderAnswerOption = (data, index) => {
     return (
@@ -25,10 +25,10 @@ const QuestionContainer = () => {
   return (
     <>
       <ButtonGroup className="float-right">
-        <Button style={{ margin: "0" }} color="primary" onClick={switchToEnglish}>English</Button>
-        <Button style={{ paddingLeft: "5%" }} color="success" onClick={switchToFrench}>Français</Button>
+        <Button style={{ margin: "0", background: "#3c79c9", border: "none" }} onClick={switchToEnglish}>English</Button>
+        <Button style={{ paddingLeft: "5%", background: "#5eaa3d", border: "none" }} onClick={switchToFrench}>Français</Button>
       </ButtonGroup>
-      <p style={{ padding: "3em 0em 1em 0em" }}> {instruction}</p>
+      <p style={{ padding: "3em 0em 1em 0em", fontFamily: 'sans serif', fontSize: "1.1em" }}> {instruction}</p>
       <QuestionCount />
       <Question />
       <ul>{anwserOptions.map(renderAnswerOption)}</ul>

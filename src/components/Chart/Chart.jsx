@@ -20,7 +20,7 @@ import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, barHeight, averageAnswers, test } = useContext(Context);
+    const { data, colors, barHeight, averageAnswers, test, totalScore } = useContext(Context);
     let max = 0;
 
     for (let i = data.length; i--;) {
@@ -52,6 +52,21 @@ const Chart = () => {
             </>
         )
     }
+    const renderInnerCircle = () => {
+        if (totalScore === 0) {
+            return (
+                <div className="goldenCircle">
+                    <img src={centerWheelGold} width="100" alt="centerWheelGold" />
+                </div>
+            )
+        } else {
+            return (
+                <div className="goldenCircle">
+                    <img src={centerWheelGray} width="109" alt="centerWheelGray" />
+                </div>
+            )
+        }
+    }
 
     const renderGoldenRings = () => {
         const minNumber = Math.min.apply(null, test);
@@ -59,12 +74,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -98,12 +108,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -134,12 +139,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -167,12 +167,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -197,12 +192,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -224,12 +214,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -248,12 +233,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -269,12 +249,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -287,12 +262,7 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>
@@ -302,24 +272,14 @@ const Chart = () => {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                 </>
             )
         } else {
             return (
                 <>
                     {renderLabel()}
-                    <div className="goldenCircle">
-                        <img src={centerWheelGray} width="109" alt="centerWheelGray" />
-                    </div>
-                    <div className="goldenCircle">
-                        <img src={centerWheelGold} width="100" alt="centerWheelGold" />
-                    </div>
+                    {renderInnerCircle()}
                     <div className="middleCircle">
                         <img src={Asset9} width="150" alt="Asset9" />
                     </div>

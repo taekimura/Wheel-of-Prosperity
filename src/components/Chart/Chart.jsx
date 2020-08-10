@@ -21,9 +21,8 @@ import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, barHeight, averageAnswers, test, totalScore } = useContext(Context);
+    const { data, colors, barHeight, averageAnswers, lengthOfBar, totalScore } = useContext(Context);
     let max = 0;
-
     for (let i = data.length; i--;) {
         for (let j = data[i].length; j--;) {
             if (data[i][j] > max) {
@@ -70,7 +69,7 @@ const Chart = () => {
     }
 
     const renderGoldenRings = () => {
-        const minNumber = Math.min.apply(null, test);
+        const minNumber = Math.min.apply(null, lengthOfBar);
         if (minNumber === 9 || averageAnswers.length !== 12) {
             return (
                 <>

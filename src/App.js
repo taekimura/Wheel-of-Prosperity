@@ -31,7 +31,6 @@ const App = ({ children }) => {
   const [aveAnswers] = useState(initialState);
   const [ans, setAns] = useState([]);
   const [averageAnswers, setAverageAnswers] = useState([]);
-  const [test, setTest] = useState([]);
   const [lengthOfBar, setLengthOfBar] = useState([]);
   const [series, setSeries] = useState(seriesLabels);
   const [colors, setColors] = useState(groupOneColors);
@@ -159,25 +158,6 @@ const App = ({ children }) => {
       createNewObject();
       setCounter(counter + 1);
       setQuestionID(questionID + 1);
-      pushArray();
-      const finalArray = [
-        convertAverageToLength(aveAnswers[0].value),
-        convertAverageToLength(aveAnswers[1].value),
-        convertAverageToLength(aveAnswers[2].value),
-        convertAverageToLength(aveAnswers[3].value),
-        convertAverageToLength(aveAnswers[4].value),
-        convertAverageToLength(aveAnswers[5].value),
-        convertAverageToLength(aveAnswers[6].value),
-        convertAverageToLength(aveAnswers[7].value),
-        convertAverageToLength(aveAnswers[8].value),
-        convertAverageToLength(aveAnswers[9].value),
-        convertAverageToLength(aveAnswers[10].value),
-        convertAverageToLength(aveAnswers[11].value),
-      ];
-      setLengthOfBar(finalArray);
-      setTest(finalArray);
-      sumOfUserInput(ans);
-      setColorsOfBars(totalScore);
     }
   };
 
@@ -198,7 +178,6 @@ const App = ({ children }) => {
       return null;
     })
   }
-
 
   const insertLength = (category, average) => {
     aveAnswers.filter((ave, counter) => {
@@ -282,9 +261,9 @@ const App = ({ children }) => {
       ];
       console.log("finalScoreforChart" + finalArray);
       setLengthOfBar(finalArray);
-      setTest(finalArray);
       sumOfUserInput(ans);
       setColorsOfBars(totalScore);
+      // var myTimer = setTimeout(doStuff, 5000);
     }
   };
 
@@ -339,7 +318,7 @@ const App = ({ children }) => {
         result, setResult,
         totalQuestion, setTotalQuestion,
         lang, setLang,
-        test,
+        lengthOfBar,
         open, setOpen,
         starter, setStarter,
         applyButton,

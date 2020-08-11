@@ -1,23 +1,13 @@
 import React, { useContext } from "react";
 import { Context } from "../../App";
 import "./QuestionCount.css";
+import { Progress } from "reactstrap";
 
 const QuestionCount = () => {
-  const { totalQuestion, counter } = useContext(Context);
+  const { counter } = useContext(Context);
   return (
-    <div className="quiz--number__component">
-      <h6>
-        Question.
-      </h6>
-      <h6>
-        {counter + 1}
-      </h6>
-      <h6>
-        of
-      </h6>
-      <h6>
-        {totalQuestion}
-      </h6>
+    <div>
+      <Progress color="info" value={counter} max="24" >{counter}/24</Progress>
     </div>
   );
 };

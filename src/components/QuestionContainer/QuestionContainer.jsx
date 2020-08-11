@@ -7,10 +7,10 @@ import { ButtonGroup, Button } from "reactstrap";
 import "./QuestionContainer.css";
 
 const QuestionContainer = () => {
-  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, totalQuestion, counter, switchToFrench, switchToEnglish } = useContext(Context);
+  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, totalQuestion, counter, switchToEnglish, switchToFrench, applyButton, instruction } = useContext(Context);
 
-  const nextButton = <Button color="danger" onClick={handleNextQuestion} className="btn-submit">Apply</Button>;
-  const subButton = <Button color="danger" onClick={handleSubmitAnswers} className="btn-submit">Apply</Button>;
+  const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
+  const subButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;
 
   const renderAnswerOption = (data, index) => {
     return (
@@ -24,13 +24,15 @@ const QuestionContainer = () => {
 
   return (
     <>
-      <ButtonGroup style={{ marginLeft: "72%" }}>
-        <Button style={{ margin: "0" }} color="primary" onClick={switchToEnglish}>English</Button>
-        <Button color="success" onClick={switchToFrench} >French</Button>
+      <ButtonGroup className="float-right">
+        <Button style={{ margin: "0", background: "#3c79c9", border: "none" }} onClick={switchToEnglish}>English</Button>
+        <Button style={{ paddingLeft: "5%", background: "#5eaa3d", border: "none" }} onClick={switchToFrench}>Français</Button>
       </ButtonGroup>
+      <p style={{ padding: "3em 0em 1em 0em", fontFamily: 'sans serif', fontSize: "1.1em" }}> {instruction}</p>
       <QuestionCount />
       <Question />
       <ul>{anwserOptions.map(renderAnswerOption)}</ul>
+
 
       <div style={{ textAlign: "right" }}>
         {counter < 0 || counter === totalQuestion - 1 ? (

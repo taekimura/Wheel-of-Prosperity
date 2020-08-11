@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import quizQuestions from "../src/data/questions.json";
 import QuestionContainer from "../src/components/QuestionContainer/QuestionContainer";
 import Chart from "./components/Chart/Chart";
@@ -36,7 +36,6 @@ const App = ({ children }) => {
   const [colors, setColors] = useState(groupOneColors);
   const [barHeight, setBarHeight] = useState(200);
   const [counter, setCounter] = useState(0);
-  const [questionID, setQuestionID] = useState(1);
   const [selectedAnwsers, setSelectedAnswers] = useState([]);
   const [question, setQuestion] = useState();
   const [anwserOptions, setAnwerOptions] = useState(quizQuestions[0].answers);
@@ -60,13 +59,12 @@ const App = ({ children }) => {
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
   }, [lengthOfBar])
-  // If you want the chart's bar to render only in the end of user input, 
-  // change dependency from "lengthOfBar" to "data"
 
   const populateArray = () => {
     setData(lengthOfBar);
   };
 
+  // Set languages English or French
   const setLangage = () => {
     if (lang === "english" && !yesNoQuestion) {
       setQuestion(quizQuestions[counter].questionEngLish);
@@ -81,6 +79,7 @@ const App = ({ children }) => {
     }
   }
 
+  // Translate to french
   const switchToFrench = () => {
     if (yesNoQuestion && selectedAnwsers[9] === 101) {
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
@@ -97,6 +96,7 @@ const App = ({ children }) => {
     }
   };
 
+  // Translate to english
   const switchToEnglish = () => {
     if (yesNoQuestion && selectedAnwsers[9] === 101) {
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
@@ -113,61 +113,73 @@ const App = ({ children }) => {
     }
   };
 
-  //handle get value selected for question
+  // Handle get value selected for question
   const handleAnswerSelected = (e) => {
     let target = e.target;
     let objSelected = selectedAnwsers;
     let index = parseInt(target.value, 10);
     let quantityIndex = counter;
-    //object container & save anwsers after selected answer
+    // Object container & save anwsers after selected answer
     objSelected[quantityIndex] = index;
     setSelectedAnswers(objSelected);
     console.log("The array of User input: " + selectedAnwsers);
   };
 
-  //handle next questions & answer
+  // Show a next question and check if it's english or french
+  const movingNextQuestion = () => {
+    if (lang === "english" && !yesNoQuestion) {
+      setCounter(counter + 1);
+      setQuestion(quizQuestions[counter + 1].questionEngLish);
+    } else if (lang === "french" && !yesNoQuestion) {
+      setCounter(counter + 1);
+      setQuestion(quizQuestions[counter + 1].questionFrench);
+    }
+  }
+
+  // Handle next questions & answer
   const handleNextQuestion = (e) => {
     if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
       alert("Please input a number. / Veuillez saisir un nombre.");
     } else if (selectedAnwsers.length === 9) {
-      setCounter(counter + 1);
-      setQuestionID(questionID + 1);
-      setAnwerOptions(quizQuestions[9].answers);
+      //Set Yes No Question of No.9 
       setYesNoQuestion(true);
-      if (lang === "english") {
-        setQuestion(quizQuestions[counter + 1].questionEngLish)
-        createNewObject();
-      } else if (lang === "french") {
-        setQuestion(quizQuestions[counter + 1].questionFrench);
-        createNewObject();
-      }
+      movingNextQuestion();
+      setAnwerOptions(quizQuestions[9].answers);
+      createNewObject();
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "english") {
+      // If the answer of No.9 is "No" and state of langage is "english", set this question.
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
       setAnwerOptions(quizQuestions[0].answers);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "french") {
+      // If the answer of No.9 is "No" and state of langage is "french", set this question.
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "english") {
+      // If the answer of No.9 is "Yes" and state of langage is "english", set this question.
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
       setAnwerOptions(quizQuestions[0].answers);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "french") {
+      // If the answer of No.9 is "Yes" and state of langage is "french", set this question.
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
     } else {
       setYesNoQuestion(false);
+      movingNextQuestion();
       createNewObject();
-      setCounter(counter + 1);
-      setQuestionID(questionID + 1);
     }
   };
 
+  // Create new object and add to state of "ans"
   const createNewObject = () => {
     const newObj = { category: quizQuestions[counter].category, value: selectedAnwsers[counter] }
     let join = ans.concat(newObj);
     setAns(join);
     checkPair(newObj.category, newObj.value);
+    sumOfUserInput(ans);
+    setColorsOfBars(totalScore);
   }
 
+  // Check a pair of same name of category. If there is an same name of category, calculate an average of 2 numbers 
   const checkPair = (category, value) => {
     ans.filter((a, counter) => {
       const index = Object.keys(ans)[counter];
@@ -179,6 +191,7 @@ const App = ({ children }) => {
     })
   }
 
+  // Find a same category name in "initialState" of aveAnswers, then insert a calculated average in "checkpair"function
   const insertLength = (category, average) => {
     aveAnswers.filter((ave, counter) => {
       const index = Object.keys(aveAnswers)[counter];
@@ -189,53 +202,25 @@ const App = ({ children }) => {
     })
   }
 
-  const pushArray = () => {
-    if (selectedAnwsers.length % 2 === 0) {
-      var lastTwoNum = selectedAnwsers.slice(-2);
-      let averageCal =
-        lastTwoNum.reduce((pre, curr) => {
-          return pre + curr;
-        }, 0) / lastTwoNum.length;
-
-      // This is an array of the length to draw bars
-      let LengthArray = [];
-      // This is an array of averages
-      let AverageArray = [];
-
-      let average = Math.round(averageCal);
-      AverageArray.push(average);
-      LengthArray.push(convertAverageToLength(average));
-      let joinedAverage = averageAnswers.concat(AverageArray);
-      setAverageAnswers(joinedAverage);
-    }
-  }
-
+  // Convert average num to the length of bar
   const convertAverageToLength = (average) => {
-    if (average === 0) {
-      return 10;
-    } else if (average === 1) {
-      return 9;
-    } else if (average === 2) {
-      return 8;
-    } else if (average === 3) {
-      return 7;
-    } else if (average === 4) {
-      return 6;
-    } else if (average === 5) {
-      return 5;
-    } else if (average === 6) {
-      return 4;
-    } else if (average === 7) {
-      return 3;
-    } else if (average === 8) {
-      return 2;
-    } else if (average === 9) {
-      return 1;
-    } else if (average === 10) {
-      return 0;
+    switch (average) {
+      case 0: return 10;
+      case 1: return 9;
+      case 2: return 8;
+      case 3: return 7;
+      case 4: return 6;
+      case 5: return 5;
+      case 6: return 4;
+      case 7: return 3;
+      case 8: return 2;
+      case 9: return 1;
+      case 10: return 0;
+      default: return null;
     }
   }
 
+  // For a final answer
   const handleSubmitAnswers = () => {
     const answerArray = selectedAnwsers.length;
     if (answerArray.length === counter || answerArray === 0) {
@@ -243,8 +228,6 @@ const App = ({ children }) => {
     } else {
       createNewObject();
       setData(lengthOfBar);
-      setResult(true);
-      pushArray();
       const finalArray = [
         convertAverageToLength(aveAnswers[0].value),
         convertAverageToLength(aveAnswers[1].value),
@@ -259,14 +242,16 @@ const App = ({ children }) => {
         convertAverageToLength(aveAnswers[10].value),
         convertAverageToLength(aveAnswers[11].value),
       ];
-      console.log("finalScoreforChart" + finalArray);
       setLengthOfBar(finalArray);
-      sumOfUserInput(ans);
-      setColorsOfBars(totalScore);
-      // var myTimer = setTimeout(doStuff, 5000);
+      setResult(true);
     }
   };
 
+  // function showAlert() {
+  //   setTimeout(alert, 1000, 'setTimeout Demo!');
+  // }
+
+  // Set colors depends on a total score
   const setColorsOfBars = (totalScore) => {
     if (totalScore === 0) {
       setColors(groupOneColors);
@@ -279,6 +264,7 @@ const App = ({ children }) => {
     }
   }
 
+  // calculate sum of all answers
   const sumOfUserInput = (ans) => {
     var total = 0;
     for (var property in ans) {
@@ -313,7 +299,6 @@ const App = ({ children }) => {
         anwserOptions, setAnwerOptions,
         allQuestion, setAllQuestion,
         counter, setCounter,
-        questionID, setQuestionID,
         selectedAnwsers, setSelectedAnswers,
         result, setResult,
         totalQuestion, setTotalQuestion,
@@ -341,18 +326,18 @@ const App = ({ children }) => {
       {children}
       <ModalExample />
       <Chart />
-      {/* <QuestionWrapped /> */}
     </Provider>
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log('mapping.... ', state.sectionScores);
-  console.log('mapping Average Scores.... ', state.averageScores);
-  return {
-    sectionScores: state,
-    averageScores: state
-  };
-};
+// const mapStateToProps = (state) => {
+//   console.log('mapping.... ', state.sectionScores);
+//   console.log('mapping Average Scores.... ', state.averageScores);
+//   return {
+//     sectionScores: state,
+//     averageScores: state
+//   };
+// };
+// export default connect(mapStateToProps)(App);
 
-export default connect(mapStateToProps)(App);
+export default App;

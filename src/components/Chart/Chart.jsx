@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../App";
 import { connect } from "react-redux";
 import { groupOneColors } from "../../constants";
@@ -21,7 +21,21 @@ import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, barHeight, averageAnswers, lengthOfBar, totalScore } = useContext(Context);
+    const { data, colors, barHeight, lengthOfBar, totalScore } = useContext(Context);
+
+    const [renderedBarsArray, setRenderedBarsArray] = useState([]);
+    const [itemsRendered, setItemsRendered] = useState(0);
+
+    useEffect(() => {
+        const timer = itemsRendered < data.length && setTimeout(updateRenderedThings, 100);
+        return () => clearInterval(timer);
+    }, [data, itemsRendered]);
+
+    const updateRenderedThings = () => {
+        setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));
+        setItemsRendered(itemsRendered + 1);
+    };
+
     let max = 0;
     for (let i = data.length; i--;) {
         for (let j = data[i].length; j--;) {
@@ -52,6 +66,7 @@ const Chart = () => {
             </>
         )
     }
+
     const renderInnerCircle = () => {
         if (totalScore === 0) {
             return (
@@ -70,284 +85,279 @@ const Chart = () => {
 
     const renderGoldenRings = () => {
         const minNumber = Math.min.apply(null, lengthOfBar);
-        if (minNumber === 9 || averageAnswers.length !== 12) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset6} width="270" alt="Asset6" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset5} width="305" alt="Asset5" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset4} width="345" alt="Asset4" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset3} width="390" alt="Asset3" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset2} width="425" alt="Asset2" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset1} width="465" alt="Asset1" />
-                    </div>
-                </>
-            );
-        } else if (minNumber === 8) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset6} width="270" alt="Asset6" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset5} width="305" alt="Asset5" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset4} width="345" alt="Asset4" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset3} width="390" alt="Asset3" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset2} width="425" alt="Asset2" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 7) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset6} width="270" alt="Asset6" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset5} width="305" alt="Asset5" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset4} width="345" alt="Asset4" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset3} width="390" alt="Asset3" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 6) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset6} width="270" alt="Asset6" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset5} width="305" alt="Asset5" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset4} width="345" alt="Asset4" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 5) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset6} width="270" alt="Asset6" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset5} width="305" alt="Asset5" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 4) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset6} width="270" alt="Asset6" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 3) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 2) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 1) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                </>
-            )
-        } else if (minNumber === 0) {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                </>
-            )
-        } else {
-            return (
-                <>
-                    {renderLabel()}
-                    {renderInnerCircle()}
-                    <div className="middleCircle">
-                        <img src={Asset9} width="150" alt="Asset9" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset8} width="190" alt="Asset8" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset7} width="230" alt="Asset7" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset6} width="270" alt="Asset6" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset5} width="305" alt="Asset5" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset4} width="345" alt="Asset4" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset3} width="390" alt="Asset3" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset2} width="425" alt="Asset2" />
-                    </div>
-                    <div className="middleCircle">
-                        <img src={Asset1} width="465" alt="Asset1" />
-                    </div>
-                </>
-            )
+        switch (minNumber) {
+            case 9:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset6} width="270" alt="Asset6" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset5} width="305" alt="Asset5" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset4} width="345" alt="Asset4" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset3} width="390" alt="Asset3" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset2} width="425" alt="Asset2" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset1} width="465" alt="Asset1" />
+                        </div>
+                    </>
+                );
+            case 8:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset6} width="270" alt="Asset6" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset5} width="305" alt="Asset5" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset4} width="345" alt="Asset4" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset3} width="390" alt="Asset3" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset2} width="425" alt="Asset2" />
+                        </div>
+                    </>
+                );
+            case 7:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset6} width="270" alt="Asset6" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset5} width="305" alt="Asset5" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset4} width="345" alt="Asset4" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset3} width="390" alt="Asset3" />
+                        </div>
+                    </>
+                );
+            case 6:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset6} width="270" alt="Asset6" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset5} width="305" alt="Asset5" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset4} width="345" alt="Asset4" />
+                        </div>
+                    </>
+                );
+            case 5:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset6} width="270" alt="Asset6" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset5} width="305" alt="Asset5" />
+                        </div>
+                    </>
+                );
+            case 4:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset6} width="270" alt="Asset6" />
+                        </div>
+                    </>
+                );
+            case 3:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                    </>
+                );
+            case 2:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                    </>
+                );
+            case 1:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                    </>
+                );
+            case 0:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                    </>
+                );
+
+            default:
+                return (
+                    <>
+                        {renderLabel()}
+                        {renderInnerCircle()}
+                        <div className="middleCircle">
+                            <img src={Asset9} width="150" alt="Asset9" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset8} width="190" alt="Asset8" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset7} width="230" alt="Asset7" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset6} width="270" alt="Asset6" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset5} width="305" alt="Asset5" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset4} width="345" alt="Asset4" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset3} width="390" alt="Asset3" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset2} width="425" alt="Asset2" />
+                        </div>
+                        <div className="middleCircle">
+                            <img src={Asset1} width="465" alt="Asset1" />
+                        </div>
+                    </>
+                );;
         }
     }
+
     const convertLengthToAverage = (length) => {
-        if (length === 0) {
-            return 10;
-        } else if (length === 1) {
-            return 9;
-        } else if (length === 2) {
-            return 8;
-        } else if (length === 3) {
-            return 7;
-        } else if (length === 4) {
-            return 6;
-        } else if (length === 5) {
-            return 5;
-        } else if (length === 6) {
-            return 4;
-        } else if (length === 7) {
-            return 3;
-        } else if (length === 8) {
-            return 2;
-        } else if (length === 9) {
-            return 1;
-        } else if (length === 10) {
-            return "";
+        switch (length) {
+            case 0: return 10;
+            case 1: return 9;
+            case 2: return 8;
+            case 3: return 7;
+            case 4: return 6;
+            case 5: return 5;
+            case 6: return 4;
+            case 7: return 3;
+            case 8: return 2;
+            case 9: return 1;
+            case 10: return null;
+            default: return "";
         }
     }
 
     return (
         <>
             <div className="Charts">
-                {data.map((serie, serieIndex) => {
+                {renderedBarsArray.map((serie, serieIndex) => {
                     const color = groupOneColors[serieIndex];
                     let style;
                     let size = serie;
+                    let tae = colors[serieIndex]
 
                     style = {
-                        backgroundColor: colors[serieIndex],
-                        // backgroundColor: "radial-gradient"("red", "yellow", "green"),
+                        // backgroundColor: colors[serieIndex], 
+                        backgroundImage: 'radial-gradient( white,' + colors[serieIndex] + ')',
                         zIndex: serie
                     };
 

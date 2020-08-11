@@ -5,13 +5,6 @@ import { ButtonGroup, Button } from "reactstrap";
 import "react-responsive-modal/styles.css";
 import "./QuestionModal.scss";
 
-const styles = {
-    fontFamily: "sans-serif",
-    textAlign: "center",
-    display: "table",
-    width: "100%",
-};
-
 const ModalExample = () => {
     const { showResult, renderQuiz, result, open, switchToEnglish, switchToFrench, startButton, instruction } = useContext(Context);
     const [starter, setStarter] = useState(false);
@@ -35,7 +28,9 @@ const ModalExample = () => {
                 <p style={{ padding: "3em 0em 1em 0em", fontFamily: 'sans serif', fontSize: "1.2em" }}>
                     {instruction}
                 </p>
-                <div style={{ textAlign: "center" }}>
+                <div style={{
+                    textAlign: "center", display: "table", width: "100%",
+                }}>
                     <Button style={{ width: "300px", textAlign: "center", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={setStarterOn} className="btn-submit">{startButton}</Button>
                 </div>
             </>
@@ -43,7 +38,7 @@ const ModalExample = () => {
     }
 
     return (
-        <div style={styles}>
+        <div style={{ fontFamily: "sans-serif", }}>
             {/* <button onClick={onOpenModal}>
                 Start a questionnaire
             </button> */}

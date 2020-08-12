@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 // import { connect } from "react-redux";
 import quizQuestions from "../src/data/questions.json";
 import QuestionContainer from "../src/components/QuestionContainer/QuestionContainer";
@@ -150,20 +152,23 @@ const App = ({ children }) => {
       // If the answer of No.9 is "No" and state of langage is "english", set this question.
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
       setAnwerOptions(quizQuestions[0].answers);
+      setYesNoQuestion(false);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "french") {
       // If the answer of No.9 is "No" and state of langage is "french", set this question.
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
+      setYesNoQuestion(false);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "english") {
       // If the answer of No.9 is "Yes" and state of langage is "english", set this question.
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
       setAnwerOptions(quizQuestions[0].answers);
+      setYesNoQuestion(false);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "french") {
       // If the answer of No.9 is "Yes" and state of langage is "french", set this question.
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
-    } else {
       setYesNoQuestion(false);
+    } else {
       movingNextQuestion();
       createNewObject();
     }
@@ -244,12 +249,20 @@ const App = ({ children }) => {
       ];
       setLengthOfBar(finalArray);
       setResult(true);
+      // exportPdf();
     }
   };
 
-  // function showAlert() {
-  //   setTimeout(alert, 1000, 'setTimeout Demo!');
+  // const exportPdf = () => {
+  //   html2canvas(document.querySelector("#capture")).then(canvas => {
+  //     document.body.appendChild(canvas);  // if you want see your screenshot in body.
+  //     const imgData = canvas.toDataURL('image/png');
+  //     const pdf = new jsPDF();
+  //     pdf.addImage(imgData, 'PNG', 0, 0);
+  //     pdf.save("download.pdf");
+  //   });
   // }
+
 
   // Set colors depends on a total score
   const setColorsOfBars = (totalScore) => {

@@ -88,7 +88,7 @@ const Chart = () => {
         switch (minNumber) {
             case 9:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -118,11 +118,11 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset1} width="465" alt="Asset1" />
                         </div>
-                    </>
+                    </div>
                 );
             case 8:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -149,11 +149,11 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset2} width="425" alt="Asset2" />
                         </div>
-                    </>
+                    </div>
                 );
             case 7:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -177,11 +177,11 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset3} width="390" alt="Asset3" />
                         </div>
-                    </>
+                    </div>
                 );
             case 6:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -202,11 +202,11 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset4} width="345" alt="Asset4" />
                         </div>
-                    </>
+                    </div>
                 );
             case 5:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -224,11 +224,11 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset5} width="305" alt="Asset5" />
                         </div>
-                    </>
+                    </div>
                 );
             case 4:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -243,11 +243,11 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset6} width="270" alt="Asset6" />
                         </div>
-                    </>
+                    </div>
                 );
             case 3:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -259,11 +259,11 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset7} width="230" alt="Asset7" />
                         </div>
-                    </>
+                    </div>
                 );
             case 2:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -272,29 +272,29 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset8} width="190" alt="Asset8" />
                         </div>
-                    </>
+                    </div>
                 );
             case 1:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
                             <img src={Asset9} width="150" alt="Asset9" />
                         </div>
-                    </>
+                    </div>
                 );
             case 0:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
-                    </>
+                    </div>
                 );
 
             default:
                 return (
-                    <>
+                    <div id="#capture">
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -324,7 +324,7 @@ const Chart = () => {
                         <div className="middleCircle">
                             <img src={Asset1} width="465" alt="Asset1" />
                         </div>
-                    </>
+                    </div>
                 );;
         }
     }

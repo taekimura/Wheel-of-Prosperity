@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../App";
-import { connect } from "react-redux";
 import { groupOneColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
 import centerWheelGold from "../../assets/centerWheel-gold.png";
@@ -19,9 +18,10 @@ import Plentitude from "../../assets/Plentitude.png";
 import Vitalite from "../../assets/Vitalite.png";
 import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
+import { Button } from "reactstrap";
 
 const Chart = () => {
-    const { data, colors, barHeight, lengthOfBar, totalScore } = useContext(Context);
+    const { data, colors, barHeight, lengthOfBar, totalScore, printDocument } = useContext(Context);
 
     const [renderedBarsArray, setRenderedBarsArray] = useState([]);
     const [itemsRendered, setItemsRendered] = useState(0);
@@ -60,9 +60,10 @@ const Chart = () => {
                 <div className="prosperite">
                     <img src={Prosperite} width="170" alt="Prosperite" />
                 </div>
-                <div className="goldenCircle11">
+                <div className="goldenCircle11" >
                     <img src={ExternalCircle} width="640" alt="Asset1" />
                 </div>
+                <Button aria-controls="example-fade-text" style={{ position: "absolute", top: "50", width: "200px", margin: "1% auto", fontSize: "1em", border: "none" }} onClick={printDocument} className="btn-submit">Save as PDF</Button>
             </>
         )
     }
@@ -82,6 +83,7 @@ const Chart = () => {
             )
         }
     }
+
 
     const renderGoldenRings = () => {
         const minNumber = Math.min.apply(null, lengthOfBar);
@@ -353,7 +355,6 @@ const Chart = () => {
                     const color = groupOneColors[serieIndex];
                     let style;
                     let size = serie;
-                    let tae = colors[serieIndex]
 
                     style = {
                         // backgroundColor: colors[serieIndex], 
@@ -383,13 +384,4 @@ const Chart = () => {
     );
 }
 
-const mapStateToProps = (state) => {
-    console.log('mapping.... ', state.sectionScores);
-    console.log('mapping Average Scores.... ', state.averageScores);
-    return {
-        sectionScores: state,
-        averageScores: state
-    };
-};
-
-export default connect(mapStateToProps)(Chart);
+export default Chart;

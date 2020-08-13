@@ -52,6 +52,7 @@ const App = ({ children }) => {
   const [instruction, setInstruction] = useState(quizQuestions[0].instructionEnglish);
   const [yesNoQuestion, setYesNoQuestion] = useState(false);
   const [totalScore, setTotalScore] = useState();
+  const [inputNum, setInputNum] = useState(false);
 
   useEffect(() => {
     populateArray();
@@ -60,7 +61,7 @@ const App = ({ children }) => {
     console.log(ans);
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
-  }, [lengthOfBar])
+  }, [lengthOfBar, selectedAnwsers])
 
   const populateArray = () => {
     setData(lengthOfBar);
@@ -118,13 +119,20 @@ const App = ({ children }) => {
   // Handle get value selected for question
   const handleAnswerSelected = (e) => {
     let target = e.target;
-    let objSelected = selectedAnwsers;
     let index = parseInt(target.value, 10);
-    let quantityIndex = counter;
     // Object container & save anwsers after selected answer
-    objSelected[quantityIndex] = index;
-    setSelectedAnswers(objSelected);
+    selectedAnwsers[counter] = index;
+    setSelectedAnswers(selectedAnwsers);
     console.log("The array of User input: " + selectedAnwsers);
+    setInputNum(index);
+    if (selectedAnwsers.length === 9 && yesNoQuestion) {
+      setInputNum(index + 100);
+    }
+    return (
+      <>
+        {renderQuiz()}
+      </>
+    )
   };
 
   // Show a next question and check if it's english or french
@@ -144,33 +152,40 @@ const App = ({ children }) => {
       alert("Please input a number. / Veuillez saisir un nombre.");
     } else if (selectedAnwsers.length === 9) {
       //Set Yes No Question of No.9 
-      setYesNoQuestion(true);
+      setInputNum("");
       movingNextQuestion();
       setAnwerOptions(quizQuestions[9].answers);
       createNewObject();
+      setYesNoQuestion(true);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "english") {
       // If the answer of No.9 is "No" and state of langage is "english", set this question.
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
+      setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "french") {
       // If the answer of No.9 is "No" and state of langage is "french", set this question.
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
+      setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "english") {
       // If the answer of No.9 is "Yes" and state of langage is "english", set this question.
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
+      setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "french") {
       // If the answer of No.9 is "Yes" and state of langage is "french", set this question.
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
+      setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
     } else {
+      setYesNoQuestion(false);
       movingNextQuestion();
       createNewObject();
+      setInputNum("");
     }
   };
 
@@ -249,20 +264,22 @@ const App = ({ children }) => {
       ];
       setLengthOfBar(finalArray);
       setResult(true);
-      // exportPdf();
     }
   };
 
-  // const exportPdf = () => {
-  //   html2canvas(document.querySelector("#capture")).then(canvas => {
-  //     document.body.appendChild(canvas);  // if you want see your screenshot in body.
-  //     const imgData = canvas.toDataURL('image/png');
-  //     const pdf = new jsPDF();
-  //     pdf.addImage(imgData, 'PNG', 0, 0);
-  //     pdf.save("download.pdf");
-  //   });
-  // }
-
+  const printDocument = () => {
+    const input = document.getElementById('body');
+    html2canvas(input)
+      .then((canvas) => {
+        var imgWidth = 300;
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('l', 'mm', [300, 200])
+        var position = 20;
+        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+        pdf.save("download.pdf");
+      });
+  }
 
   // Set colors depends on a total score
   const setColorsOfBars = (totalScore) => {
@@ -324,6 +341,7 @@ const App = ({ children }) => {
         instruction,
         yesNoQuestion,
         totalScore,
+        inputNum, setInputNum,
 
         handleAnswerSelected,
         handleNextQuestion,
@@ -334,6 +352,7 @@ const App = ({ children }) => {
         switchToFrench,
         switchToEnglish,
         onOpenModal,
+        printDocument
       }}
     >
       {children}

@@ -1,8 +1,17 @@
-.btn-selected {
-  background-color: #c05243 !important;
-  border-color: #c05243;
+.button{
+  background-image: -webkit-linear-gradient(top, #93898c, #7f7679);
+  background-image: linear-gradient(to bottom, #93898c, #7f7679);
+}
+.button:hover {
+  background-image: -webkit-linear-gradient(top, #c1b8bb, #ada1a4);
+  background-image: linear-gradient(to bottom, #c1b8bb, #ada1a4);
 }
 
+.btn-selected {
+  background-image: -webkit-linear-gradient(top, #17a2b8, #1594a8);
+  background-image: linear-gradient(to bottom, #17a2b8, #1594a8);
+  border:none;
+}
 
 @media screen and (max-width:1200px){
   .btn-selected{

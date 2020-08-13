@@ -39,9 +39,6 @@ const ModalExample = () => {
 
     return (
         <div style={{ fontFamily: "sans-serif", }}>
-            {/* <button onClick={onOpenModal}>
-                Start a questionnaire
-            </button> */}
             <Modal open={open} >
                 {!result ? !starter ? startQuestionnaire() : renderQuiz() : showResult()}
             </Modal>

@@ -4,7 +4,7 @@ import Question from "../Questions/Question";
 import AnswerOptions from "../AnswerOptions/AnswerOptions";
 import QuestionCount from "../QuestionCount/QuestionCount";
 import { ButtonGroup, Button } from "reactstrap";
-import "./QuestionContainer.css";
+import "./QuestionContainer.scss";
 
 const QuestionContainer = () => {
   const { handleNextQuestion, handleSubmitAnswers, anwserOptions, totalQuestion, counter, switchToEnglish, switchToFrench, applyButton, instruction } = useContext(Context);
@@ -32,7 +32,6 @@ const QuestionContainer = () => {
       <QuestionCount />
       <Question />
       <ul>{anwserOptions.map(renderAnswerOption)}</ul>
-
 
       <div style={{ textAlign: "right" }}>
         {counter < 0 || counter === totalQuestion - 1 ? (

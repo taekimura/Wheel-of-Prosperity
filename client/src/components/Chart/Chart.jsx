@@ -63,7 +63,8 @@ const Chart = () => {
                 <div className="goldenCircle11" >
                     <img src={ExternalCircle} width="640" alt="Asset1" />
                 </div>
-                <Button aria-controls="example-fade-text" style={{ position: "absolute", top: "50", width: "200px", margin: "1% auto", fontSize: "1em", border: "none" }} onClick={printDocument} className="btn-submit">Save as PDF</Button>
+                <Button aria-controls="example-fade-text" style={{ top: "50", width: "200px", margin: "1%", fontSize: "1em", border: "none" }} onClick={printDocument}>Save as PDF</Button>
+                {/* <Button aria-controls="example-fade-text" style={{ position: "absolute", width: "200px", margin: "1%", fontSize: "1em", border: "none" }} onClick={openForm} >Send your result</Button> */}
             </>
         )
     }

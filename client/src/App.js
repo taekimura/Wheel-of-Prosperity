@@ -7,6 +7,7 @@ import QuestionContainer from "./components/QuestionContainer/QuestionContainer"
 import Chart from "./components/Chart/Chart";
 import ModalExample from "./components/QuestionModal/QuestionModal";
 import Loading from "./components/Loading/Loading";
+import Form from "./components/Form/Form";
 import { seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "./constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -79,11 +80,17 @@ const App = ({ children }) => {
         <>
           <ModalExample />
           <Chart />
+          <Form />
         </>
       )
     }
   }
 
+  const openForm = () => {
+    return (
+      <Form />
+    )
+  }
   const demoAsyncCall = () => {
     return new Promise((resolve) => setTimeout(() => resolve(), 1500));
   }
@@ -379,7 +386,8 @@ const App = ({ children }) => {
         switchToFrench,
         switchToEnglish,
         onOpenModal,
-        printDocument
+        printDocument,
+        openForm
       }}
     >
       {children}

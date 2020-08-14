@@ -6,7 +6,7 @@ import "react-responsive-modal/styles.css";
 import "./QuestionModal.scss";
 
 const ModalExample = () => {
-    const { showResult, renderQuiz, result, open, switchToEnglish, switchToFrench, startButton, instruction } = useContext(Context);
+    const { showResult, renderQuiz, result, open, switchToEnglish, switchToFrench, startButton, instruction, } = useContext(Context);
     const [starter, setStarter] = useState(false);
 
     const setStarterOn = () => {

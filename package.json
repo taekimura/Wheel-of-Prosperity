@@ -1,37 +1,19 @@
 {
-  "name": "react-app",
+  "name": "wheel_of_prosperity_team",
   "version": "1.0.0",
   "description": "",
-  "keywords": [],
-  "main": "src/index.js",
-  "dependencies": {
-    "bootstrap": "4.3.1",
-    "html2canvas": "^1.0.0-rc.7",
-    "jspdf": "^2.0.0",
-    "node-sass": "^4.14.1",
-    "nodemailer": "^6.4.11",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-redux": "^7.2.0",
-    "react-responsive-modal": "^5.0.2",
-    "react-scripts": "3.0.1",
-    "reactstrap": "8.0.1",
-    "redux": "^4.0.5",
-    "redux-logger": "^3.0.6"
-  },
-  "devDependencies": {
-    "typescript": "3.3.3"
-  },
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WADP-Wheel-of-Prosperity/Wheel-of-prosperity.git"
+  },
+  "author": "Tae Kimura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WADP-Wheel-of-Prosperity/Wheel-of-prosperity/issues"
+  },
+  "homepage": "https://github.com/WADP-Wheel-of-Prosperity/Wheel-of-prosperity#readme"
 }

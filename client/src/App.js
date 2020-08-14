@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 // import { connect } from "react-redux";
-import quizQuestions from "../src/data/questions.json";
-import QuestionContainer from "../src/components/QuestionContainer/QuestionContainer";
+import quizQuestions from "./data/questions.json";
+import QuestionContainer from "./components/QuestionContainer/QuestionContainer";
 import Chart from "./components/Chart/Chart";
 import ModalExample from "./components/QuestionModal/QuestionModal";
+import Loading from "./components/Loading/Loading";
 import { seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "./constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -53,15 +54,39 @@ const App = ({ children }) => {
   const [yesNoQuestion, setYesNoQuestion] = useState(false);
   const [totalScore, setTotalScore] = useState();
   const [inputNum, setInputNum] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     populateArray();
     setLangage();
+    demoAsyncCall().then(() => setLoading(false));
     //User Input (24 answers)
     console.log(ans);
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
   }, [lengthOfBar, selectedAnwsers])
+
+  const showRoading = () => {
+    if (loading) {
+      return (
+        <>
+          <Loading />
+          <Chart />
+        </>
+      )
+    } else {
+      return (
+        <>
+          <ModalExample />
+          <Chart />
+        </>
+      )
+    }
+  }
+
+  const demoAsyncCall = () => {
+    return new Promise((resolve) => setTimeout(() => resolve(), 1500));
+  }
 
   const populateArray = () => {
     setData(lengthOfBar);
@@ -267,6 +292,7 @@ const App = ({ children }) => {
     }
   };
 
+  //Save an image of wheel as a PDF file 
   const printDocument = () => {
     const input = document.getElementById('body');
     html2canvas(input)
@@ -342,6 +368,7 @@ const App = ({ children }) => {
         yesNoQuestion,
         totalScore,
         inputNum, setInputNum,
+        loading,
 
         handleAnswerSelected,
         handleNextQuestion,
@@ -356,8 +383,7 @@ const App = ({ children }) => {
       }}
     >
       {children}
-      <ModalExample />
-      <Chart />
+      {showRoading()}
     </Provider>
   );
 }

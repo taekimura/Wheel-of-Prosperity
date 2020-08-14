@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+// import { Modal } from "react-responsive-modal";
 import axios from 'axios';
+import "./Form.scss";
 
 export default class Form extends Component {
 
@@ -10,12 +12,9 @@ export default class Form extends Component {
         message: '',
         sent: false,
         buttonText: 'Send Message',
-
     }
 
-
     // handle inputs 
-
     handleName = (e) => {
         this.setState({
             name: e.target.value
@@ -43,15 +42,13 @@ export default class Form extends Component {
     formSubmit = (e) => {
         e.preventDefault();
 
-
-
         let data = {
             name: this.state.name,
             lastname: this.state.lastname,
             email: this.state.email,
             message: this.state.message
         }
-        axios.post('/api/forma', data)
+        axios.post('/api/form', data)
             .then(res => {
                 this.setState({
                     sent: true,
@@ -87,6 +84,7 @@ export default class Form extends Component {
 
     render() {
         return (
+            // <Modal open={open} >
             <div className="container">
                 <form onSubmit={this.formSubmit}>
 
@@ -115,10 +113,9 @@ export default class Form extends Component {
                     <div className="btn">
                         <button type="submit">Submit</button>
                     </div>
-
-
                 </form>
             </div>
+            // </Modal>
         )
     }
 }

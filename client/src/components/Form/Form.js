@@ -1,121 +1,103 @@
-import React, { Component } from 'react';
-// import { Modal } from "react-responsive-modal";
+import React, { useState } from 'react';
 import axios from 'axios';
 import "./Form.scss";
+// import { Modal } from "react-responsive-modal";
 
-export default class Form extends Component {
 
-    state = {
-        name: '',
-        lastname: '',
-        email: '',
-        message: '',
-        sent: false,
-        buttonText: 'Send Message',
-    }
+const Form = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [sent, setSent] = useState(false);
 
-    // handle inputs 
-    handleName = (e) => {
-        this.setState({
-            name: e.target.value
-        })
-    }
-
-    handleLastname = (e) => {
-        this.setState({
-            lastname: e.target.value
-        })
-    }
-    handleEmail = (e) => {
-        this.setState({
-            email: e.target.value
-        })
-    }
-
-    handleMessage = (e) => {
-        this.setState({
-            message: e.target.value
-        })
-    }
-
-    // end of handle inputs
-    formSubmit = (e) => {
+    const hangleClick = (e) => {
         e.preventDefault();
 
-        let data = {
-            name: this.state.name,
-            lastname: this.state.lastname,
-            email: this.state.email,
-            message: this.state.message
+        if (e.target.id === "name") {
+            setName(e.target.value)
+        } else {
+            setEmail(e.target.value)
         }
-        axios.post('/api/form', data)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const dataToSubmit = {
+            name,
+            email
+        }
+        axios.post("/api/sendMail", dataToSubmit)
             .then(res => {
-                this.setState({
-                    sent: true,
-                }, this.resetForm())
-            })
+                setSent(true);
+            }, resetForm())
+            .then(
+                setTimeout(function () {
+                    alert("Message has been sent. / Le message a été envoyé.")
+                }, 2000)
+            )
             .catch(() => {
-                console.log('message not send');
-
+                console.log('message not sent')
             })
-
-
     }
 
-    // for reseting the form data
-    resetForm = () => {
-        this.setState({
-            name: '',
-            lastname: '',
-            message: '',
-            email: '',
-
-        })
-
+    const resetForm = () => {
+        setName('');
+        setEmail('');
         setTimeout(() => {
-            this.setState({
-                sent: false,
-
-
-
-            })
+            setSent(false)
         }, 3000)
-    }
 
-    render() {
         return (
-            // <Modal open={open} >
             <div className="container">
-                <form onSubmit={this.formSubmit}>
+                <form onSubmit={handleSubmit}>
 
                     <div className="singleItem">
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name" className="name" value={this.state.name} onChange={this.handleName} placeholder="your name..." />
-                    </div>
-
-                    <div className="singleItem">
-                        <label htmlFor="lastname">Lastname</label>
-                        <input type="text" name="lastname" className="lastname" value={this.state.lastname} onChange={this.handleLastname} placeholder="your lastname..." />
+                        <input id="name" className="name" placeholder="Name" value={name} onChange={hangleClick} />
                     </div>
 
                     <div className="singleItem">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" className="email" value={this.state.email} onChange={this.handleEmail} placeholder="your email..." required />
+                        <input id="email" placeholder="Email" value={email} onChange={hangleClick} required />
                     </div>
 
-                    <div className="textArea singleItem">
-                        <label htmlFor="message">Message</label>
-                        <textarea name="message" value={this.state.message} id="" cols="30" rows="5" placeholder="your message..." onChange={this.handleMessage}></textarea>
-                    </div>
-
-
-                    <div className={this.state.sent ? 'msg msgAppear' : 'msg'}>Message has been sent</div>
+                    <div className={sent ? 'msg msgAppear' : 'msg'}>Message has been sent</div>
                     <div className="btn">
-                        <button type="submit">Submit</button>
+                        <button onClick={handleSubmit}>Submit</button>
                     </div>
                 </form>
             </div>
-            // </Modal>
         )
     }
+
+    return (
+        // <div className="Form">
+        //     <form onSubmit={handleSubmit}>
+        //         <input id="name" placeholder="Name" value={name} onChange={hangleClick}/>
+        //         <input id="email" placeholder="Email" value={email} onChange={hangleClick} />
+        //         <button onClick={handleSubmit}>Send Email</button>
+        //     </form>
+        // </div>
+
+        <div className="container">
+            <form onSubmit={handleSubmit}>
+
+                <div className="singleItem">
+                    <label htmlFor="name">Name</label>
+                    <input id="name" className="name" placeholder="Name" value={name} onChange={hangleClick} />
+                </div>
+
+                <div className="singleItem">
+                    <label htmlFor="email">Email</label>
+                    <input id="email" placeholder="Email" value={email} onChange={hangleClick} required />
+                </div>
+
+                <div className={sent ? 'msg msgAppear' : 'msg'}>Message has been sent</div>
+                <div className="btn">
+                    <button onClick={handleSubmit}>Submit</button>
+                </div>
+            </form>
+        </div>
+    )
 }
+
+export default Form;

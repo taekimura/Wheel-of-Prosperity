@@ -310,7 +310,7 @@ const App = ({ children }) => {
         const pdf = new jsPDF('l', 'mm', [300, 200])
         var position = 20;
         pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-        pdf.save("download.pdf");
+        pdf.save("universalprosperity.pdf");
       });
   }
 

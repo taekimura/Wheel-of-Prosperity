@@ -1,0 +1,59 @@
+#background {
+  background-color: #ece9e9;
+  width: 100vw;
+  height: 100vh;
+}
+
+#container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -10px;
+  text-align: center;
+  font-family: Arial;
+  font-weight: bold;
+  z-index: 3000;
+}
+
+#container span {
+  display: block;
+  background: #000;
+  width: 100px;
+  height: 5px;
+  margin-top: 5px;
+  -webkit-animation: load 2s infinite;
+          animation: load 2s infinite;
+  border-radius: 5px;
+}
+
+.loading {
+  font-family: 'Playfair Display', serif;
+}
+
+#container span:nth-child(2) {
+  -webkit-animation-delay: 100ms;
+          animation-delay: 100ms;
+}
+
+#container span:nth-child(3) {
+  -webkit-animation-delay: 200ms;
+          animation-delay: 200ms;
+}
+
+@-webkit-keyframes load {
+  50% {
+    width: 5px;
+    margin-right: 95px;
+    opacity: .1;
+  }
+}
+
+@keyframes load {
+  50% {
+    width: 5px;
+    margin-right: 95px;
+    opacity: .1;
+  }
+}
+/*# sourceMappingURL=Loading.css.map */

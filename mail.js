@@ -1,6 +1,5 @@
 const mailer = require("nodemailer");
 const { Hello } = require("./hello_template");
-const { Thanks } = require("./thanks_template");
 
 const getEmailData = (to, name, template) => {
     let data = null;
@@ -10,17 +9,13 @@ const getEmailData = (to, name, template) => {
             data = {
                 from: "Tae Kimura <sheepman7893@gmail.com>",
                 to,
-                subject: `Hello ${name} This is your universal prosperity blueprint`,
-                html: Hello()
-            }
-            break;
-
-        case "thanks":
-            data = {
-                from: "Tae Kimura <sheepman7893@gmail.com>",
-                to,
-                subject: `Hello ${name}`,
-                html: Thanks()
+                subject: `Hello ${name}. This is your universal prosperity blueprint`,
+                html: Hello(),
+                // attachments: [{
+                //     filename: 'universalprosperity.pdf',
+                //     path: 'C:/Users/taekimura/downloads/universalprosperity.pdf',
+                //     contentType: 'application/pdf'
+                // }]
             }
             break;
         default:

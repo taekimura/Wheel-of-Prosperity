@@ -7,7 +7,6 @@ const Hello = data => {
         <head>
             <title>Hello</title>
         </head>
-
         <body style="margin: 0; padding: 0;">
         <br />
         <br />

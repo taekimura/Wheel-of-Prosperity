@@ -18,7 +18,6 @@ import Plentitude from "../../assets/Plentitude.png";
 import Vitalite from "../../assets/Vitalite.png";
 import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
-import { Button } from "reactstrap";
 
 const Chart = () => {
     const { data, colors, barHeight, lengthOfBar, totalScore, printDocument } = useContext(Context);
@@ -34,6 +33,9 @@ const Chart = () => {
     const updateRenderedThings = () => {
         setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));
         setItemsRendered(itemsRendered + 1);
+        if (itemsRendered === 11) {
+            setTimeout(printDocument(), 2000);
+        }
     };
 
     let max = 0;
@@ -63,8 +65,6 @@ const Chart = () => {
                 <div className="goldenCircle11" >
                     <img src={ExternalCircle} width="640" alt="Asset1" />
                 </div>
-                <Button aria-controls="example-fade-text" style={{ top: "50", width: "200px", margin: "1%", fontSize: "1em", border: "none" }} onClick={printDocument}>Save as PDF</Button>
-                {/* <Button aria-controls="example-fade-text" style={{ position: "absolute", width: "200px", margin: "1%", fontSize: "1em", border: "none" }} onClick={openForm} >Send your result</Button> */}
             </>
         )
     }

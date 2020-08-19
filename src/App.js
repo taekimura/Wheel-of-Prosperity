@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import html2canvas from 'html2canvas';
-// import { connect } from "react-redux";
 import quizQuestions from "./data/questions.json";
 import QuestionContainer from "./components/QuestionContainer/QuestionContainer";
 import Chart from "./components/Chart/Chart";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
 import Loading from "./components/Loading/Loading";
 import { seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "./constants";
+import { Modal } from "react-responsive-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Modal } from "react-responsive-modal";
+
+import firebase from './components/firebase/firebase_utils'
 
 export const Context = React.createContext('this is context!');
 export const Provider = Context.Provider;
@@ -55,8 +56,8 @@ const App = ({ children }) => {
   const [totalScore, setTotalScore] = useState();
   const [inputNum, setInputNum] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [englishButtonColor, setEnglishButtonColor] = useState("#babac4")
-  const [frenchButtonColor, setFrenchButtonColor] = useState("#babac4")
+  const [englishButtonColor, setEnglishButtonColor] = useState("#babac4");
+  const [frenchButtonColor, setFrenchButtonColor] = useState("#babac4");
 
   useEffect(() => {
     populateArray();
@@ -297,7 +298,7 @@ const App = ({ children }) => {
     if (answerArray.length === counter || answerArray === 0) {
       alert("Please input a number. / Veuillez saisir un nombre.");
     } else {
-      createNewObject();
+      asyncCall();
       setData(lengthOfBar);
       const finalArray = [
         convertAverageToLength(aveAnswers[0].value),
@@ -318,6 +319,29 @@ const App = ({ children }) => {
     }
   };
 
+  const sendDataToFirebasePromise=()=> {
+    return new Promise(resolve => {
+      const sendDataToFirebase = () => {
+        const createdAt = new Date();
+        firebase
+          .firestore()
+          .collection('results')
+          .add({
+            createdAt,
+            aveAnswers
+          })
+      }
+      sendDataToFirebase();
+      resolve('sent data to firebase!');
+    });
+  }
+
+  async function asyncCall() {
+    createNewObject()
+    const result = await sendDataToFirebasePromise();
+    console.log(result);
+  }
+
   //Save an image of wheel as a png file 
   const printDocument = () => {
     html2canvas(document.getElementById('body')
@@ -330,7 +354,7 @@ const App = ({ children }) => {
       .then((canvas) => {
         const link = document.createElement("a");
         link.href = canvas.toDataURL("image/png");
-        link.download = "screenshot.png";
+        link.download = "universalprosperity.png";
         link.click();
         console.log(link);
       });
@@ -419,15 +443,5 @@ const App = ({ children }) => {
     </Provider>
   );
 }
-
-// const mapStateToProps = (state) => {
-//   console.log('mapping.... ', state.sectionScores);
-//   console.log('mapping Average Scores.... ', state.averageScores);
-//   return {
-//     sectionScores: state,
-//     averageScores: state
-//   };
-// };
-// export default connect(mapStateToProps)(App);
 
 export default App;

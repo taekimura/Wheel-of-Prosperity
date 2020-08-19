@@ -1,0 +1,71 @@
+.button{
+  border:none;
+  /* background-image: -webkit-linear-gradient(top, #276a7c, #276a7c);
+  background-image: linear-gradient(to bottom, #276a7c, #276a7c); */
+  background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
+  background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
+}
+
+.button:hover {
+  border:none;
+  background-image: -webkit-linear-gradient(top, #776c57, #776c57);
+  background-image: linear-gradient(to bottom, #776c57, #776c57);
+}
+
+.btn-selected {
+  border: none;
+  background-image: -webkit-linear-gradient(top, #84123c, #84123c);
+  background-image: linear-gradient(to bottom, #84123c, #84123c);
+ 
+}
+.btn-selected:focus,
+.btn-selected:active {
+  outline:none !important;
+    box-shadow:none !important;
+}
+
+@media screen and (max-width:1200px){
+  .btn-selected{
+    border:none;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+@media screen and (max-width:450px){
+  .btn-selected{
+    border:none;
+    margin: 1% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    margin: 1% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+@media screen and (max-width:360px){
+  .btn-selected{
+    border:none;
+    margin: 2% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+  .btn-unselected{
+    margin: 2% !important;
+    width: 15% !important;
+    height: 30px !important;
+    padding: 0px !important;
+  }
+}
+
+

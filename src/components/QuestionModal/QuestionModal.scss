@@ -1,0 +1,19 @@
+.react-responsive-modal-modal{
+    font-family: 'Open Sans', sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-image: -moz-linear-gradient(top, #C5B358 , #c9ac2b);
+    border-image: -webkit-linear-gradient(top, #C5B358 , #c9ac2b);
+    border-image: linear-gradient(to bottom, #C5B358 , #c9ac2b);
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-image-slice: 5;
+}
+.react-responsive-modal-closeButton{
+    display: none;
+}

@@ -330,7 +330,7 @@ const App = ({ children }) => {
       .then((canvas) => {
         const link = document.createElement("a");
         link.href = canvas.toDataURL("image/png");
-        link.download = "screenshot.png";
+        link.download = "universalprosperity.png";
         link.click();
         console.log(link);
       });

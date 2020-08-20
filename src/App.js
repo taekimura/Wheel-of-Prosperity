@@ -5,30 +5,15 @@ import QuestionContainer from "./components/QuestionContainer/QuestionContainer"
 import Chart from "./components/Chart/Chart";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
 import Loading from "./components/Loading/Loading";
-import { seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "./constants";
-import { Modal } from "react-responsive-modal";
+import { initialState, seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "./constants";
+import firebase from './components/firebase/firebase_utils';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
-import firebase from './components/firebase/firebase_utils'
 
 export const Context = React.createContext('this is context!');
 export const Provider = Context.Provider;
 
-const initialState = [
-  { category: "Rejuvenation", value: 10 },
-  { category: "Embrace", value: 10 },
-  { category: "Lifestyle", value: 10 },
-  { category: "Self", value: 10 },
-  { category: "Relationship", value: 10 },
-  { category: "Family", value: 10 },
-  { category: "Inspiration", value: 10 },
-  { category: "Creativity", value: 10 },
-  { category: "Health", value: 10 },
-  { category: "Money", value: 10 },
-  { category: "Work", value: 10 },
-  { category: "Expansion", value: 10 }
-];
 
 const App = ({ children }) => {
   const [data, setData] = useState([]);
@@ -48,7 +33,6 @@ const App = ({ children }) => {
   const [result, setResult] = useState(false);
   const [lang, setLang] = useState("english");
   const [open, setOpen] = useState(true);
-  const [starter, setStarter] = useState(false);
   const [applyButton, setApplyButton] = useState("Apply");
   const [startButton, setStartButton] = useState("Start");
   const [instruction, setInstruction] = useState(quizQuestions[0].instructionEnglish);
@@ -58,25 +42,20 @@ const App = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [englishButtonColor, setEnglishButtonColor] = useState("#babac4");
   const [frenchButtonColor, setFrenchButtonColor] = useState("#babac4");
+  const [no, setNo] = useState(false);
+  const [yes, setYes] = useState(false);
 
   useEffect(() => {
-    populateArray();
     setLangage();
     demoAsyncCall().then(() => setLoading(false));
+    setData(lengthOfBar);
     //User Input (24 answers)
     console.log(ans);
+    sumOfUserInput(ans)
     //Average Scores before convert to length for chart (12 answers)
     console.log(aveAnswers);
   }, [lengthOfBar, selectedAnwsers])
 
-  const setStarterOn = () => {
-    setStarter(true);
-    return (
-      <Modal open={open}  >
-        {renderQuiz()}
-      </Modal>
-    );
-  }
 
   const showRoading = () => {
     if (loading) {
@@ -100,10 +79,6 @@ const App = ({ children }) => {
     return new Promise((resolve) => setTimeout(() => resolve(), 1500));
   }
 
-  const populateArray = () => {
-    setData(lengthOfBar);
-  };
-
   // Set languages English or French
   const setLangage = () => {
     if (lang === "english" && !yesNoQuestion) {
@@ -123,12 +98,12 @@ const App = ({ children }) => {
 
   // Translate to french
   const switchToFrench = () => {
-    if (yesNoQuestion && selectedAnwsers[9] === 101) {
+    if (no) {
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
       setFrenchButtonColor("#276a7c");
       setEnglishButtonColor("#babac4");
-    } else if (yesNoQuestion && selectedAnwsers[9] === 100) {
+    } else if (yes) {
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setAnwerOptions(quizQuestions[0].answers);
       setFrenchButtonColor("#276a7c");
@@ -146,12 +121,12 @@ const App = ({ children }) => {
 
   // Translate to english
   const switchToEnglish = () => {
-    if (yesNoQuestion && selectedAnwsers[9] === 101) {
+    if (no) {
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
       setAnwerOptions(quizQuestions[0].answers);
       setEnglishButtonColor("#276a7c");
-      setFrenchButtonColor("white");
-    } else if (yesNoQuestion && selectedAnwsers[9] === 100) {
+      setFrenchButtonColor("#babac4");
+    } else if (yes) {
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
       setAnwerOptions(quizQuestions[0].answers);
       setEnglishButtonColor("#276a7c");
@@ -163,7 +138,6 @@ const App = ({ children }) => {
       setApplyButton("Apply");
       setStartButton("Start");
       setEnglishButtonColor("#276a7c");
-      //gray
       setFrenchButtonColor("#babac4");
     }
   };
@@ -187,17 +161,6 @@ const App = ({ children }) => {
     )
   };
 
-  // Show a next question and check if it's english or french
-  const movingNextQuestion = () => {
-    if (lang === "english" && !yesNoQuestion) {
-      setCounter(counter + 1);
-      setQuestion(quizQuestions[counter + 1].questionEngLish);
-    } else if (lang === "french" && !yesNoQuestion) {
-      setCounter(counter + 1);
-      setQuestion(quizQuestions[counter + 1].questionFrench);
-    }
-  }
-
   // Handle next questions & answer
   const handleNextQuestion = (e) => {
     if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
@@ -215,31 +178,48 @@ const App = ({ children }) => {
       setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
+      setNo(true);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "french") {
       // If the answer of No.9 is "No" and state of langage is "french", set this question.
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
       setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
+      setNo(true);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "english") {
       // If the answer of No.9 is "Yes" and state of langage is "english", set this question.
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
       setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
+      setYes(true);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 100 && lang === "french") {
       // If the answer of No.9 is "Yes" and state of langage is "french", set this question.
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setInputNum("");
       setAnwerOptions(quizQuestions[0].answers);
       setYesNoQuestion(false);
+      setYes(true);
     } else {
       setYesNoQuestion(false);
       movingNextQuestion();
       createNewObject();
       setInputNum("");
+      setYes(false);
+      setNo(false);
     }
   };
+
+  // Show a next question and check if it's english or french
+  const movingNextQuestion = () => {
+    if (lang === "english" && !yesNoQuestion) {
+      setCounter(counter + 1);
+      setQuestion(quizQuestions[counter + 1].questionEngLish);
+    } else if (lang === "french" && !yesNoQuestion) {
+      setCounter(counter + 1);
+      setQuestion(quizQuestions[counter + 1].questionFrench);
+    }
+  }
 
   // Create new object and add to state of "ans"
   const createNewObject = () => {
@@ -299,7 +279,6 @@ const App = ({ children }) => {
       alert("Please input a number. / Veuillez saisir un nombre.");
     } else {
       asyncCall();
-      setData(lengthOfBar);
       const finalArray = [
         convertAverageToLength(aveAnswers[0].value),
         convertAverageToLength(aveAnswers[1].value),
@@ -319,7 +298,7 @@ const App = ({ children }) => {
     }
   };
 
-  const sendDataToFirebasePromise=()=> {
+  const sendDataToFirebasePromise = () => {
     return new Promise(resolve => {
       const sendDataToFirebase = () => {
         const createdAt = new Date();
@@ -327,8 +306,11 @@ const App = ({ children }) => {
           .firestore()
           .collection('results')
           .add({
+            ans,
+            aveAnswers,
+            totalScore,
             createdAt,
-            aveAnswers
+
           })
       }
       sendDataToFirebase();
@@ -337,7 +319,7 @@ const App = ({ children }) => {
   }
 
   async function asyncCall() {
-    createNewObject()
+    createNewObject();
     const result = await sendDataToFirebasePromise();
     console.log(result);
   }
@@ -414,7 +396,6 @@ const App = ({ children }) => {
         lang, setLang,
         lengthOfBar,
         open, setOpen,
-        starter, setStarter,
         applyButton,
         startButton,
         instruction,
@@ -435,7 +416,6 @@ const App = ({ children }) => {
         switchToEnglish,
         onOpenModal,
         printDocument,
-        setStarterOn
       }}
     >
       {children}

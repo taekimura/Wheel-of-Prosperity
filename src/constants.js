@@ -1,3 +1,18 @@
+export const initialState = [
+    { category: "Rejuvenation", value: 10 },
+    { category: "Embrace", value: 10 },
+    { category: "Lifestyle", value: 10 },
+    { category: "Self", value: 10 },
+    { category: "Relationship", value: 10 },
+    { category: "Family", value: 10 },
+    { category: "Inspiration", value: 10 },
+    { category: "Creativity", value: 10 },
+    { category: "Health", value: 10 },
+    { category: "Money", value: 10 },
+    { category: "Work", value: 10 },
+    { category: "Expansion", value: 10 }
+];
+
 export const seriesLabels = [
     "Rejuvenation",
     "Embrace",

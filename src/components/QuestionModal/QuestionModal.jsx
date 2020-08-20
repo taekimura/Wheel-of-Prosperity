@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../../App";
 import { Modal } from "react-responsive-modal";
 import { Button } from "reactstrap";
@@ -7,8 +7,17 @@ import "react-responsive-modal/styles.css";
 import "./QuestionModal.scss";
 
 const QuestionModal = () => {
-    const { showResult, renderQuiz, result, open, startButton, instruction, setStarterOn, starter } = useContext(Context);
+    const { renderQuiz, result, startButton, instruction, open, showResult } = useContext(Context);
+    const [starter, setStarter] = useState(false);
 
+    const setStarterOn = () => {
+        setStarter(true);
+        return (
+            <Modal open={open}  >
+                {renderQuiz()}
+            </Modal>
+        );
+    }
 
     const startQuestionnaire = () => {
         return (

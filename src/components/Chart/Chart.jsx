@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import html2canvas from 'html2canvas';
 import { Context } from "../../App";
 import { groupOneColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
@@ -13,6 +14,7 @@ import Asset3 from "../../assets/Asset3.png";
 import Asset2 from "../../assets/Asset2.png";
 import Asset1 from "../../assets/Asset1.png";
 import ExternalCircle from "../../assets/ExternalCircle.png";
+import EnglishExternalCircle from "../../assets/EnglishExternalCircle.png"
 import Harmonie from "../../assets/Harmonie.png";
 import Plentitude from "../../assets/Plentitude.png";
 import Vitalite from "../../assets/Vitalite.png";
@@ -20,15 +22,33 @@ import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, barHeight, lengthOfBar, totalScore, printDocument } = useContext(Context);
-
+    const { data, colors, lengthOfBar, totalScore, lang } = useContext(Context);
     const [renderedBarsArray, setRenderedBarsArray] = useState([]);
     const [itemsRendered, setItemsRendered] = useState(0);
+    const [barHeight] = useState(200);
 
     useEffect(() => {
         const timer = itemsRendered < data.length && setTimeout(updateRenderedThings, 100);
         return () => clearInterval(timer);
     }, [data, itemsRendered]);
+
+    //Save an image of wheel as a png file 
+    const printDocument = () => {
+        html2canvas(document.getElementById('body')
+            // , {
+            //   scale: 1,
+            //   width: 1000,
+            //   height: 1000,
+            // }
+        )
+            .then((canvas) => {
+                const link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = "universalprosperity.png";
+                link.click();
+                console.log(link);
+            });
+    };
 
     const updateRenderedThings = () => {
         setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));
@@ -48,25 +68,47 @@ const Chart = () => {
     }
 
     const renderLabel = () => {
-        return (
-            <>
-                <div className="harmonie">
-                    <img src={Harmonie} width="150" alt="Harmonie" />
-                </div>
-                <div className="plentitude">
-                    <img src={Plentitude} width="150" alt="Plentitude" />
-                </div>
-                <div className="vitalite">
-                    <img src={Vitalite} width="130" alt="Vitalite" />
-                </div>
-                <div className="prosperite">
-                    <img src={Prosperite} width="170" alt="Prosperite" />
-                </div>
-                <div className="goldenCircle11" >
-                    <img src={ExternalCircle} width="640" alt="Asset1" />
-                </div>
-            </>
-        )
+        if (lang === "french") {
+            return (
+                <>
+                    <div className="harmonie">
+                        <img src={Harmonie} width="150" alt="Harmonie" />
+                    </div>
+                    <div className="plentitude">
+                        <img src={Plentitude} width="150" alt="Plentitude" />
+                    </div>
+                    <div className="vitalite">
+                        <img src={Vitalite} width="130" alt="Vitalite" />
+                    </div>
+                    <div className="prosperite">
+                        <img src={Prosperite} width="170" alt="Prosperite" />
+                    </div>
+                    <div className="goldenCircle11" >
+                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div className="harmonie">
+                        <div style={{ color: "#32774b", fontSize: "1.7em", fontFamily: 'Amiri' }}>HARMONY</div>
+                    </div>
+                    <div className="plentitude">
+                        <div style={{ color: "#006c8b", fontSize: "1.5em", fontFamily: 'Amiri' }}>PLENTITUDE</div>
+                    </div>
+                    <div className="vitalite">
+                        <div style={{ color: "#c45621", fontSize: "1.7em", fontFamily: 'Amiri' }}>VITALITY</div>
+                    </div>
+                    <div className="prosperite">
+                        <div style={{ color: "#8c191c", fontSize: "1.7em", fontFamily: 'Amiri' }}>PROSPERITY</div>
+                    </div>
+                    <div className="goldenCircle11" >
+                        <img src={EnglishExternalCircle} width="640" alt="Asset1" />
+                    </div>
+                </>
+            )
+        }
     }
 
     const renderInnerCircle = () => {
@@ -91,7 +133,7 @@ const Chart = () => {
         switch (minNumber) {
             case 9:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -125,7 +167,7 @@ const Chart = () => {
                 );
             case 8:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -156,7 +198,7 @@ const Chart = () => {
                 );
             case 7:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -184,7 +226,7 @@ const Chart = () => {
                 );
             case 6:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -209,7 +251,7 @@ const Chart = () => {
                 );
             case 5:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -231,7 +273,7 @@ const Chart = () => {
                 );
             case 4:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -250,7 +292,7 @@ const Chart = () => {
                 );
             case 3:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -266,7 +308,7 @@ const Chart = () => {
                 );
             case 2:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -279,7 +321,7 @@ const Chart = () => {
                 );
             case 1:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -289,7 +331,7 @@ const Chart = () => {
                 );
             case 0:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                     </div>
@@ -297,7 +339,7 @@ const Chart = () => {
 
             default:
                 return (
-                    <div id="#capture">
+                    <div>
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
@@ -328,7 +370,7 @@ const Chart = () => {
                             <img src={Asset1} width="465" alt="Asset1" />
                         </div>
                     </div>
-                );;
+                );
         }
     }
 

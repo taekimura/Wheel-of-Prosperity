@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../../App";
+import questions from "../../data/questions.json";
 import Question from "../Questions/Question";
 import AnswerOptions from "../AnswerOptions/AnswerOptions";
 import QuestionCount from "../QuestionCount/QuestionCount";
@@ -8,7 +9,8 @@ import { Button } from "reactstrap";
 import "./QuestionContainer.scss";
 
 const QuestionContainer = () => {
-  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, totalQuestion, counter, applyButton, instruction } = useContext(Context);
+  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, counter, applyButton, instruction } = useContext(Context);
+  const [totalQuestion] = useState(questions.length);
 
   const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
   const subButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;

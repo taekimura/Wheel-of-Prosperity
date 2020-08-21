@@ -4,10 +4,10 @@ import { Modal } from "react-responsive-modal";
 import { Button } from "reactstrap";
 import TranlationButton from "../TranslationButton/TranslationButton";
 import "react-responsive-modal/styles.css";
-import "./QuestionModal.scss";
+import "./Modal.scss";
 
 const QuestionModal = () => {
-    const { renderQuiz, result, startButton, instruction, open, showResult } = useContext(Context);
+    const { renderQuiz, result, startButton, instruction, open, showResult, title } = useContext(Context);
     const [starter, setStarter] = useState(false);
 
     const setStarterOn = () => {
@@ -23,7 +23,9 @@ const QuestionModal = () => {
         return (
             <>
                 <TranlationButton />
-                <p style={{ padding: "3em 0em 1em 0em", fontSize: "1.2em", color: "#3d2903" }}>
+                <br />
+                <h3 style={{ textAlign: "center", padding: "0.8em 0em 0.3em 0", fontFamily: 'Playfair Display', color: "#3d2903" }}>{title}</h3>
+                <p style={{ padding: "0em 0em 1em 0em", fontSize: "1.2em", color: "#3d2903" }}>
                     {instruction}
                 </p>
                 <div style={{

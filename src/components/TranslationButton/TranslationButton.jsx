@@ -10,7 +10,7 @@ const TranlationButton = () => {
     return (
         <>
             <ButtonGroup className="float-right">
-                <Button className="tran" style={{ margin: "0", background: englishButtonColor, }} onClick={switchToEnglish}>English</Button>
+                <Button className="tran" style={{ margin: "0", background: englishButtonColor }} onClick={switchToEnglish}>English</Button>
                 <Button className="tran" style={{ paddingLeft: "5%", background: frenchButtonColor }} onClick={switchToFrench}>Français</Button>
             </ButtonGroup>
         </>

@@ -1,6 +1,7 @@
 .btn-submit{
-  background-image: -webkit-linear-gradient(top, #84123c, #84123c);
-  background-image: linear-gradient(to bottom, #84123c, #84123c);
+  font-family: 'Playfair Display', serif;
+  background-image: -webkit-linear-gradient(top, #84123c, #630a2a);
+  background-image: linear-gradient(to bottom, #84123c, #630a2a);
   border-radius: 4px;
   color: #fff;
   line-height: 50px;
@@ -12,8 +13,8 @@
 }
 
 .btn-submit:hover {
-    background-image: -webkit-linear-gradient(top, #ca7192, #ca7192);
-    background-image: linear-gradient(to bottom, #ca7192, #ca7192);
+    background-image: -webkit-linear-gradient(top, #a33e63, #a33e63);
+    background-image: linear-gradient(to bottom, #a33e63, #a33e63);
   }
 
 .btn-submit:focus,

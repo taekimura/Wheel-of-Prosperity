@@ -34,13 +34,7 @@ const Chart = () => {
 
     //Save an image of wheel as a png file 
     const printDocument = () => {
-        html2canvas(document.getElementById('body')
-            // , {
-            //   scale: 1,
-            //   width: 1000,
-            //   height: 1000,
-            // }
-        )
+        html2canvas(document.getElementById('body'))
             .then((canvas) => {
                 const link = document.createElement("a");
                 link.href = canvas.toDataURL("image/png");
@@ -91,17 +85,17 @@ const Chart = () => {
         } else {
             return (
                 <>
-                    <div className="harmonie">
-                        <div style={{ color: "#32774b", fontSize: "1.7em", fontFamily: 'Amiri' }}>HARMONY</div>
+                    <div className="harmonie2">
+                        <div style={{ color: "#32774b", fontSize: "1.6em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>HARMONY</div>
                     </div>
-                    <div className="plentitude">
-                        <div style={{ color: "#006c8b", fontSize: "1.5em", fontFamily: 'Amiri' }}>PLENTITUDE</div>
+                    <div className="plentitude2">
+                        <div style={{ color: "#006c8b", fontSize: "1.5em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>PLENITUDE</div>
                     </div>
-                    <div className="vitalite">
-                        <div style={{ color: "#c45621", fontSize: "1.7em", fontFamily: 'Amiri' }}>VITALITY</div>
+                    <div className="vitalite2">
+                        <div style={{ color: "#c45621", fontSize: "1.7em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>VITALITY</div>
                     </div>
-                    <div className="prosperite">
-                        <div style={{ color: "#8c191c", fontSize: "1.7em", fontFamily: 'Amiri' }}>PROSPERITY</div>
+                    <div className="prosperite2">
+                        <div style={{ color: "#8c191c", fontSize: "1.6em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>PROSPERITY</div>
                     </div>
                     <div className="goldenCircle11" >
                         <img src={EnglishExternalCircle} width="640" alt="Asset1" />
@@ -400,7 +394,6 @@ const Chart = () => {
                     let size = serie;
 
                     style = {
-                        // backgroundColor: colors[serieIndex], 
                         backgroundImage: 'radial-gradient( white,' + colors[serieIndex] + ')',
                         zIndex: serie
                     };

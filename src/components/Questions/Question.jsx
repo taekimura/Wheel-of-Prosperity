@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../App";
 // import Fade from 'react-reveal/Fade';
-
 import "./Question.scss";
 
 const Question = () => {

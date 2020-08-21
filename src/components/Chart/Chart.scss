@@ -153,7 +153,14 @@
 		display: flex;
 		align-items: center;
 		position: absolute;
-		top:48%;
+		top:47%;
+		right: 17%;
+		z-index: -200;
+	}.harmonie2{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top:47%;
 		right: 17%;
 		z-index: -200;
 	}
@@ -166,6 +173,15 @@
 		left:50%;
 		z-index: -200;
 	}
+	.plentitude2{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		transform: translate(-50.5%,50%);
+		top:2%;
+		left:50%;
+		z-index: -200;
+	}
 	.prosperite{
 		display: flex;
 		align-items: center;
@@ -175,7 +191,25 @@
 		left:21%;
 		z-index: -200;
 	}
+	.prosperite2{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		transform: translate(-50.5%,50%);
+		top:46%;
+		left:21%;
+		z-index: -200;
+	}
 	.vitalite{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		transform: translate(-50.5%,50%);
+		bottom:7%;
+		left:50%;
+		z-index: -200;
+	}
+	.vitalite2{
 		display: flex;
 		align-items: center;
 		position: absolute;

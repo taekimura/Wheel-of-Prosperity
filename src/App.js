@@ -15,7 +15,7 @@ export const Provider = Context.Provider;
 const App = ({ children }) => {
   // For setting loading and languages
   const [loading, setLoading] = useState(true);
-  const [lang, setLang] = useState("english");
+  const [lang, setLang] = useState("french");
 
   // For the chart section
   const [lengthOfBar, setLengthOfBar] = useState([]);

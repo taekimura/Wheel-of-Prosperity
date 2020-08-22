@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import html2canvas from 'html2canvas';
 import { Context } from "../../App";
 import { groupdefaultColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
@@ -22,7 +21,7 @@ import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, lengthOfBar, totalScore, lang } = useContext(Context);
+    const { data, colors, lengthOfBar, totalScore, lang, printDocument } = useContext(Context);
     const [renderedBarsArray, setRenderedBarsArray] = useState([]);
     const [itemsRendered, setItemsRendered] = useState(0);
     const [barHeight] = useState(200);
@@ -31,18 +30,6 @@ const Chart = () => {
         const timer = itemsRendered < data.length && setTimeout(updateRenderedThings, 100);
         return () => clearInterval(timer);
     }, [data, itemsRendered]);
-
-    //Save an image of wheel as a png file 
-    const printDocument = () => {
-        html2canvas(document.getElementById('body'))
-            .then((canvas) => {
-                const link = document.createElement("a");
-                link.href = canvas.toDataURL("image/png");
-                link.download = "universalprosperity.png";
-                link.click();
-                console.log(link);
-            });
-    };
 
     const updateRenderedThings = () => {
         setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import html2canvas from 'html2canvas';
 import { Context } from "../../App";
-import { groupOneColors } from "../../constants";
+import { groupdefaultColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
 import centerWheelGold from "../../assets/centerWheel-gold.png";
 import Asset9 from "../../assets/Asset9.png";
@@ -389,12 +389,13 @@ const Chart = () => {
         <>
             <div className="Charts">
                 {renderedBarsArray.map((serie, serieIndex) => {
-                    const color = groupOneColors[serieIndex];
+                    const color = groupdefaultColors[serieIndex];
                     let style;
                     let size = serie;
+                    // 'radial-gradient( white,' + colors[serieIndex] + ')'
 
                     style = {
-                        backgroundImage: 'radial-gradient( white,' + colors[serieIndex] + ')',
+                        background: colors[serieIndex],
                         zIndex: serie
                     };
 

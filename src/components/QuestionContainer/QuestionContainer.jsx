@@ -9,7 +9,7 @@ import { Button } from "reactstrap";
 import "./QuestionContainer.scss";
 
 const QuestionContainer = () => {
-  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, counter, applyButton, instruction, explanation } = useContext(Context);
+  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, counter, applyButton, explanation } = useContext(Context);
   const [totalQuestion] = useState(questions.length);
 
   const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
@@ -28,8 +28,8 @@ const QuestionContainer = () => {
   return (
     <>
       <TranlationButton />
-      <p style={{ padding: "3em 0em 0em 0em", fontSize: "1.1em", color: "#3d2903" }}> {instruction}</p>
-      <p style={{ fontSize: "1.1em", color: "#3d2903" }}> {explanation}</p>
+      <br />
+      <p style={{ margin: "3em 0em 1em 0.5%", fontSize: "1.3em", color: "#3d2903" }}> {explanation}</p>
       <QuestionCount />
       <Question />
       <ul>{anwserOptions.map(renderAnswerOption)}</ul>

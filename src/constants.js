@@ -42,6 +42,7 @@ export const groupdefaultColors = [
     "#84123c",
     "#B92351"
 ];
+
 //Total Score : 0
 export const groupOneColors = [
     "radial-gradient(circle, rgba(47,144,173,1) 0%, rgba(0,80,109,1) 65%",

@@ -4,6 +4,8 @@ import QuestionContainer from "./components/QuestionContainer/QuestionContainer"
 import Chart from "./components/Chart/Chart";
 import QuestionModal from "./components/Modal/Modal";
 import Loading from "./components/Loading/Loading";
+import Form from "./components/Form/Form";
+import html2canvas from 'html2canvas';
 import { initialState, seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "./constants";
 import firebase from './components/firebase/firebase_utils';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,6 +30,7 @@ const App = ({ children }) => {
   const [ans, setAns] = useState([]);
   const [data, setData] = useState([]);
   const [totalScore, setTotalScore] = useState(0);
+  const [image, setImage] = useState("");
 
   // For the questionnaire section
   const [no, setNo] = useState(false);
@@ -101,6 +104,7 @@ const App = ({ children }) => {
         <>
           <QuestionModal />
           <Chart />
+          <Form />
         </>
       )
     }
@@ -371,6 +375,17 @@ const App = ({ children }) => {
     setOpen(false);
   };
 
+  //Save an image of wheel as a png file 
+  const printDocument = () => {
+    html2canvas(document.getElementById('body'))
+      .then((canvas) => {
+        const link = canvas.toDataURL("image/png");
+        // link.download = "universalprosperity.png";
+        // link.click();
+        setImage(link);
+        // console.log(link);
+      });
+  };
 
 
   return (
@@ -398,6 +413,7 @@ const App = ({ children }) => {
         inputNum,
         englishButtonColor,
         frenchButtonColor,
+        image,
 
         handleAnswerSelected,
         handleNextQuestion,
@@ -407,6 +423,7 @@ const App = ({ children }) => {
         convertAverageToLength,
         switchToFrench,
         switchToEnglish,
+        printDocument
       }}
     >
       {children}

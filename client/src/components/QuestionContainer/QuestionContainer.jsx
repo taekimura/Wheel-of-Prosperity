@@ -9,11 +9,11 @@ import { Button } from "reactstrap";
 import "./QuestionContainer.scss";
 
 const QuestionContainer = () => {
-  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, counter, applyButton, explanation } = useContext(Context);
+  const { handleNextQuestion, handleSubmitAnswers, anwserOptions, counter, applyButton, explanation, handleKeyPress } = useContext(Context);
   const [totalQuestion] = useState(questions.length);
 
-  const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
-  const subButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;
+  const nextButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onKeyPress={handleKeyPress} onClick={handleNextQuestion} className="btn-submit">{applyButton}</Button>;
+  const subButton = <Button aria-controls="example-fade-text" style={{ width: "100%", margin: "1% auto", fontSize: "1.3em", backgroundColor: "#84123c", border: "none" }} onKeyPress={handleKeyPress} onClick={handleSubmitAnswers} className="btn-submit">{applyButton}</Button>;
 
   const renderAnswerOption = (data, index) => {
     return (

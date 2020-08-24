@@ -387,7 +387,6 @@ const App = ({ children }) => {
       });
   };
 
-
   return (
     <Provider
       value={{

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Context } from "../../App";
+import { Context } from "../../pages/wheel/WheelPage";
 import axios from 'axios';
 import "./Form.scss";
 

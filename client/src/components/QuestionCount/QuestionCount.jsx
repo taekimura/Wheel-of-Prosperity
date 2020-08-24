@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../../App";
+import { Context } from "../../pages/wheel/WheelPage";
 import "./QuestionCount.scss";
 import { Progress } from "reactstrap";
 

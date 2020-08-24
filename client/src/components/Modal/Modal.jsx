@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Context } from "../../App";
+import { Context } from "../../pages/wheel/WheelPage";
 import { Modal } from "react-responsive-modal";
 import { Button } from "reactstrap";
 import TranlationButton from "../TranslationButton/TranslationButton";

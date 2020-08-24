@@ -185,6 +185,13 @@ const App = ({ children }) => {
     }
   };
 
+  // const handleKeyPress = (e) => {
+  //   if (e.key === 'Enter') {
+  //     alert('Enter pressed')
+  //     handleNextQuestion();
+  //   }
+  // }
+
   // Handle get value selected for question
   const handleAnswerSelected = (e) => {
     let target = e.target;
@@ -422,7 +429,8 @@ const App = ({ children }) => {
         convertAverageToLength,
         switchToFrench,
         switchToEnglish,
-        printDocument
+        printDocument,
+        // handleKeyPress
       }}
     >
       {children}

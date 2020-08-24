@@ -1,20 +1,29 @@
 .react-responsive-modal-modal{
+    width: 100%;
     font-family: 'Open Sans', sans-serif;
-    width: 75%;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     margin: auto;
-    border-image: -moz-linear-gradient(top, #C5B358 , #c9ac2b);
-    border-image: -webkit-linear-gradient(top, #C5B358 , #c9ac2b);
-    border-image: linear-gradient(to bottom, #C5B358 , #c9ac2b);
-    border-bottom: 8px solid transparent;
-    border-top: 8px solid transparent;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
+    border-bottom: 8px solid #bf9b63;
+    border-top: 8px solid #bf9b63;
+    border-left: 8px solid #bf9b63;
+    border-right: 8px solid #bf9b63;
     border-image-slice: 5;
+}
+
+.instruction{
+    font-size: "1.2em"
 }
 .react-responsive-modal-closeButton{
     display: none;
+}
+@media screen and (max-width:425px){
+    .react-responsive-modal-modal{
+    width: 100%;
+    }
+    .instruction{
+        font-size: "1em"
+    }
 }

@@ -1,15 +1,20 @@
+.explanation{
+  font-size: 1.3em;
+}
+.btn {
+  width: 18%;
+  margin-left: 3mm;
+  margin-right: 3mm;
+}
 .btn-submit{
   font-family: 'Open Sans', sans-serif;
   background-image: -webkit-linear-gradient(top, #84123c, #630a2a);
   background-image: linear-gradient(to bottom, #84123c, #630a2a);
   border-radius: 4px;
   color: #fff;
-  line-height: 50px;
   -webkit-transition: none;
   transition: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-
-  
 }
 
 .btn-submit:hover {
@@ -32,32 +37,13 @@
   border: none !important;
   border-radius: 0rem !important;
 }
-
-
-@media screen and (max-width:1024px){
-  .apply-btn{
-      text-align: right !important;
-  }
-  .apply-btn .btn{
-    width:20%;
-  }
-}
-
 @media screen and (max-width:450px){
-  .apply-btn{
-      text-align: center !important;
-  }
-  .apply-btn .btn{
-    width:35%;
+  ul{
+    text-align: center !important;
   }
 }
-
-
-@media screen and (max-width:300px){
-  .apply-btn{
-      text-align: center !important;
-  }
-  .apply-btn .btn{
-    width:45%;
-  }
+@media screen and (max-width:375px){
+  .explanation {
+    font-size: 0.9em;
+}
 }

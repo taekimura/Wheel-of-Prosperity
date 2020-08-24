@@ -1,4 +1,7 @@
-.App{
+*{
+    margin: 0;
+}
+App{
     color: #3d2903;
     height: 100vh;
     display: flex;
@@ -9,10 +12,4 @@
 ul{
     padding: 0;
     text-align: left;
-}
-
-@media screen and (max-width:1024px){
-    .App{
-        display:block;
-    }
 }

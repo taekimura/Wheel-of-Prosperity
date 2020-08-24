@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import html2canvas from 'html2canvas';
 import { Context } from "../../App";
 import { groupdefaultColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
@@ -21,7 +22,7 @@ import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
-    const { data, colors, lengthOfBar, totalScore, lang, printDocument } = useContext(Context);
+    const { data, colors, lengthOfBar, totalScore, lang } = useContext(Context);
     const [renderedBarsArray, setRenderedBarsArray] = useState([]);
     const [itemsRendered, setItemsRendered] = useState(0);
     const [barHeight] = useState(200);
@@ -31,12 +32,24 @@ const Chart = () => {
         return () => clearInterval(timer);
     }, [data, itemsRendered]);
 
+    //Save an image of wheel as a png file 
+    const printDocument = () => {
+        html2canvas(document.getElementById('body'))
+            .then((canvas) => {
+                const link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = "universalprosperity.png";
+                link.click();
+                console.log(link);
+            });
+    };
+
     const updateRenderedThings = () => {
         setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));
         setItemsRendered(itemsRendered + 1);
-        if (itemsRendered === 11) {
-            setTimeout(printDocument(), 2000);
-        }
+        // if (itemsRendered === 11) {
+        //     setTimeout(printDocument(), 2000);
+        // }
     };
 
     let max = 0;
@@ -53,19 +66,19 @@ const Chart = () => {
             return (
                 <>
                     <div className="harmonie">
-                        <img src={Harmonie} width="150" alt="Harmonie" />
+                        <img src={Harmonie} width="150" alt="Harmonie" className="picHarmonie" />
                     </div>
                     <div className="plentitude">
-                        <img src={Plentitude} width="150" alt="Plentitude" />
+                        <img src={Plentitude} width="150" alt="Plentitude" className="picPlentitude" />
                     </div>
                     <div className="vitalite">
-                        <img src={Vitalite} width="130" alt="Vitalite" />
+                        <img src={Vitalite} width="130" alt="Vitalite" className="picVitalite" />
                     </div>
                     <div className="prosperite">
-                        <img src={Prosperite} width="170" alt="Prosperite" />
+                        <img src={Prosperite} width="170" alt="Prosperite" className="picProsperite" />
                     </div>
                     <div className="goldenCircle11" >
-                        <img src={ExternalCircle} width="640" alt="Asset1" />
+                        <img src={ExternalCircle} width="640" alt="Asset1" className="circle10" />
                     </div>
                 </>
             )
@@ -85,7 +98,7 @@ const Chart = () => {
                         <div style={{ color: "#8c191c", fontSize: "1.6em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>PROSPERITY</div>
                     </div>
                     <div className="goldenCircle11" >
-                        <img src={EnglishExternalCircle} width="640" alt="Asset1" />
+                        <img src={EnglishExternalCircle} width="640" alt="Asset1" className="circle10" />
                     </div>
                 </>
             )
@@ -96,13 +109,13 @@ const Chart = () => {
         if (totalScore === 0) {
             return (
                 <div className="goldenCircle">
-                    <img src={centerWheelGold} width="100" alt="centerWheelGold" />
+                    <img src={centerWheelGold} width="100" alt="centerWheelGold" className="circleround" />
                 </div>
             )
         } else {
             return (
                 <div className="goldenCircle">
-                    <img src={centerWheelGray} width="109" alt="centerWheelGray" />
+                    <img src={centerWheelGray} width="109" alt="centerWheelGray" className="circlecenter" />
                 </div>
             )
         }
@@ -118,31 +131,31 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset6} width="270" alt="Asset6" />
+                            <img src={Asset6} width="270" alt="Asset6" className="circle6" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset5} width="305" alt="Asset5" />
+                            <img src={Asset5} width="305" alt="Asset5" className="circle5" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset4} width="345" alt="Asset4" />
+                            <img src={Asset4} width="345" alt="Asset4" className="circle4" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset3} width="390" alt="Asset3" />
+                            <img src={Asset3} width="390" alt="Asset3" className="circle3" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset2} width="425" alt="Asset2" />
+                            <img src={Asset2} width="425" alt="Asset2" className="circle2" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset1} width="465" alt="Asset1" />
+                            <img src={Asset1} width="465" alt="Asset1" className="circle1" />
                         </div>
                     </div>
                 );
@@ -152,28 +165,28 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset6} width="270" alt="Asset6" />
+                            <img src={Asset6} width="270" alt="Asset6" className="circle6" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset5} width="305" alt="Asset5" />
+                            <img src={Asset5} width="305" alt="Asset5" className="circle5" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset4} width="345" alt="Asset4" />
+                            <img src={Asset4} width="345" alt="Asset4" className="circle4" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset3} width="390" alt="Asset3" />
+                            <img src={Asset3} width="390" alt="Asset3" className="circle3" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset2} width="425" alt="Asset2" />
+                            <img src={Asset2} width="425" alt="Asset2" className="circle2" />
                         </div>
                     </div>
                 );
@@ -183,25 +196,25 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset6} width="270" alt="Asset6" />
+                            <img src={Asset6} width="270" alt="Asset6" className="circle6" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset5} width="305" alt="Asset5" />
+                            <img src={Asset5} width="305" alt="Asset5" className="circle5" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset4} width="345" alt="Asset4" />
+                            <img src={Asset4} width="345" alt="Asset4" className="circle4" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset3} width="390" alt="Asset3" />
+                            <img src={Asset3} width="390" alt="Asset3" className="circle3" />
                         </div>
                     </div>
                 );
@@ -211,22 +224,22 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset6} width="270" alt="Asset6" />
+                            <img src={Asset6} width="270" alt="Asset6" className="circle6" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset5} width="305" alt="Asset5" />
+                            <img src={Asset5} width="305" alt="Asset5" className="circle5" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset4} width="345" alt="Asset4" />
+                            <img src={Asset4} width="345" alt="Asset4" className="circle4" />
                         </div>
                     </div>
                 );
@@ -236,19 +249,19 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset6} width="270" alt="Asset6" />
+                            <img src={Asset6} width="270" alt="Asset6" className="circle6" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset5} width="305" alt="Asset5" />
+                            <img src={Asset5} width="305" alt="Asset5" className="circle5" />
                         </div>
                     </div>
                 );
@@ -258,16 +271,16 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset6} width="270" alt="Asset6" />
+                            <img src={Asset6} width="270" alt="Asset6" className="circle6" />
                         </div>
                     </div>
                 );
@@ -277,13 +290,13 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                     </div>
                 );
@@ -293,10 +306,10 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                     </div>
                 );
@@ -306,7 +319,7 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                     </div>
                 );
@@ -324,31 +337,31 @@ const Chart = () => {
                         {renderLabel()}
                         {renderInnerCircle()}
                         <div className="middleCircle">
-                            <img src={Asset9} width="150" alt="Asset9" />
+                            <img src={Asset9} width="150" alt="Asset9" className="circle9" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset8} width="190" alt="Asset8" />
+                            <img src={Asset8} width="190" alt="Asset8" className="circle8" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset7} width="230" alt="Asset7" />
+                            <img src={Asset7} width="230" alt="Asset7" className="circle7" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset6} width="270" alt="Asset6" />
+                            <img src={Asset6} width="270" alt="Asset6" className="circle6" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset5} width="305" alt="Asset5" />
+                            <img src={Asset5} width="305" alt="Asset5" className="circle5" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset4} width="345" alt="Asset4" />
+                            <img src={Asset4} width="345" alt="Asset4" className="circle4" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset3} width="390" alt="Asset3" />
+                            <img src={Asset3} width="390" alt="Asset3" className="circle3" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset2} width="425" alt="Asset2" />
+                            <img src={Asset2} width="425" alt="Asset2" className="circle2" />
                         </div>
                         <div className="middleCircle">
-                            <img src={Asset1} width="465" alt="Asset1" />
+                            <img src={Asset1} width="465" alt="Asset1" className="circle1" />
                         </div>
                     </div>
                 );

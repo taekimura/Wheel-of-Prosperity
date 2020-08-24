@@ -1,7 +1,6 @@
 .Charts {
 	position: relative;
 	margin: 0 auto;
-	// background-color: #e67575;
 	width: 100%;
 	height: 100vh;
 	justify-content: center;
@@ -153,78 +152,801 @@
 		display: flex;
 		align-items: center;
 		position: absolute;
-		top:47%;
+		top:50%;
 		right: 17%;
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
 		z-index: -200;
 	}.harmonie2{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		top:47%;
+		top:50%;
 		right: 17%;
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
 		z-index: -200;
 	}
 	.plentitude{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		transform: translate(-50.5%,50%);
-		top:3%;
-		left:50%;
+		// transform: translate(-50.5%,50%);
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
+		top:5%;
+		left:45%;
 		z-index: -200;
 	}
 	.plentitude2{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		transform: translate(-50.5%,50%);
-		top:2%;
-		left:50%;
+		// transform: translate(-50.5%,50%);
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
+		top:5%;
+		left:45%;
 		z-index: -200;
 	}
 	.prosperite{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		transform: translate(-50.5%,50%);
+		// transform: translate(-50.5%,50%);
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
 		top:47%;
-		left:21%;
+		left:15%;
 		z-index: -200;
 	}
 	.prosperite2{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		transform: translate(-50.5%,50%);
-		top:46%;
-		left:21%;
+		// transform: translate(-50.5%,50%);
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
+		top:47%;
+		left:15%;
 		z-index: -200;
 	}
 	.vitalite{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		transform: translate(-50.5%,50%);
-		bottom:7%;
-		left:50%;
+		// transform: translate(-50.5%,50%);
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
+		bottom:2%;
+		left:46%;
 		z-index: -200;
 	}
 	.vitalite2{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		transform: translate(-50.5%,50%);
-		bottom:7%;
-		left:50%;
+		// transform: translate(-50.5%,50%);
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
+		bottom:1%;
+		left:46%;
 		z-index: -200;
 	}
 }
 
 @keyframes fade-in1 {
     0% {
-      opacity: 0.8;
+    opacity: 0.8;
     }
     100% {
-      opacity: 1;
+    opacity: 1;
 	}
+}
+
+@media screen and (max-width:1024px){
+	.harmonie{
+		top: 50% !important;
+		left: 83% !important;
+	}
+	.harmonie2{
+		top: 50% !important;
+		left: 83% !important;
+	}
+	.plentitude{
+		top: 6% !important;
+		left: 43% !important;
+	}
+	.plentitude2{
+		top: 6% !important;
+		left: 43% !important;
+	}
+	.vitalite{
+		bottom: 2% !important;
+		left: 44% !important;
+	}
+	.vitalite2{
+		bottom: 0% !important;
+		left: 44% !important;
+	}
+	.prosperite{
+		top: 50% !important;
+		left: 1% !important;
+	}
+	.prosperite2{
+		top: 50% !important;
+		left: 1% !important;
+	}
+	.circleround{
+		width:110px !important;
+	}
+	.circlecenter{
+		width:120px !important;
+	}
+	
+	
+	.prosperite2{
+		top: 50% !important;
+		left: 1% !important;
+	}
+}
+
+@media screen and (max-width:768px){
+	.harmonie{
+		transform: rotate(90deg) !important;
+		top: 43% !important;
+		right: -2% !important;
+	}
+	.harmonie2{
+		transform: rotate(90deg) !important;
+		top: 45% !important;
+		right: -5% !important;
+	}
+	.plentitude{
+		top: 8% !important;
+		left: 41% !important;
+	}
+	.plentitude2{
+		top: 8% !important;
+		left: 41% !important;
+	}
+	.vitalite{
+		bottom: 15% !important;
+		left: 42% !important;
+	}
+	.vitalite2{
+		bottom: 15% !important;
+		left: 42% !important;
+	}
+	.prosperite{
+		transform: rotate(270deg) !important;
+		top: 43% !important;
+		left: -5% !important;
+	}
+	.prosperite2{
+		transform: rotate(270deg) !important;
+		top: 43% !important;
+		left: -6% !important;
+	}
+	.circleround{
+		width:110px !important;
+	}
+	.circlecenter{
+		width:120px !important;
+	}
+}
+
+@media screen and (max-width:425px){
+	.Charts {
+		width: 100%;
+		height: 740px;
+	.picHarmonie{
+		width: 100px;
+	}
+	.picPlentitude{
+		width: 100px;
+	}
+	.picVitalite{
+		width: 90px;
+	}
+	.picProsperite{
+		width: 100px;
+	}
+	.harmonie{
+		transform: rotate(90deg) !important;
+		top: 50% !important;
+		right:-6% !important;
+	}
+	.harmonie2{
+		font-size: 13px;
+		transform: rotate(90deg) !important;
+		top: 47% !important;
+		left: 87% !important;
+	}
+	.plentitude{
+		width: 150px !important;
+		top: 25% !important;
+		left: 39% !important;
+	}
+	.plentitude2{
+		font-size: 13px;
+		width: 150px !important;
+		top: 24% !important;
+		left: 37% !important;
+	}
+	.vitalite{
+		width: 150px !important;
+		bottom: 22% !important;
+		left: 40% !important;
+	}
+	.vitalite2{
+		font-size: 13px;
+		width: 150px !important;
+		bottom: 18% !important;
+		left: 38% !important;
+	}
+	.prosperite{
+		width: 150px !important;
+		transform: rotate(270deg) !important;
+		top: 47% !important;
+		left: -12% !important;
+	}
+	.prosperite2{
+		font-size: 13px;
+		width: 150px !important;
+		transform: rotate(270deg) !important;
+		top: 48% !important;
+		left: -13% !important;
+	}
+	.circleround{
+		width: 80px !important;
+		transform: translate(2.6%,-10.5%) !important;
+	}
+	.circlecenter{
+		width: 90px !important;
+		transform: translate(2.6%,-9%) !important;
+	}
+	.circle10{
+		width: 350px !important;
+		transform: translate(1%,-3.5%) !important;
+	}
+	.circle9{
+		width: 103px !important;
+		transform: translate(2.6%,-8.4%) !important;
+	}
+	.circle8{
+		width: 122.5px !important;
+		transform: translate(2%,-7.8%) !important;
+	}
+	.circle7{
+		width: 142.5px !important;
+		transform: translate(1.8%,-7.3%) !important;
+	}
+	.circle6{
+		width: 162.5px !important;
+		transform: translate(2%,-6.8%) !important;
+	}
+	.circle5{
+		width: 180px !important;
+		transform: translate(1.5%,-6.3%) !important;
+	}
+	.circle4{
+		width: 200px !important;
+		transform: translate(1.45%,-5.6%) !important;
+	}
+	.circle3{
+		width: 220px !important;
+		transform: translate(1.5%,-5.2%) !important;
+	}
+	.circle2{
+		width: 240px !important;
+		transform: translate(1.5%,-5%) !important;
+	}
+	.circle1{
+		width: 260px !important;
+		transform: translate(1.5%,-4.8%) !important;
+	}
+
+	.Charts--item{
+		b {
+			font-size: 10px !important;
+		}
+	}
+
+	.Charts--serie{
+		&:nth-child(1) {
+			transform: rotate(330deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.5% !important;
+			top:27.1%;
+			left:39.9%;
+		}
+		&:nth-child(2) {
+			transform: rotate(0deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.8% !important;
+			left:50.3%;
+		}
+		&:nth-child(3) {
+			transform: rotate(30deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.7% !important;
+			top:26.7%;
+			left:61%;
+		}
+		&:nth-child(4) {
+			transform: rotate(60deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.7% !important;
+			top:31%;
+			left:68.5%;
+		}
+		&:nth-child(5) {
+			transform: rotate(90deg) translate(-25%,49%); 
+			width: 10px !important;
+			height: 13.7% !important;
+			top:36.73%;
+			left:71%;
+		}
+		&:nth-child(6) {
+			transform: rotate(120deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.55% !important;
+			top: 43%;
+			left:68%;
+		}
+		&:nth-child(7) {
+			transform: rotate(150deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.25% !important;
+			top:47.55%;
+			left:60.2%;
+		}
+		&:nth-child(8) {
+			transform: rotate(180deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 12.8% !important;
+			top:49.5%;
+			left:50.3%;
+		}
+		&:nth-child(9) {
+			transform: rotate(210deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.3% !important;
+			top: 47.3%;
+			left:40.4%;
+		}
+		&:nth-child(10) {
+			transform: rotate(240deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 12.6% !important;
+			top:43.85%;
+			left:33%;
+		}
+		&:nth-child(11) {
+			transform: rotate(270deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13% !important;
+			top:37.4%;
+			left:30%;
+		}
+		&:nth-child(12) {
+			transform: rotate(300deg) translate(-25%,49%);
+			width: 10px !important;
+			height: 13.3% !important;
+			top:31.5%;
+			left:33%;
+		}
+	}
+}
+}
+@media screen and (max-width:375px){
+	.Charts {
+		width: 100%;
+		height: 740px;
+	.picHarmonie{
+		width: 100px;
+	}
+	.picPlentitude{
+		width: 100px;
+	}
+	.picVitalite{
+		width: 90px;
+	}
+	.picProsperite{
+		width: 120px;
+	}
+	.harmonie{
+		transform: rotate(90deg) !important;
+		top: 48% !important;
+		left: 84% !important;
+	}
+	.harmonie2{
+		transform: rotate(90deg) !important;
+		top: 45% !important;
+		left: 87% !important;
+	}
+	.plentitude{
+		width: 150px !important;
+		top: 28% !important;
+		left: 38% !important;
+	}
+	.plentitude2{
+		width: 150px !important;
+		top: 28% !important;
+		left: 35% !important;
+	}
+	.vitalite{
+		width: 150px !important;
+		bottom: 24% !important;
+		left: 40% !important;
+	}
+	.vitalite2{
+		width: 150px !important;
+		bottom: 21% !important;
+		left: 37% !important;
+	}
+	.prosperite{
+		width: 150px !important;
+		transform: rotate(270deg) !important;
+		top: 47% !important;
+		left: -15% !important;
+	}
+	.prosperite2{
+		width: 150px !important;
+		transform: rotate(270deg) !important;
+		top: 47% !important;
+		left: -15% !important;
+	}
+	.circleround{
+		width: 50px !important;
+		transform: translate(2.6%,-10.5%) !important;
+	}
+	.circlecenter{
+		width: 58px !important;
+		transform: translate(2.8%,-8%) !important;
+	}
+	.circle10{
+		width: 300px !important;
+		transform: translate(1%,-3.5%) !important;
+	}
+	.circle9{
+		width: 69px !important;
+		transform: translate(2.6%,-8.4%) !important;
+	}
+	.circle8{
+		width: 86px !important;
+		transform: translate(2%,-7.8%) !important;
+	}
+	.circle7{
+		width: 106px !important;
+		transform: translate(1.8%,-7.3%) !important;
+	}
+	.circle6{
+		width: 125px !important;
+		transform: translate(2%,-6.8%) !important;
+	}
+	.circle5{
+		width: 142px !important;
+		transform: translate(1.5%,-6.3%) !important;
+	}
+	.circle4{
+		width: 162.5px !important;
+		transform: translate(1.45%,-5.6%) !important;
+	}
+	.circle3{
+		width: 180px !important;
+		transform: translate(1.5%,-5.2%) !important;
+	}
+	.circle2{
+		width: 200px !important;
+		transform: translate(1.5%,-5%) !important;
+	}
+	.circle1{
+		width: 220px !important;
+		transform: translate(1.5%,-4.8%) !important;
+	}
+
+	.Charts--item{
+		b {
+			font-size: 10px !important;
+		}
+	}
+
+	.Charts--serie{
+		&:nth-child(1) {
+			transform: rotate(330deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 13.3% !important;
+			top:27.15%;
+			left:38.3%;
+		}
+		&:nth-child(2) {
+			transform: rotate(0deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 13.5% !important;
+			top:25.2%;
+			left:50.50%;
+		}
+		&:nth-child(3) {
+			transform: rotate(30deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 13.5% !important;
+			top:26.8%;
+			left:62.6%;
+		}
+		&:nth-child(4) {
+			transform: rotate(60deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 13.3% !important;
+			top:31.6%;
+			left:71.6%;
+		}
+		&:nth-child(5) {
+			transform: rotate(90deg) translate(-25%,71%); 
+			width: 10px !important;
+			height: 13.2% !important;
+			top:37.9%;
+			left:74.55%;
+		}
+		&:nth-child(6) {
+			transform: rotate(120deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 13% !important;
+			top: 43.8%;
+			left:71.58%;
+		}
+		&:nth-child(7) {
+			transform: rotate(150deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 12.2% !important;
+			top:49%;
+			left:62%;
+		}
+		&:nth-child(8) {
+			transform: rotate(180deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 11.9% !important;
+			top:50.8%;
+			left:50.5%;
+		}
+		&:nth-child(9) {
+			transform: rotate(210deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 11.8% !important;
+			top:49.3%;
+			left:39%;
+		}
+		&:nth-child(10) {
+			transform: rotate(240deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 12.1% !important;
+			top:44.8%;
+			left:30.1%;
+		}
+		&:nth-child(11) {
+			transform: rotate(270deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 12.5% !important;
+			top:38.5%;
+			left:27%;
+		}
+		&:nth-child(12) {
+			transform: rotate(300deg) translate(-25%,71%);
+			width: 10px !important;
+			height: 12.7% !important;
+			top:32.2%;
+			left:29.8%;
+		}
+	}
+}
+}
+@media screen and (max-width:320px){
+	.Charts {
+		width: 100%;
+		height: 730px;
+	.picHarmonie{
+		width: 100px;
+	}
+	.picPlentitude{
+		width: 100px;
+	}
+	.picVitalite{
+		width: 90px;
+	}
+	.picProsperite{
+		width: 120px;
+	}
+	.harmonie{
+		transform: rotate(90deg) !important;
+		top: 42% !important;
+		left: 81% !important;
+	}
+	.plentitude{
+		width: 150px !important;
+		top: 25% !important;
+		left: 36% !important;
+	}
+	.vitalite{
+		width: 150px !important;
+		bottom: 33% !important;
+		left: 38% !important;
+	}
+	.prosperite{
+		width: 150px !important;
+		transform: rotate(270deg) !important;
+		top: 41% !important;
+		left: -17% !important;
+	}
+	.harmonie2{
+		transform: rotate(90deg) !important;
+		top: 39% !important;
+		left: 85% !important;
+	}
+	.plentitude2{
+		width: 150px !important;
+		top: 25% !important;
+		left: 33% !important;
+	}
+	.vitalite2{
+		width: 150px !important;
+		bottom: 31% !important;
+		left: 35% !important;
+	}
+	.prosperite2{
+		width: 150px !important;
+		transform: rotate(270deg) !important;
+		top: 42% !important;
+		left: -17% !important;
+	}
+	.circleround{
+		width: 47.5px !important;
+		transform: translate(2%,-115%) !important;
+	}
+	.circlecenter{
+		width: 52.5px !important;
+		transform: translate(2.1%,-105%) !important;
+	}
+	.circle10{
+		width: 250px !important;
+		transform: translate(1%,-21.8%) !important;
+	}
+	.circle9{
+		width: 62.5px !important;
+		transform: translate(2.1%,-88%) !important;
+	}
+	.circle8{
+		width: 77.5px !important;
+		transform: translate(2%,-70%) !important;
+	}
+	.circle7{
+		width: 92.5px !important;
+		transform: translate(2%,-59%) !important;
+	}
+	.circle6{
+		width: 107.5px !important;
+		transform: translate(2%,-51%) !important;
+	}
+	.circle5{
+		width: 122.5px !important;
+		transform: translate(1.6%,-44.5%) !important;
+	}
+	.circle4{
+		width: 137.5px !important;
+		transform: translate(1.6%,-39.5%) !important;
+	}
+	.circle3{
+		width: 152.5px !important;
+		transform: translate(1.7%,-36%) !important;
+	}
+	.circle2{
+		width: 167.5px !important;
+		transform: translate(1.7%,-33%) !important;
+	}
+	.circle1{
+		width: 182.5px !important;
+		transform: translate(1.65%,-30%) !important;
+	}
+
+	.Charts--item{
+		b {
+			font-size: 7px !important;
+		}
+	}
+
+	.Charts--serie{
+		&:nth-child(1) {
+			transform: rotate(330deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10.3% !important;
+			top:26.5%;
+			left:39.6%;
+		}
+		&:nth-child(2) {
+			transform: rotate(0deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10.3% !important;
+			top:25.2%;
+			left:50.2%;
+		}
+		&:nth-child(3) {
+			transform: rotate(30deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10.5% !important;
+			top:26.3%;
+			left:61.38%;
+		}
+		&:nth-child(4) {
+			transform: rotate(60deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10.35% !important;
+			top:30%;
+			left:69.3%;
+		}
+		&:nth-child(5) {
+			transform: rotate(90deg) translate(-25%,60%); 
+			width: 10px !important;
+			height: 10.4% !important;
+			top:34.6%;
+			left:71.5%;
+		}
+		&:nth-child(6) {
+			transform: rotate(120deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10.4% !important;
+			top:39%;
+			left:68.5%;
+		}
+		&:nth-child(7) {
+			transform: rotate(150deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10.1% !important;
+			top:42.5%;
+			left:60.5%;
+		}
+		&:nth-child(8) {
+			transform: rotate(180deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10% !important;
+			top:43.6%;
+			left:50.2%;
+		}
+		&:nth-child(9) {
+			transform: rotate(210deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10% !important;
+			top:42.5%;
+			left:40.3%;
+		}
+		&:nth-child(10) {
+			transform: rotate(240deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10% !important;
+			top:39.2%;
+			left:32.5%;
+		}
+		&:nth-child(11) {
+			transform: rotate(270deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10% !important;
+			top:34.9%;
+			left:29.8%;
+		}
+		&:nth-child(12) {
+			transform: rotate(300deg) translate(-25%,60%);
+			width: 10px !important;
+			height: 10.3% !important;
+			top:30.1%;
+			left:31.8%;
+		}
+	}
+}
 }

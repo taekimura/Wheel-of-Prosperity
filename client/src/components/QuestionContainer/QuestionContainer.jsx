@@ -29,7 +29,7 @@ const QuestionContainer = () => {
     <>
       <TranlationButton />
       <br />
-      <p style={{ margin: "3em 0em 1em 0.5%", fontSize: "1.3em", color: "#3d2903" }}> {explanation}</p>
+      <p className="explanation" style={{ margin: "3em 0em 1em 0.5%", color: "#3d2903" }}> {explanation}</p>
       <QuestionCount />
       <Question />
       <ul>{anwserOptions.map(renderAnswerOption)}</ul>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../../App";
+import { Context } from "../../pages/wheel/WheelPage";
 // import Fade from 'react-reveal/Fade';
 import "./Question.scss";
 

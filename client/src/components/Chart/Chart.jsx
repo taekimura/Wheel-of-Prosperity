@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import html2canvas from 'html2canvas';
-import { Context } from "../../App";
+import { Context } from "../../pages/wheel/WheelPage";
 import { groupdefaultColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
 import centerWheelGold from "../../assets/centerWheel-gold.png";

@@ -1,0 +1,30 @@
+.homepage {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background-image: url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1393&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .sign-up {
+        background-color: rgba($color: #fff, $alpha: 0.5);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 580px;
+        height: 100%;
+        padding: 50px;
+      
+        .title {
+          margin: 10px 0;
+        }
+      }
+
+      .sign-in-block{
+        display: block;
+        margin-top: 20px;
+      }
+  }
+  

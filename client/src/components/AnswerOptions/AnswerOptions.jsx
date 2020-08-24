@@ -11,7 +11,7 @@ const AnswerOptions = (props) => {
         type="button"
         value={props.index + 100}
         onClick={handleAnswerSelected}
-        className={inputNum === props.index + 100 ? "btn-selected" : "button"}
+        className={inputNum === props.index + 100 ? "btn-selected" : "btn-unselected"}
       >
         {props.anwserContent}
       </Button>
@@ -22,7 +22,7 @@ const AnswerOptions = (props) => {
         type="button"
         value={props.index}
         onClick={handleAnswerSelected}
-        className={inputNum === props.index ? "btn-selected" : "button"}
+        className={inputNum === props.index ? "btn-selected" : "btn-unselected"}
       >
         {props.anwserContent}
       </Button>

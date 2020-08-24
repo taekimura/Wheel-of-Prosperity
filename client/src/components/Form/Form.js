@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Context } from "../../App";
 import axios from 'axios';
 import "./Form.scss";
-// import { Modal } from "react-responsive-modal";
 
 
 const Form = () => {

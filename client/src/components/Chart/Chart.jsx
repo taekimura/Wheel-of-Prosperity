@@ -47,9 +47,9 @@ const Chart = () => {
     const updateRenderedThings = () => {
         setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));
         setItemsRendered(itemsRendered + 1);
-        // if (itemsRendered === 11) {
-        //     setTimeout(printDocument(), 2000);
-        // }
+        if (itemsRendered === 11) {
+            setTimeout(printDocument(), 2000);
+        }
     };
 
     let max = 0;

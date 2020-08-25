@@ -362,9 +362,9 @@ const WheelPage = ({ children, currentUser }) => {
     return selectedAnwsers.reduce(reducer);
   }
 
-  const onOpenModal = () => {
-    setOpen(true);
-  };
+  // const onOpenModal = () => {
+  //   setOpen(true);
+  // };
 
   const renderQuiz = () => {
     return (

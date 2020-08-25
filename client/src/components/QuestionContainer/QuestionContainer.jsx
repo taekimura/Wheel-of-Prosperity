@@ -32,7 +32,7 @@ const QuestionContainer = () => {
       <p className="explanation" style={{ margin: "3em 0em 1em 0.5%", color: "#3d2903" }}> {explanation}</p>
       <QuestionCount />
       <Question />
-      <ul>{anwserOptions.map(renderAnswerOption)}</ul>
+      <ul style={{ padding: "0" }}>{anwserOptions.map(renderAnswerOption)}</ul>
 
       <div style={{ textAlign: "right" }}>
         {counter < 0 || counter === totalQuestion - 1 ? (

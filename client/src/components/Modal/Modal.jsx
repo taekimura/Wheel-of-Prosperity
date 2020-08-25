@@ -13,7 +13,9 @@ const QuestionModal = () => {
     const setStarterOn = () => {
         setStarter(true);
         return (
-            <Modal open={open}  >
+            <Modal
+                open={open}
+                closeOnOverlayClick={false}>
                 {renderQuiz()}
             </Modal>
         );
@@ -39,7 +41,7 @@ const QuestionModal = () => {
 
     return (
         <div>
-            <Modal open={open} >
+            <Modal open={open} closeOnOverlayClick={false}>
                 {!result ? !starter ? startQuestionnaire() : renderQuiz() : showResult()}
             </Modal>
         </div>

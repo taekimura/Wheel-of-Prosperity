@@ -4,7 +4,6 @@ import QuestionContainer from "../../components/QuestionContainer/QuestionContai
 import Chart from "../../components/Chart/Chart";
 import QuestionModal from "../../components/Modal/Modal";
 import Loading from "../../components/Loading/Loading";
-import Form from "../../components/Form/Form";
 import { initialState, seriesLabels, groupOneColors, groupTwoColors, groupThreeColors, groupFourColors } from "../../constants";
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';

@@ -28,6 +28,8 @@ const getEmailData = (to, name, template, image) => {
     }
     return data;
 }
+
+
 const sendEmail = (to, name, type, image) => {
 
     const smtpTransport = mailer.createTransport({

@@ -135,15 +135,24 @@ const WheelPage = ({ children, currentUser }) => {
   // Translate to french
   const switchToFrench = () => {
     if (no) {
+      setLang("french");
       setQuestion("Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?");
       setExplanation(questions[0].explanationFrench);
       setAnwerOptions(questions[0].answers);
       setFrenchButtonColor("#276a7c");
       setEnglishButtonColor("#babac4");
     } else if (yes) {
+      setLang("french");
       setQuestion("En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?");
       setExplanation(questions[0].explanationFrench);
       setAnwerOptions(questions[0].answers);
+      setFrenchButtonColor("#276a7c");
+      setEnglishButtonColor("#babac4");
+    } else if (selectedAnwsers.length === 9) {
+      setLang("french");
+      setExplanation(questions[0].explanationFrench);
+      setQuestion(questions[9].questionFrench);
+      setAnwerOptions(questions[9].answersFren);
       setFrenchButtonColor("#276a7c");
       setEnglishButtonColor("#babac4");
     } else {
@@ -162,15 +171,24 @@ const WheelPage = ({ children, currentUser }) => {
   // Translate to english
   const switchToEnglish = () => {
     if (no) {
+      setLang("english");
       setQuestion("For single people: Do you feel at peace, whole, and complete without a life partner?");
       setExplanation(questions[0].explanationEnglish);
       setAnwerOptions(questions[0].answers);
       setEnglishButtonColor("#276a7c");
       setFrenchButtonColor("#babac4");
     } else if (yes) {
+      setLang("english");
       setQuestion("With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?");
       setExplanation(questions[0].explanationEnglish);
       setAnwerOptions(questions[0].answers);
+      setEnglishButtonColor("#276a7c");
+      setFrenchButtonColor("#babac4");
+    } else if (selectedAnwsers.length === 9) {
+      setLang("english");
+      setExplanation(questions[0].explanationEnglish);
+      setQuestion(questions[9].questionEngLish);
+      setAnwerOptions(questions[9].answersEng);
       setEnglishButtonColor("#276a7c");
       setFrenchButtonColor("#babac4");
     } else {
@@ -198,23 +216,34 @@ const WheelPage = ({ children, currentUser }) => {
     console.log(sumOfUserInput(selectedAnwsers));
     if (selectedAnwsers.length === 9 && yesNoQuestion) {
       setInputNum(index + 100);
+    } else if (selectedAnwsers.length === 24) {
+      handleSubmitAnswers();
+    } else {
+      handleNextQuestion(e);
     }
-    return (
-      <>
-        {renderQuiz()}
-      </>
-    )
+    // return (
+    //   <>
+    //     {renderQuiz()}
+    //   </>
+    // )
   };
 
   // Handle next questions & answer
   const handleNextQuestion = (e) => {
     if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
       alert("Please input a number. / Veuillez saisir un nombre.");
-    } else if (selectedAnwsers.length === 9) {
+    } else if (selectedAnwsers.length === 9 && lang === "english") {
       //Set Yes No Question of No.9 
       setInputNum("");
       movingNextQuestion();
-      setAnwerOptions(questions[9].answers);
+      setAnwerOptions(questions[9].answersEng);
+      createNewObject();
+      setYesNoQuestion(true);
+    } else if (selectedAnwsers.length === 9 && lang === "french") {
+      //Set Yes No Question of No.9 
+      setInputNum("");
+      movingNextQuestion();
+      setAnwerOptions(questions[9].answersFren);
       createNewObject();
       setYesNoQuestion(true);
     } else if (selectedAnwsers.length === 10 && selectedAnwsers[9] === 101 && lang === "english") {
@@ -253,6 +282,7 @@ const WheelPage = ({ children, currentUser }) => {
       setYes(false);
       setNo(false);
     }
+
   };
 
   // For a final answer

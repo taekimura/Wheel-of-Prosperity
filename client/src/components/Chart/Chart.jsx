@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import html2canvas from 'html2canvas';
+import axios from 'axios';
 import { Context } from "../../pages/wheel/WheelPage";
+import { selectCurrentUser } from '../../redux/user/user.selector';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect'
 import { groupdefaultColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
 import centerWheelGold from "../../assets/centerWheel-gold.png";
@@ -21,11 +25,12 @@ import Vitalite from "../../assets/Vitalite.png";
 import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
-const Chart = () => {
+const Chart = ({ currentUser }) => {
     const { data, colors, lengthOfBar, totalScore, lang } = useContext(Context);
     const [renderedBarsArray, setRenderedBarsArray] = useState([]);
     const [itemsRendered, setItemsRendered] = useState(0);
     const [barHeight] = useState(200);
+    const [sent, setSent] = useState(false);
 
     useEffect(() => {
         const timer = itemsRendered < data.length && setTimeout(updateRenderedThings, 100);
@@ -36,13 +41,37 @@ const Chart = () => {
     const printDocument = () => {
         html2canvas(document.getElementById('body'))
             .then((canvas) => {
-                const link = document.createElement("a");
-                link.href = canvas.toDataURL("image/png");
-                link.download = "universalprosperity.png";
-                link.click();
-                console.log(link);
-            });
+                const image = canvas.toDataURL("image/png");
+                // link.download = "universalprosperity.png";
+                // link.click();
+                console.log(image);
+                const name = currentUser.displayName;
+                const email = currentUser.email;
+                const dataToSubmit = {
+                    name,
+                    email,
+                    image
+                }
+                axios.post("/api/sendMail", dataToSubmit)
+                    .then(res => {
+                        setSent(true);
+                    }, resetForm())
+                    .then(
+                        setTimeout(function () {
+                            alert("Message has been sent. Check your email. / Le message a été envoyé. Vérifiez votre email")
+                        }, 2000)
+                    )
+                    .catch(() => {
+                        console.log('message not sent')
+                    })
+            })
     };
+
+    const resetForm = () => {
+        setTimeout(() => {
+            setSent(false)
+        }, 3000)
+    }
 
     const updateRenderedThings = () => {
         setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));
@@ -421,4 +450,8 @@ const Chart = () => {
     );
 }
 
-export default Chart;
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser
+});
+
+export default connect(mapStateToProps)(Chart);

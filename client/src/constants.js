@@ -29,34 +29,34 @@ export const seriesLabels = [
 ];
 
 export const groupdefaultColors = [
-    "#00506d",
-    "#006C8B",
-    "#50959A",
-    "#005C41",
-    "#32774B",
-    "#5B9E51",
-    "#C54619",
-    "#C45621",
-    "#E07C27",
-    "#8C191C",
-    "#84123c",
-    "#B92351"
+    "#00607f",
+    "#008cad",
+    "#5ca5a8",
+    "#006a4c",
+    "#3e895d",
+    "#6daa60",
+    "#cd5127",
+    "#ed7339",
+    "#f5923d",
+    "#991e24",
+    "#c91f46",
+    "#cc2e64"
 ];
 
 //Total Score : 0
 export const groupOneColors = [
-    "radial-gradient(circle, rgba(47,144,173,1) 0%, rgba(0,80,109,1) 65%",
-    "radial-gradient(circle, rgba(73,181,213,1) 0%, rgba(0,108,139,1) 65%)",
-    "radial-gradient(circle, rgba(85,192,200,1) 0%, rgba(80,149,154,1) 65%)",
-    "radial-gradient(circle, rgba(66,172,141,1) 0%, rgba(0,92,65,1) 65%)",
-    "radial-gradient(circle, rgba(82,181,118,1) 0%, rgba(50,119,75,1) 65%)",
-    "radial-gradient(circle, rgba(171,230,162,1) 0%, rgba(91,158,81,1) 65%)",
-    "radial-gradient(circle, rgba(221,146,120,1) 0%, rgba(197,70,25,1) 65%)",
-    "radial-gradient(circle, rgba(222,146,109,1) 0%, rgba(196,86,33,1) 65%)",
-    "radial-gradient(circle, rgba(215,160,112,1) 0%, rgba(224,124,39,1) 65%)",
-    "radial-gradient(circle, rgba(186,78,81,1) 0%, rgba(140,25,28,1) 65%)",
-    "radial-gradient(circle, rgba(213,91,136,1) 0%, rgba(132,18,60,1) 65%)",
-    "radial-gradient(circle, rgba(199,113,139,1) 0%, rgba(185,35,81,1) 65%)"
+    "radial-gradient(circle, rgba(47,144,173,1) 0%, #00607f 65%",
+    "radial-gradient(circle, rgba(73,181,213,1) 0%, #008cad 65%)",
+    "radial-gradient(circle, rgba(85,192,200,1) 0%, #5ca5a8 65%)",
+    "radial-gradient(circle, rgba(66,172,141,1) 0%, #006a4c 65%)",
+    "radial-gradient(circle, rgba(82,181,118,1) 0%, #3e895d 65%)",
+    "radial-gradient(circle, rgba(171,230,162,1) 0%, #6daa60 65%)",
+    "radial-gradient(circle, rgba(221,146,120,1) 0%, #cd5127 65%)",
+    "radial-gradient(circle, rgba(222,146,109,1) 0%, #ed7339 65%)",
+    "radial-gradient(circle, rgba(215,160,112,1) 0%, #f5923d 65%)",
+    "radial-gradient(circle, rgba(186,78,81,1) 0%, #991e24 65%)",
+    "radial-gradient(circle, rgba(213,91,136,1) 0%, #c91f46 65%)",
+    "radial-gradient(circle, rgba(199,113,139,1) 0%, #cc2e64 65%)"
 ];
 //Total Score: 1-80
 // export const groupTwoColors = [
@@ -76,18 +76,18 @@ export const groupOneColors = [
 
 //Total Score: 1-80
 export const groupTwoColors = [
-    "radial-gradient(circle, rgba(96,175,205,1) 0%, rgba(67,138,165,1) 65%)",
-    "radial-gradient(circle, rgba(116,184,207,1) 0%, rgba(91,170,196,1) 65%)",
-    "radial-gradient(circle, rgba(193,223,226,1) 0%, rgba(151,191,195,1) 65%)",
-    "radial-gradient(circle, rgba(149,190,172,1) 0%, rgba(102,144,126,1) 65%)",
-    "radial-gradient(circle, rgba(171,203,178,1) 0%, rgba(132,170,141,1) 65%)",
-    "radial-gradient(circle, rgba(195,219,186,1) 0%, rgba(161,195,148,1) 65%)",
-    "radial-gradient(circle, rgba(235,172,142,1) 0%, rgba(222,138,98,1) 65%)",
-    "radial-gradient(circle, rgba(226,182,158,1) 0%, rgba(244,163,118,1) 65%)",
-    "radial-gradient(circle, rgba(245,207,175,1) 0%, rgba(250,183,125,1) 65%)",
-    "radial-gradient(circle, rgba(230,159,144,1) 0%, rgba(184,105,88,1) 65%)",
-    "radial-gradient(circle, rgba(221,169,168,1) 0%, rgba(218,120,119,1) 65%)",
-    "radial-gradient(circle, rgba(238,178,189,1) 0%, rgba(219,127,143,1) 65%)"
+    "radial-gradient(circle, rgba(96,175,205,1) 0%, #438aa5 65%)",
+    "radial-gradient(circle, rgba(116,184,207,1) 0%, #5baac4 65%)",
+    "radial-gradient(circle, rgba(193,223,226,1) 0%, #97bfc3 65%)",
+    "radial-gradient(circle, rgba(149,190,172,1) 0%, #66907e 65%)",
+    "radial-gradient(circle, rgba(171,203,178,1) 0%, #84aa8d 65%)",
+    "radial-gradient(circle, rgba(195,219,186,1) 0%, #a1c394 65%)",
+    "radial-gradient(circle, rgba(235,172,142,1) 0%, #de8a62 65%)",
+    "radial-gradient(circle, rgba(226,182,158,1) 0%, #f4a376 65%)",
+    "radial-gradient(circle, rgba(245,207,175,1) 0%, #fab77d 65%)",
+    "radial-gradient(circle, rgba(230,159,144,1) 0%, #b86958 65%)",
+    "radial-gradient(circle, rgba(221,169,168,1) 0%, #da7877 65%)",
+    "radial-gradient(circle, rgba(238,178,189,1) 0%, #db7f8f 65%)"
 ];
 
 //Total Score: 81-120
@@ -101,25 +101,25 @@ export const groupTwoColors = [
 //     "#eaaf8e",
 //     "#f8c19f",
 //     "#fccfa5",
-//     "#fccfa5",
+//     "#cd9584",
 //     "#e8a39e",
 //     "#e6a8b0"
 // ];
 
 //Total Score: 81-120
 export const groupThreeColors = [
-    "radial-gradient(circle, rgba(176,211,230,1) 0%, rgba(126,170,193,1) 65%)",
-    "radial-gradient(circle, rgba(198,230,242,1) 0%, rgba(148,195,214,1) 65%)",
-    "radial-gradient(circle, rgba(232,245,246,1) 0%, rgba(186,211,213,1) 65%)",
-    "radial-gradient(circle, rgba(189,219,203,1) 0%, rgba(150,176,162,1) 65%)",
-    "radial-gradient(circle, rgba(213,232,216,1) 0%, rgba(172,196,175,1) 65%",
-    "radial-gradient(circle, rgba(237,242,234,1) 0%, rgba(192,213,181,1) 65%)",
-    "radial-gradient(circle, rgba(249,211,190,1) 0%, rgba(234,175,142,1) 65%)",
-    "radial-gradient(circle, rgba(252,225,209,1) 0%, rgba(248,193,159,1) 65%)",
-    "radial-gradient(circle, rgba(240,223,208,1) 0%, rgba(252,207,165,1) 65%)",
-    "radial-gradient(circle, rgba(240,223,208,1) 0%, rgba(252,207,165,1) 65%)",
-    "radial-gradient(circle, rgba(238,215,213,1) 0%, rgba(232,163,158,1) 65%)",
-    "radial-gradient(circle, rgba(245,226,228,1) 0%, rgba(230,168,176,1) 65%)"
+    "radial-gradient(circle, rgba(176,211,230,1) 0%, #7eaac1 65%)",
+    "radial-gradient(circle, rgba(198,230,242,1) 0%, #94c3d6 65%)",
+    "radial-gradient(circle, rgba(232,245,246,1) 0%, #bad3d5 65%)",
+    "radial-gradient(circle, rgba(189,219,203,1) 0%, #96b0a2 65%)",
+    "radial-gradient(circle, rgba(213,232,216,1) 0%, #acc4af 65%",
+    "radial-gradient(circle, rgba(237,242,234,1) 0%, #c0d5b5 65%)",
+    "radial-gradient(circle, rgba(249,211,190,1) 0%, #eaaf8e 65%)",
+    "radial-gradient(circle, rgba(252,225,209,1) 0%, #f8c19f 65%)",
+    "radial-gradient(circle, rgba(240,223,208,1) 0%, #fccfa5 65%)",
+    "radial-gradient(circle, rgba(240,223,208,1) 0%, #cd9584 65%)",
+    "radial-gradient(circle, rgba(238,215,213,1) 0%, #e8a39e 65%)",
+    "radial-gradient(circle, rgba(245,226,228,1) 0%, #e6a8b0 65%)"
 ];
 
 //Total Score:121-240

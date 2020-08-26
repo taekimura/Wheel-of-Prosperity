@@ -17,6 +17,7 @@ const Dashboard = () => {
       {
           resultData && resultData.map((item, count) => (
               <li key={count}>
+                  <span>{item.displayName}</span>
                   <span>{item.total}</span>
                   {/* <span>{item.createdAt}</span> */}
               </li>

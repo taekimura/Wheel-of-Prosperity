@@ -43,7 +43,7 @@ function App({setCurrentUser,currentUser}) {
         <Route exact path='/' render={() => !currentUser ? (<HomePage />) : (<WheelPage />)} />
         <Route path='/wheel' render={() => !currentUser ? (<Redirect to="/signin" />) : (<WheelPage />)} />
         <Route exact path='/signin' render={() => currentUser ? (<Redirect to="/wheel" />) : (<SignInAndSignUpPage />)} />
-        <Route path='/admin' component={Dashboard} />
+        {currentUser && <Route path='/admin' render={()=> currentUser.role === "admin" ? (<Dashboard />): (<WheelPage />)} />}
       </Switch>
     </>
   );

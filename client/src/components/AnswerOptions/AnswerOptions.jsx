@@ -4,7 +4,7 @@ import { Button } from "reactstrap";
 import "./AnswerOptions.scss";
 
 const AnswerOptions = (props) => {
-  const { handleAnswerSelected, yesNoQuestion, inputNum } = useContext(Context);
+  const { handleAnswerSelected, yesNoQuestion, inputNum, handleKeyCode } = useContext(Context);
   if (yesNoQuestion) {
     return (
       <Button style={{ backgroundColor: "white", width: "8%", margin: "0 0.5%", fontFamily: "Open sans", border: "none", fontWeight: "300" }}
@@ -22,6 +22,7 @@ const AnswerOptions = (props) => {
         type="button"
         value={props.index}
         onClick={handleAnswerSelected}
+        onKeyDown={handleKeyCode}
         className={inputNum === props.index ? "btn-selected" : "btn-unselected"}
       >
         {props.anwserContent}

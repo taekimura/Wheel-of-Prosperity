@@ -61,7 +61,7 @@ const HomePage = () => {
       <div className="homepage">
     <div className="sign-up">
       <h2 className="title">Don't have an account yet?</h2>
-      <span>Sign up with your email and password</span>
+      <span className="content">Sign up with your email and password</span>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <FormInput
           type="text"

@@ -19,7 +19,7 @@ app.use(cookieParser());
 // , parameterLimit: 10000
 
 app.post("/api/sendMail", (req, res) => {
-    sendEmail(req.body.email, req.body.name, "hello", req.body.image)
+    sendEmail(req.body.email, req.body.name, req.body.lang, req.body.image)
 })
 
 

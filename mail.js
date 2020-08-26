@@ -1,11 +1,10 @@
 const mailer = require("nodemailer");
-// const { Hello } = require("./hello_template");
 
-const getEmailData = (to, name, template, image) => {
+const getEmailData = (to, name, lang, image) => {
     let data = null;
 
-    switch (template) {
-        case "hello":
+    switch (lang) {
+        case "english":
             data = {
                 from: "Tae Kimura <sheepman7893@gmail.com>",
                 to,
@@ -54,7 +53,7 @@ const getEmailData = (to, name, template, image) => {
 }
 
 
-const sendEmail = (to, name, type, image) => {
+const sendEmail = (to, name, lang, image) => {
 
     const smtpTransport = mailer.createTransport({
         service: "Gmail",
@@ -64,7 +63,7 @@ const sendEmail = (to, name, type, image) => {
         }
     })
 
-    const mail = getEmailData(to, name, type, image)
+    const mail = getEmailData(to, name, lang, image)
 
     smtpTransport.sendMail(mail, function (error, response) {
         if (error) {

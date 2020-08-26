@@ -44,12 +44,13 @@ const Chart = ({ currentUser }) => {
                 const image = canvas.toDataURL("image/png");
                 // link.download = "universalprosperity.png";
                 // link.click();
-                console.log(image);
+                // console.log(image);
                 const name = currentUser.displayName;
                 const email = currentUser.email;
                 const dataToSubmit = {
-                    name,
                     email,
+                    name,
+                    lang,
                     image
                 }
                 axios.post("/api/sendMail", dataToSubmit)

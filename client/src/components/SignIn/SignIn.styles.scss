@@ -17,3 +17,42 @@
       margin-top: 20px;
     }
   }
+
+  @media screen and (max-width:1366px){
+    .sign-in{
+      text-align: center;
+      height: 50vh;
+    }
+  }
+
+  @media screen and (max-width:1024px){
+    .sign-in{
+      text-align: center;
+      height: 50vh;
+    }
+  }
+
+  @media screen and (max-width:768px){
+    .sign-in{
+      text-align: center;
+      height: 50vh;
+    }
+  }
+
+  @media screen and (max-width:425px){
+    .sign-in{
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width:375px){
+    .sign-in{
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width:320px){
+    .sign-in{
+      text-align: center;
+    }
+  }

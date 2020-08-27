@@ -5,15 +5,14 @@ import {createStructuredSelector} from 'reselect'
 
 import './Header.styles.scss';
 
-// import Logo from '../../assets/logo.png';
+import Logo from '../../assets/logo_GHW_Coeur.png';
 import {auth} from '../firebase/firebase_utils';
 import {selectCurrentUser} from '../../redux/user/user.selector'
 
 const Header = ({currentUser}) => (
   <div className='header'>
     <Link className='logo-container' to='/'>
-      {/* <img src={Logo} alt='logo'  className='logo' /> */}
-      WHEEL OF PROSPERITY
+      <img src={Logo} alt='logo'  className='logo' />
     </Link>
     <div className='options'>
 

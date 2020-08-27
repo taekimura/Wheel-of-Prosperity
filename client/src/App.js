@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect'
@@ -11,8 +11,10 @@ import Dashboard from './components/Dashboard/Dashboard.component';
 import { auth, createUserProfileDocument } from './components/firebase/firebase_utils';
 import { setCurrentUser } from './redux/user/user.action';
 import {selectCurrentUser} from './redux/user/user.selector';
+import Loading from './components/Loading/Loading';
 
 function App({setCurrentUser,currentUser}) {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(()=>{
     let unsubscribeFromAuth = null;
@@ -24,17 +26,19 @@ function App({setCurrentUser,currentUser}) {
             id: snapShot.id,
             ...snapShot.data()
           });
-        })
+        });
+        setIsLoading(false);
       }else{
         setCurrentUser(userAuth);
+        setIsLoading(false);
       }
     });
     return () => {
       unsubscribeFromAuth();
     };
-  },[]);
+  },[setCurrentUser]);
 
-  useEffect(()=> console.log('WHO IS LOGGED IN? ',currentUser), [currentUser])
+  if(isLoading) return(<Loading />)
 
   return (
     <>
@@ -43,7 +47,7 @@ function App({setCurrentUser,currentUser}) {
         <Route exact path='/' render={() => !currentUser ? (<HomePage />) : (<WheelPage />)} />
         <Route path='/wheel' render={() => !currentUser ? (<Redirect to="/signin" />) : (<WheelPage />)} />
         <Route exact path='/signin' render={() => currentUser ? (<Redirect to="/wheel" />) : (<SignInAndSignUpPage />)} />
-        <Route path='/admin' component={Dashboard} />
+        {currentUser && <Route path='/admin' render={()=> currentUser.role === "admin" ? (<Dashboard />): (<WheelPage />)} />}
       </Switch>
     </>
   );

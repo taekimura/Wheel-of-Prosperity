@@ -22,7 +22,8 @@ app.post("/api/sendMail", (req, res) => {
     sendEmail(req.body.email, req.body.name, req.body.lang, req.body.image)
 })
 
+const port = process.env.PORT || 5000;
 
-app.listen(5000, () => {
+app.listen(port, () => {
     console.log("Server Running at 5000 ");
 })

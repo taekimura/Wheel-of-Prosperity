@@ -96,16 +96,16 @@ const Chart = ({ currentUser }) => {
             return (
                 <>
                     <div className="harmonie">
-                        <img src={Harmonie} width="150" alt="Harmonie" className="picHarmonie" />
+                        <img src={Harmonie} alt="Harmonie" className="picHarmonie" />
                     </div>
                     <div className="plentitude">
-                        <img src={Plentitude} width="150" alt="Plentitude" className="picPlentitude" />
+                        <img src={Plentitude} alt="Plentitude" className="picPlentitude" />
                     </div>
                     <div className="vitalite">
-                        <img src={Vitalite} width="130" alt="Vitalite" className="picVitalite" />
+                        <img src={Vitalite} alt="Vitalite" className="picVitalite" />
                     </div>
                     <div className="prosperite">
-                        <img src={Prosperite} width="170" alt="Prosperite" className="picProsperite" />
+                        <img src={Prosperite} alt="Prosperite" className="picProsperite" />
                     </div>
                     <div className="goldenCircle11" >
                         <img src={ExternalCircle} width="640" alt="Asset1" className="circle10" />
@@ -116,16 +116,16 @@ const Chart = ({ currentUser }) => {
             return (
                 <>
                     <div className="harmonie2">
-                        <div style={{ color: "#32774b", fontSize: "1.6em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>HARMONY</div>
+                        <div style={{ color: "#32774b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(90deg)' }}>HARMONY</div>
                     </div>
                     <div className="plentitude2">
-                        <div style={{ color: "#006c8b", fontSize: "1.5em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>PLENITUDE</div>
+                        <div style={{ color: "#006c8b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>PLENITUDE</div>
                     </div>
                     <div className="vitalite2">
-                        <div style={{ color: "#c45621", fontSize: "1.7em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>VITALITY</div>
+                        <div style={{ color: "#c45621", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>VITALITY</div>
                     </div>
                     <div className="prosperite2">
-                        <div style={{ color: "#8c191c", fontSize: "1.6em", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>PROSPERITY</div>
+                        <div style={{ color: "#8c191c", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(270deg)' }}>PROSPERITY</div>
                     </div>
                     <div className="goldenCircle11" >
                         <img src={EnglishExternalCircle} width="640" alt="Asset1" className="circle10" />

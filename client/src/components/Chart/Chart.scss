@@ -35,31 +35,26 @@
 		}
 		&:nth-child(4) {
 			transform: rotate(60deg) translate(-25%,-25%);
-			// position:absolute;
 			top:25%;
 			left:50%;
 		}
 		&:nth-child(5) {
 			transform: rotate(90deg) translate(-25%,-25%);
-			// position:absolute;
 			top:25%;
 			left:50%;
 		}
 		&:nth-child(6) {
 			transform: rotate(120deg) translate(-25%,-25%);
-			// position:absolute;
 			top:25%;
 			left:50%;
 		}
 		&:nth-child(7) {
 			transform: rotate(150deg) translate(-25%,-25%);
-			// position:absolute;
 			top:25%;
 			left:50%;
 		}
 		&:nth-child(8) {
 			transform: rotate(180deg) translate(-25%,-25%);
-			// position:absolute;
 			top:25%;
 			left:50%;
 		}
@@ -100,7 +95,6 @@
 	}
 	
 	&--item {
-		// background-color: #43A19E;
 		display: inline-block;
 		margin: 0 5px 0 0;
 		flex: 1;
@@ -153,75 +147,75 @@
 		align-items: center;
 		position: absolute;
 		top:50%;
-		right: 17%;
-		transform:translateY(-50%);
-		-webkit-transform:translateY(-50%);
-		-ms-transform: translateY(-50%);
-		z-index: -200;
-	}.harmonie2{
-		display: flex;
-		align-items: center;
-		position: absolute;
-		top:50%;
-		right: 17%;
+		right: 16%;
 		transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
 		-ms-transform: translateY(-50%);
 		z-index: -200;
 	}
+	.harmonie2{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top:50%;
+		right: 12%;
+		transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		-ms-transform: translateY(-50%);
+		z-index: -200;
+		font-size: 1.8em;
+	}
 	.plentitude{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		// transform: translate(-50.5%,50%);
 		transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
 		-ms-transform: translateY(-50%);
 		top:5%;
-		left:45%;
+		left:44.5%;
 		z-index: -200;
 	}
 	.plentitude2{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		// transform: translate(-50.5%,50%);
 		transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
 		-ms-transform: translateY(-50%);
 		top:5%;
 		left:45%;
 		z-index: -200;
+		font-size: 1.6em;
 	}
 	.prosperite{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		// transform: translate(-50.5%,50%);
 		transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
 		-ms-transform: translateY(-50%);
-		top:47%;
+		top:49%;
 		left:15%;
 		z-index: -200;
+		
 	}
 	.prosperite2{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		// transform: translate(-50.5%,50%);
 		transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
 		-ms-transform: translateY(-50%);
-		top:47%;
-		left:15%;
+		top:50%;
+		left:10%;
 		z-index: -200;
+		font-size: 1.8em;
 	}
 	.vitalite{
 		display: flex;
 		align-items: center;
 		position: absolute;
-		// transform: translate(-50.5%,50%);
 		transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
 		-ms-transform: translateY(-50%);
@@ -233,13 +227,25 @@
 		display: flex;
 		align-items: center;
 		position: absolute;
-		// transform: translate(-50.5%,50%);
 		transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
 		-ms-transform: translateY(-50%);
 		bottom:1%;
 		left:46%;
 		z-index: -200;
+		font-size: 1.6em;
+	}
+	.picHarmonie{
+		width: 40px;
+	}
+	.picPlentitude{
+		width: 150px;
+	}
+	.picVitalite{
+		width: 130px;
+	}
+	.picProsperite{
+		width: 35px;
 	}
 }
 
@@ -259,7 +265,7 @@
 	}
 	.harmonie{
 		top: 50% !important;
-		left: 83% !important;
+		right:10% !important;
 	}
 	.harmonie2{
 		top: 50% !important;
@@ -283,7 +289,7 @@
 	}
 	.prosperite{
 		top: 50% !important;
-		left: 1% !important;
+		left: 10% !important;
 	}
 	.prosperite2{
 		top: 50% !important;
@@ -310,16 +316,14 @@
 
 @media screen and (max-width:768px){
 	.Charts {
-		width: 105%;
+		width: 100%;
 		height: 100vh;
 	}
 	.harmonie{
-		transform: rotate(90deg) !important;
-		top: 43% !important;
-		right: -2% !important;
+		top: 44% !important;
+		right: 1% !important;
 	}
 	.harmonie2{
-		transform: rotate(90deg) !important;
 		top: 45% !important;
 		right: -5% !important;
 	}
@@ -329,7 +333,7 @@
 	}
 	.plentitude2{
 		top: 8% !important;
-		left: 41% !important;
+		left: 40% !important;
 	}
 	.vitalite{
 		bottom: 15% !important;
@@ -340,12 +344,10 @@
 		left: 42% !important;
 	}
 	.prosperite{
-		transform: rotate(270deg) !important;
 		top: 43% !important;
-		left: -5% !important;
+		left: 1% !important;
 	}
 	.prosperite2{
-		transform: rotate(270deg) !important;
 		top: 43% !important;
 		left: -6% !important;
 	}
@@ -355,6 +357,7 @@
 	.circlecenter{
 		width:120px !important;
 	}
+	
 }
 
 @media screen and (max-width:740px){
@@ -402,66 +405,57 @@
 @media screen and (max-width:450px){
 	.Charts {
 		width: 100%;
-		height: 740px;
+		height: 735px;
 	}
 	.picHarmonie{
-		width: 100px;
+		width: 25px;
 	}
 	.picPlentitude{
-		width: 100px;
+		width: 120px;
 	}
 	.picVitalite{
-		width: 90px;
+		width: 110px;
 	}
 	.picProsperite{
-		width: 100px;
+		width: 20px;
 	}
 	.harmonie{
-		transform: rotate(90deg) !important;
-		top: 50% !important;
-		right:-6% !important;
+		top: 49% !important;
+		right:1% !important;
 	}
 	.harmonie2{
 		font-size: 13px;
-		transform: rotate(90deg) !important;
 		top: 47% !important;
 		left: 87% !important;
 	}
 	.plentitude{
-		width: 150px !important;
-		top: 25% !important;
-		left: 39% !important;
+		top: 23% !important;
+		left: 35% !important;
 	}
 	.plentitude2{
 		font-size: 13px;
-		width: 150px !important;
 		top: 24% !important;
 		left: 37% !important;
 	}
 	.vitalite{
-		width: 150px !important;
-		bottom: 22% !important;
-		left: 40% !important;
+		bottom: 19% !important;
+		left: 38% !important;
 	}
 	.vitalite2{
 		font-size: 13px;
-		width: 150px !important;
 		bottom: 18% !important;
 		left: 38% !important;
 	}
 	.prosperite{
-		width: 150px !important;
-		transform: rotate(270deg) !important;
-		top: 47% !important;
-		left: -12% !important;
+		top: 49.5% !important;
+		left: 1% !important;
 	}
 	.prosperite2{
 		font-size: 13px;
-		width: 150px !important;
-		transform: rotate(270deg) !important;
 		top: 48% !important;
 		left: -13% !important;
 	}
+
 	.circleround{
 		width: 80px !important;
 		transform: translate(2.6%,-10.5%) !important;
@@ -608,64 +602,59 @@
 	.Charts {
 		width: 100%;
 		height: 740px;
-	.picHarmonie{
-		width: 100px;
-	}
-	.picPlentitude{
-		width: 100px;
-	}
-	.picVitalite{
-		width: 90px;
-	}
-	.picProsperite{
-		width: 100px;
-	}
+
+		.picHarmonie{
+			width: 30px;
+		}
+		.picPlentitude{
+			width: 120px;
+		}
+		.picVitalite{
+			width: 110px;
+		}
+		.picProsperite{
+			width: 25px;
+		}
+
 	.harmonie{
-		transform: rotate(90deg) !important;
-		top: 50% !important;
-		right:-6% !important;
+		top: 49% !important;
+		right:1% !important;
 	}
 	.harmonie2{
-		font-size: 13px;
-		transform: rotate(90deg) !important;
-		top: 47% !important;
-		left: 87% !important;
+		font-size: 16px;
+		top: 49% !important;
+		left: 86% !important;
 	}
 	.plentitude{
-		width: 150px !important;
-		top: 25% !important;
-		left: 39% !important;
-	}
-	.plentitude2{
-		font-size: 13px;
-		width: 150px !important;
-		top: 24% !important;
-		left: 37% !important;
-	}
-	.vitalite{
-		width: 150px !important;
-		bottom: 22% !important;
+		top: 23% !important;
 		left: 40% !important;
 	}
-	.vitalite2{
-		font-size: 13px;
+	.plentitude2{
+		font-size: 16px;
 		width: 150px !important;
-		bottom: 18% !important;
+		top: 24% !important;
 		left: 38% !important;
 	}
-	.prosperite{
+	.vitalite{
+		bottom: 19% !important;
+		left: 39% !important;
+	}
+	.vitalite2{
+		font-size: 16px;
 		width: 150px !important;
-		transform: rotate(270deg) !important;
-		top: 47% !important;
-		left: -12% !important;
+		bottom: 18% !important;
+		left: 41% !important;
+	}
+	.prosperite{
+		top: 49% !important;
+		left: 1% !important;
 	}
 	.prosperite2{
-		font-size: 13px;
-		width: 150px !important;
-		transform: rotate(270deg) !important;
+		font-size: 16px;
 		top: 48% !important;
-		left: -13% !important;
+		left: -10% !important;
 	}
+
 	.circleround{
 		width: 80px !important;
 		transform: translate(2.6%,-10.5%) !important;
@@ -812,60 +801,41 @@
 @media screen and (max-width:375px){
 	.Charts {
 		width: 100%;
-		height: 740px;
-	.picHarmonie{
-		width: 100px;
-	}
-	.picPlentitude{
-		width: 100px;
-	}
-	.picVitalite{
-		width: 90px;
-	}
-	.picProsperite{
-		width: 120px;
-	}
+		height: 737px;
+	
 	.harmonie{
-		transform: rotate(90deg) !important;
-		top: 48% !important;
-		left: 84% !important;
+		top: 52% !important;
+		right: 0% !important;
 	}
 	.harmonie2{
-		transform: rotate(90deg) !important;
-		top: 45% !important;
-		left: 87% !important;
+		top: 50% !important;
+		left: 84% !important;
 	}
 	.plentitude{
-		width: 150px !important;
-		top: 28% !important;
-		left: 38% !important;
+		top: 26% !important;
+		left: 35% !important;
 	}
 	.plentitude2{
 		width: 150px !important;
 		top: 28% !important;
-		left: 35% !important;
+		left: 37% !important;
 	}
 	.vitalite{
-		width: 150px !important;
-		bottom: 24% !important;
-		left: 40% !important;
+		bottom: 22% !important;
+		left: 38% !important;
 	}
 	.vitalite2{
 		width: 150px !important;
 		bottom: 21% !important;
-		left: 37% !important;
+		left: 39% !important;
 	}
 	.prosperite{
-		width: 150px !important;
-		transform: rotate(270deg) !important;
-		top: 47% !important;
-		left: -15% !important;
+		top: 52% !important;
+		left: 1% !important;
 	}
 	.prosperite2{
-		width: 150px !important;
-		transform: rotate(270deg) !important;
-		top: 47% !important;
-		left: -15% !important;
+		top: 50% !important;
+		right: 89%!important;
 	}
 	.circleround{
 		width: 50px !important;
@@ -1014,59 +984,40 @@
 	.Charts {
 		width: 100%;
 		height: 730px;
-	.picHarmonie{
-		width: 100px;
-	}
-	.picPlentitude{
-		width: 100px;
-	}
-	.picVitalite{
-		width: 90px;
-	}
-	.picProsperite{
-		width: 120px;
-	}
+	
 	.harmonie{
-		transform: rotate(90deg) !important;
-		top: 42% !important;
-		left: 81% !important;
+		top: 45% !important;
+		right: 0% !important;
 	}
 	.plentitude{
-		width: 150px !important;
-		top: 25% !important;
-		left: 36% !important;
+		top: 20% !important;
+		left: 28% !important;
 	}
 	.vitalite{
-		width: 150px !important;
-		bottom: 33% !important;
-		left: 38% !important;
+		bottom: 29% !important;
+		left: 32% !important;
 	}
 	.prosperite{
-		width: 150px !important;
-		transform: rotate(270deg) !important;
-		top: 41% !important;
-		left: -17% !important;
+		top: 45% !important;
+		left: 0% !important;
 	}
 	.harmonie2{
-		transform: rotate(90deg) !important;
-		top: 39% !important;
-		left: 85% !important;
+		top: 45% !important;
+		left: 80% !important;
 	}
 	.plentitude2{
 		width: 150px !important;
 		top: 25% !important;
-		left: 33% !important;
+		left: 35% !important;
 	}
 	.vitalite2{
 		width: 150px !important;
 		bottom: 31% !important;
-		left: 35% !important;
+		left: 37% !important;
 	}
 	.prosperite2{
-		width: 150px !important;
-		transform: rotate(270deg) !important;
-		top: 42% !important;
-		left: -17% !important;
+		top: 45% !important;
+		right:89% !important;
 	}
 	.circleround{
 		width: 47.5px !important;
@@ -1214,7 +1165,13 @@
 
 @media screen and (max-width:280px){
 	.Charts {
-		width: 110%;
+		width: 125%;
 		height: 740px;
+	}
+	.plentitude{
+		top: 26% !important;
+	}
+	.vitalite{
+		bottom: 22% !important;
 	}
 }

@@ -29,19 +29,19 @@
       }
   }
 
-  @media screen and (max-width:1024px){
-    .homepage{
-      height: 110%;
-    }
-    .content{
-      text-align: center;
-    }
-  }
+  // @media screen and (max-width:1024px){
+  //   .homepage{
+  //     height: 110%;
+  //   }
+  //   .content{
+  //     text-align: center;
+  //   }
+  // }
 
   @media screen and (max-width:850px){
     .homepage{
       width: 100%;
-      height: 850px;
+      height: 110%;
       flex-direction: row;
     }
     .title{
@@ -49,6 +49,9 @@
       margin: 0 auto;
     }
     .sign-in-block{
+      text-align: center;
+    }
+    .content{
       text-align: center;
     }
   }

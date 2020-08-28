@@ -132,6 +132,7 @@ const WheelPage = ({ children, currentUser }) => {
     }
   }
 
+
   // Translate to french
   const switchToFrench = () => {
     if (no) {
@@ -257,11 +258,11 @@ const WheelPage = ({ children, currentUser }) => {
   //   } else {
   //   handleNextQuestion(e);
   //   }
-    // return (
-    //   <>
-    //     {renderQuiz()}
-    //   </>
-    // )
+  // return (
+  //   <>
+  //     {renderQuiz()}
+  //   </>
+  // )
   // };
 
   // window.addEventListener("keydown", handleKeyCode);

@@ -39,16 +39,10 @@ const Chart = ({ currentUser }) => {
 
     // Save an image of wheel as a png file
     const printDocument = () => {
+        document.getElementById("viewport").setAttribute("content", "width=760px")
         html2canvas(document.getElementById('Charts'))
             .then((canvas) => {
-                var ctx = canvas.getContext('2d');
-                ctx.webkitImageSmoothingEnabled = false;
-                ctx.mozImageSmoothingEnabled = false;
-                ctx.imageSmoothingEnabled = false;
                 const image = canvas.toDataURL("image/png");
-                // link.download = "universalprosperity.png";
-                // link.click();
-                // console.log(image);
                 const name = currentUser.displayName;
                 const email = currentUser.email;
                 const dataToSubmit = {
@@ -57,6 +51,7 @@ const Chart = ({ currentUser }) => {
                     lang,
                     image
                 }
+                document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=1, shrink-to-fit=no")
                 axios.post("/api/sendMail", dataToSubmit)
                     .then(res => {
                         setSent(true);

@@ -51,7 +51,6 @@ function App({ setCurrentUser, currentUser }) {
           </div>
         )
       }
-
       <Header />
       <Switch>
         <Route exact path='/' render={() => !currentUser ? (<HomePage />) : (<WheelPage />)} />

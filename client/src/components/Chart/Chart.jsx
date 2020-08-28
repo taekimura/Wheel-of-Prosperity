@@ -51,13 +51,13 @@ const Chart = ({ currentUser }) => {
                     lang,
                     image
                 }
-                document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=1, shrink-to-fit=no")
                 axios.post("/api/sendMail", dataToSubmit)
                     .then(res => {
                         setSent(true);
                     }, resetForm())
                     .then(
                         setTimeout(function () {
+                            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=1, shrink-to-fit=no")
                             alert("Message has been sent. Check your email. / Le message a été envoyé. Vérifiez votre email")
                         }, 2000)
                     )

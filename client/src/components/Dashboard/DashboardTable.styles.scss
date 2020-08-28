@@ -1,0 +1,36 @@
+.dashboard-table-container{
+
+    width: 50%;
+    position: relative;
+
+    table{
+        width: 100%;
+    }
+
+    tr > th{
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    tr > td{
+      padding: 12px 10px;
+      color: #fff;
+      font-weight: 400;
+    }
+    tr{
+      transition: 230ms ease-in;
+      border-bottom: 1px solid #fff;
+      will-change: transform,background,cursor;
+    }
+    tbody tr:hover{
+      cursor: pointer;
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
+    .table-highlight{
+      background: red;
+    }
+}
+  

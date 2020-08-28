@@ -204,6 +204,68 @@ const WheelPage = ({ children, currentUser }) => {
     }
   };
 
+
+  // const handleKeyCode = (e) => {
+  //   let keys = e.keyCode;
+  //   switch(keys){
+  //     case 48:
+  //       keys = 0;
+  //       break;
+  //     case 49:
+  //       keys = 1;
+  //       break;
+  //     case 50:
+  //       keys = 2;
+  //       break;
+  //     case 51:
+  //       keys = 3;
+  //       break;
+  //     case 52:
+  //       keys = 4;
+  //       break;
+  //     case 53:
+  //       keys = 5;
+  //       break;
+  //     case 54:
+  //       keys = 6;
+  //       break;
+  //     case 55:
+  //       keys = 7;
+  //       break;
+  //     case 56:
+  //       keys = 8;
+  //       break;
+  //     case 57:
+  //       keys = 9;
+  //       break;
+  //     case 189:
+  //       keys = 10;
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  //   let index = parseInt(keys, 10);
+  //   // Object container & save anwsers after selected answer
+  //   selectedAnwsers[counter] = index;
+  //   setSelectedAnswers(selectedAnwsers);
+  //   console.log("The array of User input: " + selectedAnwsers);
+  //   console.log(sumOfUserInput(selectedAnwsers));
+  //   if (selectedAnwsers.length === 9 && yesNoQuestion) {
+  //     setInputNum(index + 100);
+  //   } else if (selectedAnwsers.length === 24) {
+  //   handleSubmitAnswers();
+  //   } else {
+  //   handleNextQuestion(e);
+  //   }
+    // return (
+    //   <>
+    //     {renderQuiz()}
+    //   </>
+    // )
+  // };
+
+  // window.addEventListener("keydown", handleKeyCode);
+
   // Handle get value selected for question
   const handleAnswerSelected = (e) => {
     let target = e.target;
@@ -212,7 +274,6 @@ const WheelPage = ({ children, currentUser }) => {
     selectedAnwsers[counter] = index;
     setSelectedAnswers(selectedAnwsers);
     console.log("The array of User input: " + selectedAnwsers);
-    setInputNum(index);
     console.log(sumOfUserInput(selectedAnwsers));
     if (selectedAnwsers.length === 9 && yesNoQuestion) {
       setInputNum(index + 100);

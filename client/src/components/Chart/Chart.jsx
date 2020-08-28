@@ -37,10 +37,14 @@ const Chart = ({ currentUser }) => {
         return () => clearInterval(timer);
     }, [data, itemsRendered]);
 
-    //Save an image of wheel as a png file 
+    // Save an image of wheel as a png file
     const printDocument = () => {
-        html2canvas(document.getElementById('body'))
+        html2canvas(document.getElementById('Charts'))
             .then((canvas) => {
+                var ctx = canvas.getContext('2d');
+                ctx.webkitImageSmoothingEnabled = false;
+                ctx.mozImageSmoothingEnabled = false;
+                ctx.imageSmoothingEnabled = false;
                 const image = canvas.toDataURL("image/png");
                 // link.download = "universalprosperity.png";
                 // link.click();
@@ -417,7 +421,7 @@ const Chart = ({ currentUser }) => {
 
     return (
         <>
-            <div className="Charts">
+            <div className="Charts" id="Charts">
                 {renderedBarsArray.map((serie, serieIndex) => {
                     const color = groupdefaultColors[serieIndex];
                     let style;

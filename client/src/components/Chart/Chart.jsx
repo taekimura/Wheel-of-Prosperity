@@ -39,7 +39,6 @@ const Chart = ({ currentUser }) => {
 
     // Save an image of wheel as a png file
     const printDocument = () => {
-        document.getElementById("viewport").setAttribute("content", "width=760px")
         html2canvas(document.getElementById('Charts'))
             .then((canvas) => {
                 const image = canvas.toDataURL("image/png");

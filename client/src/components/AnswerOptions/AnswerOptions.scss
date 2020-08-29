@@ -11,13 +11,13 @@
   background-image: -webkit-linear-gradient(top, #84123c, #84123c);
   background-image: linear-gradient(to bottom, #84123c, #84123c);
 }
-.btn-unselected::focus,
-.btn-unselected::active {
-  outline:none !important;
-  box-shadow:none !important;
-  background-image: -webkit-linear-gradient(top, #84123c, #84123c);
-  background-image: linear-gradient(to bottom, #84123c, #84123c);
-}
+// .btn-unselected::focus,
+// .btn-unselected::active {
+//   outline:none !important;
+//   box-shadow:none !important;
+//   background-image: -webkit-linear-gradient(top, #84123c, #84123c);
+//   background-image: linear-gradient(to bottom, #84123c, #84123c);
+// }
 
 // .btn-unselected:hover {
 //   border:none;
@@ -27,8 +27,8 @@
 
 .btn-selected {
   border: none;
-  background-image: -webkit-linear-gradient(top, #84123c, #84123c);
-  background-image: linear-gradient(to bottom, #84123c, #84123c);
+  background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
+  background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
 }
 
 .btn-selected:focus,
@@ -44,6 +44,11 @@
   .btn-unselected{
     height: 40px !important;
   }
+  .btn-unselected:hover {
+    border:none;
+    background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
+    background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
+  }
 }
 @media screen and (max-width:450px){
   .btn-selected{
@@ -53,5 +58,10 @@
   .btn-unselected{
     margin: 1% !important;
     width: 21% !important;
+  }
+    .btn-unselected:hover {
+    border:none;
+    background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
+    background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
   }
 }

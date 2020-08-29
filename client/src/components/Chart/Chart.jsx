@@ -39,7 +39,6 @@ const Chart = ({ currentUser }) => {
 
     // Save an image of wheel as a png file
     const printDocument = () => {
-        document.getElementById("viewport").setAttribute("content", "width=760px")
         html2canvas(document.getElementById('Charts'))
             .then((canvas) => {
                 const image = canvas.toDataURL("image/png");
@@ -51,13 +50,13 @@ const Chart = ({ currentUser }) => {
                     lang,
                     image
                 }
-                document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=1, shrink-to-fit=no")
                 axios.post("/api/sendMail", dataToSubmit)
                     .then(res => {
                         setSent(true);
                     }, resetForm())
                     .then(
                         setTimeout(function () {
+                            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=1, shrink-to-fit=no")
                             alert("Message has been sent. Check your email. / Le message a été envoyé. Vérifiez votre email")
                         }, 2000)
                     )

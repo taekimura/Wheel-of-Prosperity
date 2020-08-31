@@ -14,7 +14,7 @@ const config = {
 };
 
 export const getAllResults = async () => {
-    const snapshot = await firestore.collection('results').get();
+    const snapshot = await firestore.collection('results').orderBy('createdAt', 'desc').get();
     return snapshot.docs.map(doc => doc.data());
 }
 

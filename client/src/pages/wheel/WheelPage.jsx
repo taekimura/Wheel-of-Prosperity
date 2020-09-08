@@ -77,7 +77,7 @@ const WheelPage = ({ children, currentUser }) => {
           .add({
             displayName,
             email,
-            aveAnswers,
+            ans,
             total,
             createdAt,
           })
@@ -220,12 +220,8 @@ const WheelPage = ({ children, currentUser }) => {
       handleSubmitAnswers();
     } else {
       handleNextQuestion(e);
+      createNewObject();
     }
-    // return (
-    //   <>
-    //     {renderQuiz()}
-    //   </>
-    // )
   };
 
   // Handle next questions & answer
@@ -282,7 +278,6 @@ const WheelPage = ({ children, currentUser }) => {
       setYes(false);
       setNo(false);
     }
-
   };
 
   // For a final answer

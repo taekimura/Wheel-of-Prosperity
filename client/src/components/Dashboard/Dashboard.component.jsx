@@ -105,7 +105,7 @@ const Dashboard = () => {
                     <AccordionDetails className={classes.dropDown}>
                       <Typography component={'span'} className={classes.dropDownWrapper}>
                         <DashboardTable
-                          data={item.aveAnswers}
+                          data={item.ans}
                           total={item.total}
                         />
                       </Typography>

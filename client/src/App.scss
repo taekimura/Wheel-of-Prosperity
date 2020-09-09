@@ -22,10 +22,25 @@ ul{
     background-color: #111;
     color: #fff;
     padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
 
     a{
         color: #fff !important;
         font-weight: 200 !important;
         text-decoration: underline !important;
     }
+
+    .options {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    
+        .option {
+          padding: 10px 15px;
+          cursor: pointer;
+        }
+      }
 }

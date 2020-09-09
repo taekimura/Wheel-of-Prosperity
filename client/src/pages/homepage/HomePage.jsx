@@ -1,106 +1,71 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
 
 import FormInput from "../../components/FormInput/FormInput.component";
 import CustomButton from "../../components/CustomButton/CustomButton.component";
-
-import { auth, createUserProfileDocument } from "../../components/firebase/firebase_utils";
+import { setCurrentUser } from '../../redux/user/user.action';
 
 import "./HomePage.scss";
 
-const HomePage = () => {
+const HomePage = ({setCurrentUser}) => {
   const [userState, setUserState] = useState({
     displayName: "",
     email: "",
-    password: "",
-    confirmPassword: ""
+    role: "user"
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const { displayName, email, password, confirmPassword } = userState;
-
-    if (password !== confirmPassword) {
-      alert("passwords don't match");
-      return;
-    }
-
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await createUserProfileDocument(user, { displayName });
-
-      setUserState({
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    setCurrentUser(userState);
+    setUserState({
+      displayName: "",
+      email: ""
+    });
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setUserState(prevState => {
-        return {
-          ...prevState,
-          [name]: value
-        }
-      })
+    setUserState((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
   };
 
-  const { displayName, email, password, confirmPassword } = userState;
+  const { displayName, email } = userState;
   return (
-      <div className="homepage">
-    <div className="sign-up">
-      <h2 className="title">Don't have an account yet?</h2>
-      <span className="content">Sign up with your email and password</span>
-      <form className="sign-up-form" onSubmit={handleSubmit}>
-        <FormInput
-          type="text"
-          name="displayName"
-          value={displayName}
-          onChange={handleChange}
-          label="Display Name"
-          required
-        />
-        <FormInput
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-          label="Email"
-          required
-        />
-        <FormInput
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-          label="Password"
-          required
-        />
-        <FormInput
-          type="password"
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={handleChange}
-          label="Confirm Password"
-          required
-        />
-        <CustomButton type="submit">SIGN UP</CustomButton>
-        <span className="sign-in-block">Already have an account? <Link to="/signin">Login here</Link></span>
-      </form>
-    </div>
+    <div className="homepage">
+      <div className="sign-up">
+        <h2 className="title">Welcome!</h2>
+        <span className="content">Sign in with your username and email</span>
+        <form className="sign-up-form" onSubmit={handleSubmit}>
+          <FormInput
+            type="text"
+            name="displayName"
+            value={displayName}
+            onChange={handleChange}
+            label="Display Name"
+            required
+          />
+          <FormInput
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            label="Email"
+            required
+          />
+          <CustomButton type="submit">SIGN IN</CustomButton>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+const mapDispatchtoProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(null, mapDispatchtoProps)(HomePage);

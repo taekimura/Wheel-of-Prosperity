@@ -8,6 +8,8 @@ import { createStructuredSelector } from 'reselect'
 import { groupdefaultColors } from "../../constants";
 import centerWheelGray from "../../assets/centerWheel-gray.png";
 import centerWheelGold from "../../assets/centerWheel-gold.png";
+import centerWheel1To80 from "../../assets/centerWheel1To80.png";
+import centerWheel81To120 from "../../assets/centerWheel81To120.png";
 import Asset9 from "../../assets/Asset9.png";
 import Asset8 from "../../assets/Asset8.png";
 import Asset7 from "../../assets/Asset7.png";
@@ -35,6 +37,7 @@ const Chart = ({ currentUser }) => {
     useEffect(() => {
         const timer = itemsRendered < data.length && setTimeout(updateRenderedThings, 100);
         return () => clearInterval(timer);
+
     }, [data, itemsRendered]);
 
     // Save an image of wheel as a png file
@@ -134,18 +137,37 @@ const Chart = ({ currentUser }) => {
     }
 
     const renderInnerCircle = () => {
-        if (totalScore === 0) {
-            return (
-                <div className="goldenCircle">
-                    <img src={centerWheelGold} width="100" alt="centerWheelGold" className="circleround" />
-                </div>
-            )
-        } else {
-            return (
-                <div className="goldenCircle">
-                    <img src={centerWheelGray} width="109" alt="centerWheelGray" className="circlecenter" />
-                </div>
-            )
+        switch (true) {
+            case totalScore === 0:
+                return (
+                    <div className="goldenCircle">
+                        <img src={centerWheelGold} width="100" alt="centerWheelGold" className="circleround" />
+                    </div>
+                );
+            case totalScore > 0 && totalScore <= 80:
+                return (
+                    <div className="goldenCircle">
+                        <img src={centerWheel1To80} width="100" alt="centerWheelGold" className="circleround" />
+                    </div>
+                );
+            case totalScore >= 81 && totalScore <= 120:
+                return (
+                    <div className="goldenCircle">
+                        <img src={centerWheel81To120} width="100" alt="centerWheelGold" className="circleround" />
+                    </div>
+                );
+            case totalScore > 121:
+                return (
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" className="circlecenter" />
+                    </div>
+                );
+            default:
+                return (
+                    <div className="goldenCircle">
+                        <img src={centerWheelGray} width="109" alt="centerWheelGray" className="circlecenter" />
+                    </div>
+                );
         }
     }
 

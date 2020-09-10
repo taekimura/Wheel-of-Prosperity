@@ -14,18 +14,6 @@ const Header = ({currentUser}) => (
     <Link className='logo-container' to='/'>
       <img src={Logo} alt='logo'  className='logo' />
     </Link>
-    <div className='options'>
-
-      {currentUser ? (
-        <div className='option' onClick={() => auth.signOut()}>
-          SIGN OUT
-        </div>
-      ) : (
-        <Link className='option' to='/signin'>
-          SIGN IN
-        </Link>
-      )}
-    </div>
   </div>
 );
 

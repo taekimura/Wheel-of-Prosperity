@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Redirect, Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 
@@ -11,12 +11,13 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/SignInAndSignUpPage
 import Header from './components/Header/Header.component';
 import Dashboard from './components/Dashboard/Dashboard.component';
 import { auth, createUserProfileDocument } from './components/firebase/firebase_utils';
-import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selector';
+import { setCurrentUser } from './redux/user/user.action';
 import Loading from './components/Loading/Loading';
 
 function App({ setCurrentUser, currentUser }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  let location = useLocation();
 
   useEffect(() => {
     let unsubscribeFromAuth = null;
@@ -47,7 +48,22 @@ function App({ setCurrentUser, currentUser }) {
       {
         currentUser && currentUser.role === "admin" && (
           <div className="admin-header">
-            Hi, <b>{currentUser.displayName}</b>. <Link to="/admin" className="admin-link">Go to admin dashboard</Link>
+            <div>
+              Hi, <b>{currentUser.displayName}</b>. &nbsp;
+              {
+                location.pathname === '/admin' ?
+                  (<Link to="/" className="admin-link">Go to Quiz</Link>) :
+                  (<Link to="/admin" className="admin-link">Go to admin dashboard</Link>)
+              }
+            </div>
+
+            <div className='options'>
+              {currentUser && currentUser.role === "admin" && (
+                <div className='option' onClick={() => auth.signOut()}>
+                  SIGN OUT
+                </div>
+              )}
+            </div>
           </div>
         )
       }
@@ -55,8 +71,8 @@ function App({ setCurrentUser, currentUser }) {
       <Switch>
         <Route exact path='/' render={() => !currentUser ? (<HomePage />) : (<WheelPage />)} />
         <Route path='/wheel' render={() => !currentUser ? (<Redirect to="/signin" />) : (<WheelPage />)} />
-        <Route exact path='/signin' render={() => currentUser ? (<Redirect to="/wheel" />) : (<SignInAndSignUpPage />)} />
-        {currentUser && <Route path='/admin' render={() => currentUser.role === "admin" ? (<Dashboard />) : (<WheelPage />)} />}
+        {/* <Route exact path='/signin' render={() => currentUser ? (<Redirect to="/wheel" />) : (<SignInAndSignUpPage />)} /> */}
+        <Route path='/admin' render={() => currentUser && currentUser.role === "admin" ? (<Dashboard />) : (<SignInAndSignUpPage />)} />
       </Switch>
     </>
   );
@@ -64,11 +80,10 @@ function App({ setCurrentUser, currentUser }) {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
-})
+});
 
 const mapDispatchtoProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
-  // functionName: (x) => {functionName(x)}
 });
 
 export default connect(mapStateToProps, mapDispatchtoProps)(App);

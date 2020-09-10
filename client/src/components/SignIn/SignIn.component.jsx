@@ -24,6 +24,7 @@ const SignIn = () => {
       setCredentials({ email: "", password: "" });
     } catch (error) {
       console.log(error);
+      alert(error.message);
     }
   };
 
@@ -39,8 +40,7 @@ const SignIn = () => {
 
   return (
     <div className="sign-in">
-      <h2>I already have an account</h2>
-      <span>Sign in with your email and password</span>
+      <h2>Admin Login</h2>
 
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -60,7 +60,6 @@ const SignIn = () => {
           required
         />
         <CustomButton type="submit"> Sign in </CustomButton>
-        <span className="sign-up-block">Don't have an account yet? <Link to="/">Sign up here</Link></span>
       </form>
     </div>
   );

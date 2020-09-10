@@ -67,7 +67,7 @@ const Dashboard = () => {
               </Typography>
               {matches.largeDesktop && (
                 <Typography component={'span'} className={classes.secondaryHeading}>
-                  Create At
+                  Created At
                 </Typography>
               )}
             </AccordionDetails>
@@ -113,6 +113,7 @@ const Dashboard = () => {
                   </Accordion>
                 ))}
             <Divider />
+            <br/>
             <Box component="span">
               <Pagination
                 count={noOfPages}
@@ -126,6 +127,7 @@ const Dashboard = () => {
                 classes={{ ul: classes.paginator }}
               />
             </Box>
+            <br/>
           </div>
         )}
       </Media>

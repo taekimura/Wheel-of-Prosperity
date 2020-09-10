@@ -12,10 +12,14 @@ export default function DashboardTable({ data, total }) {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, index) => (
+          {data && data.map((row, index) => (
             <tr key={index}>
               <td>{row.category}</td>
-              <td>{row.value}</td>
+              {
+                row.value === 100 ? <td>YES</td> :
+                row.value === 101 ? <td>NO</td> :
+                <td>{row.value}</td>
+              }
             </tr>
           ))}
           <tr className="table-highlight">

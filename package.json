@@ -3,6 +3,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
+  "type": "module",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -32,7 +33,7 @@
     "typescript": "3.3.3"
   },
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node --experimental-modules src/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

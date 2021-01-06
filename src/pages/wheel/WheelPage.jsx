@@ -73,7 +73,7 @@ const WheelPage = ({ children, currentUser }) => {
 
   useEffect(() => {
     sendDataToFirebasePromise();
-  }, [ans.length > 24]);
+  }, [ans.length > 23]);
 
   const demoAsyncCall = () => {
     return new Promise((resolve) => setTimeout(() => resolve(), 1500));
@@ -126,7 +126,6 @@ const WheelPage = ({ children, currentUser }) => {
       );
     }
   };
-
   // Set languages English or French
   const setLangage = () => {
     if (lang === "english" && !yesNoQuestion) {
@@ -147,7 +146,6 @@ const WheelPage = ({ children, currentUser }) => {
       setFrenchButtonColor("#276a7c");
     }
   };
-
   // Translate to french
   const switchToFrench = () => {
     if (no) {
@@ -187,7 +185,6 @@ const WheelPage = ({ children, currentUser }) => {
       setEnglishButtonColor("#babac4");
     }
   };
-
   // Translate to english
   const switchToEnglish = () => {
     if (no) {
@@ -227,7 +224,6 @@ const WheelPage = ({ children, currentUser }) => {
       setFrenchButtonColor("#babac4");
     }
   };
-
   // Handle get value selected for question
   const handleAnswerSelected = (e) => {
     let target = e.target;
@@ -245,7 +241,6 @@ const WheelPage = ({ children, currentUser }) => {
       handleNextQuestion(e);
     }
   };
-
   // Handle next questions & answer
   const handleNextQuestion = (e) => {
     if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
@@ -325,7 +320,6 @@ const WheelPage = ({ children, currentUser }) => {
       setNo(false);
     }
   };
-
   // For a final answer
   const handleSubmitAnswers = () => {
     const answerArray = selectedAnwsers.length;
@@ -352,7 +346,6 @@ const WheelPage = ({ children, currentUser }) => {
       setResult(true);
     }
   };
-
   // Show a next question and check if it's english or french
   const movingNextQuestion = () => {
     if (lang === "english" && !yesNoQuestion) {
@@ -363,7 +356,6 @@ const WheelPage = ({ children, currentUser }) => {
       setQuestion(questions[counter + 1].questionFrench);
     }
   };
-
   // Create new object and add to state of "ans"
   const createNewObject = () => {
     if (no) {
@@ -414,7 +406,6 @@ const WheelPage = ({ children, currentUser }) => {
       setColorsOfBars(sumOfUserInput(selectedAnwsers));
     }
   };
-
   // Check a pair of same name of category. If there is an same name of category, calculate an average of 2 numbers
   const checkPair = (category, value) => {
     ans.filter((a, counter) => {
@@ -426,7 +417,6 @@ const WheelPage = ({ children, currentUser }) => {
       return null;
     });
   };
-
   // Find a same category name in "initialState" of aveAnswers, then insert a calculated average in "checkpair"function
   const insertLength = (category, average) => {
     aveAnswers.filter((ave, counter) => {
@@ -437,7 +427,6 @@ const WheelPage = ({ children, currentUser }) => {
       return null;
     });
   };
-
   // Convert average num to the length of bar
   const convertAverageToLength = (average) => {
     switch (average) {
@@ -467,7 +456,6 @@ const WheelPage = ({ children, currentUser }) => {
         return null;
     }
   };
-
   // Set colors depends on a total score
   const setColorsOfBars = (totalScore) => {
     if (totalScore === 0) {
@@ -480,13 +468,11 @@ const WheelPage = ({ children, currentUser }) => {
       setColors(groupFourColors);
     }
   };
-
   // calculate sum of all answers
   const sumOfUserInput = (selectedAnwsers) => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     return selectedAnwsers.reduce(reducer);
   };
-
   const renderQuiz = () => {
     return <QuestionContainer />;
   };

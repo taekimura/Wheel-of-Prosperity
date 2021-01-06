@@ -2,18 +2,18 @@ import { UPDATE_WHEEL, UPDATE_AVERAGE } from "./wheel.types";
 
 const initialState = {
     sectionScores: [
-        { Rejuvenation: 10 },
-        { Embrace: 10 },
-        { Lifestyle: 10 },
-        { Self: 10 },
-        { Relationship: 10 },
-        { Family: 10 },
-        { Inspiration: 10 },
-        { Creativity: 10 },
-        { Health: 10 },
-        { Money: 10 },
-        { Work: 10 },
-        { Expansion: 10 },
+        { Stimulation: 10 },
+        { Comprehension: 10 },
+        { Livelihood: 10 },
+        { Intellect: 10 },
+        { Love: 10 },
+        { Bonds: 10 },
+        { Imagination: 10 },
+        { Inventiveness: 10 },
+        { Strength: 10 },
+        { Finances: 10 },
+        { Performance: 10 },
+        { Development: 10 },
     ],
     averageScores: []
 };

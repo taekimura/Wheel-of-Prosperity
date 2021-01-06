@@ -243,7 +243,6 @@ const WheelPage = ({ children, currentUser }) => {
       handleSubmitAnswers();
     } else {
       handleNextQuestion(e);
-      createNewObject();
     }
   };
 

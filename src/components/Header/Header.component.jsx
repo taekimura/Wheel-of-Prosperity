@@ -5,7 +5,6 @@ import {createStructuredSelector} from 'reselect'
 
 import './Header.styles.scss';
 
-import Logo from '../../assets/logo_GHW_Coeur.png';
 import {auth} from '../firebase/firebase_utils';
 import {selectCurrentUser} from '../../redux/user/user.selector'
 

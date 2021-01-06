@@ -1,32 +1,47 @@
 export const initialState = [
-    { category: "Rejuvenation", value: 10 },
-    { category: "Embrace", value: 10 },
-    { category: "Lifestyle", value: 10 },
-    { category: "Self", value: 10 },
-    { category: "Relationship", value: 10 },
-    { category: "Family", value: 10 },
-    { category: "Inspiration", value: 10 },
-    { category: "Creativity", value: 10 },
-    { category: "Health", value: 10 },
-    { category: "Money", value: 10 },
-    { category: "Work", value: 10 },
-    { category: "Expansion", value: 10 }
+    { category: "Stimulation", value: 10 },
+    { category: "Comprehension", value: 10 },
+    { category: "Livelihood", value: 10 },
+    { category: "Intellect", value: 10 },
+    { category: "Love", value: 10 },
+    { category: "Bonds", value: 10 },
+    { category: "Imagination", value: 10 },
+    { category: "Inventiveness", value: 10 },
+    { category: "Strength", value: 10 },
+    { category: "Finances", value: 10 },
+    { category: "Performance", value: 10 },
+    { category: "Development", value: 10 }
 ];
 
 export const seriesLabels = [
-    "Rejuvenation",
-    "Embrace",
-    "Lifestyle",
-    "Self",
-    "Relationship",
-    "Family",
-    "Inspiration",
-    "Creativity",
-    "Health",
-    "Money",
-    "Work",
-    "Expansion"
+    "Stimulation",
+    "Comprehension",
+    "Livelihood",
+    "Intellect",
+    "Love",
+    "Bonds",
+    "Imagination",
+    "Inventiveness",
+    "Strength",
+    "Finances",
+    "Performance",
+    "Development"
 ];
+
+// export const seriesLabels = [
+//     "Rejuvenation/Stimulation",
+//     "Embrace/Comprehension",
+//     "Lifestyle/Livelihood",
+//     "Self/Intellect",
+//     "Relationship/Love",
+//     "Family/Bonds",
+//     "Inspiration/Imagination",
+//     "Creativity/Inventiveness",
+//     "Health/Strength",
+//     "Money/Finances",
+//     "Work/Performance",
+//     "Expansion/Development"
+// ];
 
 export const groupdefaultColors = [
     "#00607f",

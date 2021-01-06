@@ -19,10 +19,6 @@ import Asset2 from "../../assets/Asset2.png";
 import Asset1 from "../../assets/Asset1.png";
 import ExternalCircle from "../../assets/ExternalCircle.png";
 import EnglishExternalCircle from "../../assets/EnglishExternalCircle.png"
-import Harmonie from "../../assets/Harmonie.png";
-import Plentitude from "../../assets/Plentitude.png";
-import Vitalite from "../../assets/Vitalite.png";
-import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
 const Chart = () => {
@@ -68,7 +64,7 @@ const Chart = () => {
                         <div style={{ color: "#8c191c", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(270deg)' }}>Catégorie4</div>
                     </div>
                     <div className="goldenCircle11" >
-                        <img src={EnglishExternalCircle} width="640" alt="Asset1" className="circle10" />
+                        <img src={ExternalCircle} width="640" alt="Asset1" className="circle10" />
                     </div>
                 </>
             )

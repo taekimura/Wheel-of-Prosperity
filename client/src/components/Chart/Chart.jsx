@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import html2canvas from 'html2canvas';
-import axios from 'axios';
 import { Context } from "../../pages/wheel/WheelPage";
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
@@ -27,12 +25,11 @@ import Vitalite from "../../assets/Vitalite.png";
 import Prosperite from "../../assets/Prosperite.png";
 import "./Chart.scss";
 
-const Chart = ({ currentUser }) => {
+const Chart = () => {
     const { data, colors, lengthOfBar, totalScore, lang } = useContext(Context);
     const [renderedBarsArray, setRenderedBarsArray] = useState([]);
     const [itemsRendered, setItemsRendered] = useState(0);
     const [barHeight] = useState(200);
-    const [sent, setSent] = useState(false);
 
     useEffect(() => {
         const timer = itemsRendered < data.length && setTimeout(updateRenderedThings, 100);
@@ -40,47 +37,9 @@ const Chart = ({ currentUser }) => {
 
     }, [data, itemsRendered]);
 
-    // Save an image of wheel as a png file
-    const printDocument = () => {
-        html2canvas(document.getElementById('Charts'))
-            .then((canvas) => {
-                const image = canvas.toDataURL("image/png");
-                const name = currentUser.displayName;
-                const email = currentUser.email;
-                const dataToSubmit = {
-                    email,
-                    name,
-                    lang,
-                    image
-                }
-                axios.post("/api/sendMail", dataToSubmit)
-                    .then(res => {
-                        setSent(true);
-                    }, resetForm())
-                    .then(
-                        setTimeout(function () {
-                            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=1, shrink-to-fit=no")
-                            alert("Message has been sent. Check your email. / Le message a été envoyé. Vérifiez votre email")
-                        }, 2000)
-                    )
-                    .catch(() => {
-                        console.log('message not sent')
-                    })
-            })
-    };
-
-    const resetForm = () => {
-        setTimeout(() => {
-            setSent(false)
-        }, 3000)
-    }
-
     const updateRenderedThings = () => {
         setRenderedBarsArray(renderedBarsArray.concat(data[itemsRendered]));
         setItemsRendered(itemsRendered + 1);
-        if (itemsRendered === 11) {
-            setTimeout(printDocument(), 2000);
-        }
     };
 
     let max = 0;
@@ -96,20 +55,20 @@ const Chart = ({ currentUser }) => {
         if (lang === "french") {
             return (
                 <>
-                    <div className="harmonie">
-                        <img src={Harmonie} alt="Harmonie" className="picHarmonie" />
+                    <div className="harmonie2">
+                        <div style={{ color: "#32774b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(90deg)' }}>Catégorie2</div>
                     </div>
-                    <div className="plentitude">
-                        <img src={Plentitude} alt="Plentitude" className="picPlentitude" />
+                    <div className="plentitude2">
+                        <div style={{ color: "#006c8b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>Catégorie1</div>
                     </div>
-                    <div className="vitalite">
-                        <img src={Vitalite} alt="Vitalite" className="picVitalite" />
+                    <div className="vitalite2">
+                        <div style={{ color: "#c45621", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>Catégorie3</div>
                     </div>
-                    <div className="prosperite">
-                        <img src={Prosperite} alt="Prosperite" className="picProsperite" />
+                    <div className="prosperite2">
+                        <div style={{ color: "#8c191c", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(270deg)' }}>Catégorie4</div>
                     </div>
                     <div className="goldenCircle11" >
-                        <img src={ExternalCircle} width="640" alt="Asset1" className="circle10" />
+                        <img src={EnglishExternalCircle} width="640" alt="Asset1" className="circle10" />
                     </div>
                 </>
             )
@@ -117,16 +76,16 @@ const Chart = ({ currentUser }) => {
             return (
                 <>
                     <div className="harmonie2">
-                        <div style={{ color: "#32774b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(90deg)' }}>HARMONY</div>
+                        <div style={{ color: "#32774b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(90deg)' }}>Category2</div>
                     </div>
                     <div className="plentitude2">
-                        <div style={{ color: "#006c8b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>PLENITUDE</div>
+                        <div style={{ color: "#006c8b", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>Category1</div>
                     </div>
                     <div className="vitalite2">
-                        <div style={{ color: "#c45621", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>VITALITY</div>
+                        <div style={{ color: "#c45621", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm' }}>Category3</div>
                     </div>
                     <div className="prosperite2">
-                        <div style={{ color: "#8c191c", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(270deg)' }}>PROSPERITY</div>
+                        <div style={{ color: "#8c191c", fontFamily: 'Playfair Display SC', letterSpacing: '0.5mm', transform: 'rotate(270deg)' }}>Category4</div>
                     </div>
                     <div className="goldenCircle11" >
                         <img src={EnglishExternalCircle} width="640" alt="Asset1" className="circle10" />
@@ -442,7 +401,6 @@ const Chart = ({ currentUser }) => {
                     const color = groupdefaultColors[serieIndex];
                     let style;
                     let size = serie;
-                    // 'radial-gradient( white,' + colors[serieIndex] + ')'
 
                     style = {
                         background: colors[serieIndex],

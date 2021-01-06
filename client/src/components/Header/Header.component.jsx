@@ -11,9 +11,6 @@ import {selectCurrentUser} from '../../redux/user/user.selector'
 
 const Header = ({currentUser}) => (
   <div className='header'>
-    <Link className='logo-container' to='/'>
-      <img src={Logo} alt='logo'  className='logo' />
-    </Link>
   </div>
 );
 

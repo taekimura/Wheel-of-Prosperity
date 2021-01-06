@@ -30,7 +30,11 @@
       transform: scale(1.1);
     }
     .table-highlight{
-      background: red;
+      background: #d53c2b;
     }
+    .MuiPaginationItem-textSecondary .Mui-selected{
+      color: #fff;
+      background-color:#d53c2b;
+  }
 }
   

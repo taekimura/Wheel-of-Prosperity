@@ -24,7 +24,7 @@ export const Provider = Context.Provider;
 const WheelPage = ({ children, currentUser }) => {
   // For setting loading and languages
   const [loading, setLoading] = useState(true);
-  const [lang, setLang] = useState("french");
+  const [lang, setLang] = useState("english");
 
   // For the chart section
   const [lengthOfBar, setLengthOfBar] = useState([]);
@@ -73,7 +73,7 @@ const WheelPage = ({ children, currentUser }) => {
 
   useEffect(() => {
     sendDataToFirebasePromise();
-  }, [result, ans.length > 0]);
+  }, [ans.length > 24]);
 
   const demoAsyncCall = () => {
     return new Promise((resolve) => setTimeout(() => resolve(), 1500));
@@ -87,6 +87,7 @@ const WheelPage = ({ children, currentUser }) => {
           selectedAnwsers.length > 0 ? sumOfUserInput(selectedAnwsers) : null;
         const displayName = currentUser.displayName;
         const email = currentUser.email;
+        const role = currentUser.role;
         firebase.firestore().collection("results").add({
           displayName,
           email,
@@ -94,8 +95,16 @@ const WheelPage = ({ children, currentUser }) => {
           total,
           createdAt,
         });
+        firebase.firestore().collection("users").add({
+          createdAt,
+          displayName,
+          email,
+          role
+        });
       };
+      if(result){
       sendDataToFirebase();
+      }
       resolve("Sent data to the firebase");
     });
   };
@@ -478,10 +487,6 @@ const WheelPage = ({ children, currentUser }) => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     return selectedAnwsers.reduce(reducer);
   };
-
-  // const onOpenModal = () => {
-  //   setOpen(true);
-  // };
 
   const renderQuiz = () => {
     return <QuestionContainer />;

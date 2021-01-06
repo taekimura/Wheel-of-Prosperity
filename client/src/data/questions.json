@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "instructionEnglish": "To assist you in having a clear picture of your Universal Prosperity Blueprint, we invite you to note, on a scale of 0 to 10 - 0 representing always (light) and 10 representing never (heavy) - the frequency at which the residues from patterns and/or Qualities of the Heart impact your daily life in four (4) major categories, that of Plenitude, Harmony, Vitality, and Prosperity.",
-    "instructionFrench": "Afin de vous assister à avoir une vision claire de votre portrait de la Prospérité Universelle, nous vous invitons à noter, sur une échelle de 0 à 10 – 0 représentant toujours (léger) et 10 représentant jamais (lourd) – la fréquence à laquelle les résidus de patterns et/ou les Qualités du Coeur ont un impact dans votre vie quotidienne sur 4 grandes catégories, telles que la Plénitude, l'Harmonie, la Vitalité et la Prospérité.",
+    "instructionEnglish": "To assist you in having a clear picture of your Happiness Test, we invite you to note, on a scale of 0 to 10 - 0 representing always (light) and 10 representing never (heavy) - the frequency at which the residues from patterns and/or Qualities of the Heart impact your daily life in four (4) major categories, that of 1, 2, 3, and 4.",
+    "instructionFrench": "Afin de vous assister à avoir une vision claire de votre portrait de la Test de bonheur, nous vous invitons à noter, sur une échelle de 0 à 10 – 0 représentant toujours (léger) et 10 représentant jamais (lourd) – la fréquence à laquelle les résidus de patterns et/ou les Qualités du Coeur ont un impact dans votre vie quotidienne sur 4 grandes catégories, telles que 1, 2, 3 et 4.",
     "explanationEnglish": "0 representing always and 10 never - what is the first number to come to mind.",
     "explanationFrench": "0 étant toujours et 10 étant jamais – quel chiffre vous vient le premier à l’esprit.",
-    "category": "Lifestyle",
+    "category": "Lifestyle/Livelihood",
     "color": "#00506d",
-    "questionEngLish": "In general, do you feel free in your life?",
-    "questionFrench": "Vous sentez-vous libre de façon générale dans votre vie?",
+    "questionEngLish": "I can find the good in even the most disagreeable people.",
+    "questionFrench": "Je peux trouver le bien même chez les personnes les plus désagréables.",
     "answers": [
       {
         "content": "0"
@@ -47,63 +47,63 @@
   },
   {
     "id": 2,
-    "category": "Embrace",
+    "category": "Embrace/Comprehension",
     "color": "#00506d",
-    "questionEngLish": "Do you welcome and embrace the circumstances that life presents to you with fluidity?",
-    "questionFrench": "Accueillez-vous les circonstances que la vie vous présentent avec fluidité?"
+    "questionEngLish": "Even if I'm sure about my ultimate choice, I still ask others for advice before making an important or risky decision.",
+    "questionFrench": "Même si je suis sûr de mon choix ultime, je demande toujours conseil aux autres avant de prendre une décision importante ou risquée."
   },
   {
     "id": 3,
-    "category": "Lifestyle",
+    "category": "Lifestyle/Livelihood",
     "color": "#006c8b",
-    "questionEngLish": "Do you appreciate each step of a project, as well as each day's activities?",
-    "questionFrench": "Appréciez-vous chaque étape d'un projet et chaque activité de la journée?"
+    "questionEngLish": "I can find something positive in even the most difficult situations.",
+    "questionFrench": "Je peux trouver quelque chose de positif même dans les situations les plus difficiles."
   },
   {
     "id": 4,
-    "category": "Embrace",
+    "category": "Embrace/Comprehension",
     "color": "#006c8b",
-    "questionEngLish": "Do you feel ready to dive into the heart of Universal Prosperity?",
-    "questionFrench": "Vous sentez-vous prêt(e) à plonger dans le vide au coeur de la Prospérité Universelle?"
+    "questionEngLish": "I actively keep in touch with friends and family.",
+    "questionFrench": "Je reste activement en contact avec mes amis et ma famille."
   },
   {
     "id": 5,
-    "category": "Rejuvenation",
+    "category": "Rejuvenation/Stimulation",
     "color": "#50959a",
-    "questionEngLish": "Are you ready to embark upon the \"biggest\" journey of your life… that of the head to the HEART?",
-    "questionFrench": "Êtes-vous prêt à entreprendre le plus \"grand\" voyage de votre vie... celui de la tête au COEUR?"
+    "questionEngLish": "I feel lonely.",
+    "questionFrench": "Je me sens seul."
   },
   {
     "id": 6,
-    "category": "Rejuvenation",
+    "category": "Rejuvenation/Stimulation",
     "color": "#50959a",
-    "questionEngLish": "Is Plenitude part of your daily life?",
-    "questionFrench": "Est-ce que la Plénitude fait partie de votre quotidien?"
+    "questionEngLish": "When times get tough, I turn to friends/family for support.",
+    "questionFrench": "Lorsque les temps sont durs, je me tourne vers mes amis / ma famille pour obtenir du soutien."
   },
   {
     "id": 7,
-    "category": "Self",
+    "category": "Self/Intellect",
     "color": "#005c41",
-    "questionEngLish": "Are you at peace with who you are and your life choices?",
-    "questionFrench": "Êtes-vous en paix avec qui vous êtes et vos choix de vie?"
+    "questionEngLish": "When I find myself overwhelmed with stress, I shut down completely.",
+    "questionFrench": "Quand je me trouve submergé par le stress, je m'arrête complètement."
   },
   {
     "id": 8,
-    "category": "Family",
+    "category": "Family/Bonds",
     "color": "#005c41",
-    "questionEngLish": "Do you easily communicate the profound joy that lives within you with your family?",
-    "questionFrench": "Communiquez-vous facilement la joie profonde qui vous habite à votre famille?"
+    "questionEngLish": "I keep my problems to myself.",
+    "questionFrench": "Je garde mes problèmes pour moi."
   },
   {
     "id": 9,
-    "category": "Family",
+    "category": "Family/Bonds",
     "color": "#32774b",
-    "questionEngLish": "Do you enjoy preparing celebrations for others (birthdays, anniversaries, promotions, retirement, etc.)?",
-    "questionFrench": "Aimez-vous préparer des célébrations pour les autres (anniversaire, promotion, retraite etc)?"
+    "questionEngLish": "When I'm feeling down, I remind myself to focus on the good things in my life instead of the bad.",
+    "questionFrench": "Quand je me sens mal, je me rappelle de me concentrer sur les bonnes choses de ma vie plutôt que sur les mauvaises."
   },
   {
     "id": 10,
-    "category": "Relationship",
+    "category": "Relationship/Love",
     "color": "#32774b",
     "questionEngLish": "Are you in a romantic relationship?",
     "questionFrench": "Êtes-vous en relation amoureuse?",
@@ -126,100 +126,100 @@
   },
   {
     "id": 11,
-    "category": "Relationship",
+    "category": "Relationship/Love",
     "color": "#5b9e51",
-    "questionEngLish": "Do you feel joy in sharing your life without needing to be in symbiosis?",
-    "questionFrench": "Ressentez-vous la joie de partager votre vie sans avoir besoin d'être en symbiose?"
+    "questionEngLish": "When I approach someone for conversation, I adjust to his/her level (I sit if he/she is sitting or stand if he/she is standing).",
+    "questionFrench": "Lorsque je m'approche de quelqu'un pour une conversation, je m'adapte à son niveau (je m'assois s'il est assis ou je me tiens s'il est debout)."
   },
   {
     "id": 12,
-    "category": "Self",
+    "category": "Self/Intellect",
     "color": "#5b9e51",
-    "questionEngLish": "Do you allow love to fill you and flow within you before sharing it?",
-    "questionFrench": "Permettez-vous à l'amour de vous remplir et de circuler en vous avant de l'offrir?"
+    "questionEngLish": "When I have a difficult problem, I try to look at it from different angles in order to come up with a solution.",
+    "questionFrench": "Quand j'ai un problème difficile, j'essaye de le regarder sous différents angles afin de trouver une solution."
   },
   {
     "id": 13,
-    "category": "Inspiration",
+    "category": "Inspiration/Imagination",
     "color": "#c547619",
-    "questionEngLish": "Do you receive new inspirations with lightness and in total openness?",
-    "questionFrench": "Recevez-vous les nouvelles inspirations avec légèreté et en pleine ouverture?"
+    "questionEngLish": "I refuse to give up, no matter how tough things get.",
+    "questionFrench": "Je refuse d'abandonner, même si les choses deviennent difficiles."
   },
   {
     "id": 14,
-    "category": "Creativity",
+    "category": "Creativity/Inventiveness",
     "color": "#c547619",
-    "questionEngLish": "Do you leave enough time and space for creativity in your life?",
-    "questionFrench": "Vous laissez-vous suffisamment de temps et d'espace de créativité dans votre vie?"
+    "questionEngLish": "I find it's better not to get my hopes up, so that I don't end up disappointed.",
+    "questionFrench": "Je trouve qu'il vaut mieux ne pas espérer, pour ne pas être déçu."
   },
   {
     "id": 15,
-    "category": "Inspiration",
+    "category": "Inspiration/Imagination",
     "color": "#c45621",
-    "questionEngLish": "Do you dive right into the unknown with courage and certitude?",
-    "questionFrench": "Plongez-vous dans l'inconnu avec courage et certitude?"
+    "questionEngLish": "I believe that what can go wrong will go wrong.",
+    "questionFrench": "Je crois que ce qui peut mal tourner va mal."
   },
   {
     "id": 16,
-    "category": "Creativity",
+    "category": "Creativity/Inventiveness",
     "color": "#c45621",
-    "questionEngLish": "Are you ready to fully shine brightly, all the while being an instrument of the universe?",
-    "questionFrench": "Êtes-vous prêt(e) à briller pleinement en étant un instrument de l'Univers?"
+    "questionEngLish": "No matter what life throws at me, I believe that I can deal with it.",
+    "questionFrench": "Peu importe ce que la vie me réserve, je crois que je peux y faire face."
   },
   {
     "id": 17,
-    "category": "Health",
+    "category": "Health/Strength",
     "color": "#e07c27",
-    "questionEngLish": "Have you stopped holding on to the need for the approval/recognition of others?",
-    "questionFrench": "Avez-vous cessé de retenir le besoin de l'approbation/reconnaissance des autres?"
+    "questionEngLish": "If I ever need help, I believe that my friends and/or family will be there for me.",
+    "questionFrench": "Si jamais j'ai besoin d'aide, je crois que mes amis et / ou ma famille seront là pour moi."
   },
   {
     "id": 18,
-    "category": "Health",
+    "category": "Health/Strength",
     "color": "#e07c27",
-    "questionEngLish": "Do you allow vitality to flow within you with lightness?",
-    "questionFrench": "Laissez-vous circuler la vitalité en vous avec légèreté?"
+    "questionEngLish": "I'm better off looking after myself because I can't rely on others to do so.",
+    "questionFrench": "Je suis mieux de prendre soin de moi parce que je ne peux pas compter sur les autres pour le faire."
   },
   {
     "id": 19,
-    "category": "Money",
+    "category": "Money/Finances",
     "color": "#8c191c",
-    "questionEngLish": "Do you feel wonder and awe for the money that flows through you?",
-    "questionFrench": "Ressentez-vous de l'émerveillement pour l'argent qui circule à travers vous?"
+    "questionEngLish": "Being myself guarantees that people will dislike me.",
+    "questionFrench": "Être moi-même garantit que les gens ne m'aimeront pas."
   },
   {
     "id": 20,
-    "category": "Expansion",
+    "category": "Expansion/Development",
     "color": "#8c191c",
-    "questionEngLish": "Are you amazed to see the Universe at work, even if you're experiencing uncomfortable situations?",
-    "questionFrench": "Êtes-vous émerveillé de voir l'Univers à l'oeuvre, même si vous vivez des situations inconfortables?"
+    "questionEngLish": "Nothing of value can be learned from failure.",
+    "questionFrench": "Rien de valeur ne peut être appris de l'échec."
   },
   {
     "id": 21,
-    "category": "Work",
+    "category": "Work/Performance",
     "color": "#8c191c",
-    "questionEngLish": "Do you easily express care to your work colleagues, even if they don't think the same way you do?",
-    "questionFrench": "Exprimez-vous facilement de la bonté à vos collègues de travail, même s'ils ne pensent pas comme vous?"
+    "questionEngLish": "I had trouble sleeping - I could not fall or stay asleep, and/or didn't feel well-rested when I woke up.",
+    "questionFrench": "J'avais du mal à dormir - je ne pouvais pas m'endormir ou rester endormi, et / ou je ne me sentais pas bien reposé au réveil."
   },
   {
     "id": 22,
-    "category": "Money",
+    "category": "Money/Finances",
     "color": "#8c191c",
-    "questionEngLish": "Do you feel free financially regardless of your assets?",
-    "questionFrench": "Vous sentez-vous libre financièrement indépendamment de vos actifs?"
+    "questionEngLish": "I easily develop emotional ties to others.",
+    "questionFrench": "Je développe facilement des liens émotionnels avec les autres."
   },
   {
     "id": 23,
-    "category": "Expansion",
+    "category": "Expansion/Development",
     "color": "#b92351",
-    "questionEngLish": "Are you ready to free yourself of your dreams, desires, and needs to be entirely satisfied?",
-    "questionFrench": "Êtes-vous prêt à vous libérer de vos rêves, désirs et besoins pour être pleinement satisfait?"
+    "questionEngLish": "I worry that my partner cares less about me than I care about him or her.",
+    "questionFrench": "J'ai peur que mon partenaire se soucie moins de moi que je ne me soucie de lui ou d'elle."
   },
   {
     "id": 24,
-    "category": "Work",
+    "category": "Work/Performance",
     "color": "#b92351",
-    "questionEngLish": "Are you able to be detached from any specific tangible results to feel fulfilled?",
-    "questionFrench": "Êtes-vous en mesure d'être détaché(e) de résultats spécifiques pour vous sentir comblé(e)?"
+    "questionEngLish": "I am constantly trying to fix other people's problems.",
+    "questionFrench": "J'essaie constamment de résoudre les problèmes des autres."
   }
 ]

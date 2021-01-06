@@ -16,7 +16,7 @@
   }
   #container span{
     display: block;
-    background: #3d2903;
+    background: black;
     width: 100px;
     height: 5px;
     margin-top: 5px;
@@ -24,7 +24,7 @@
     border-radius: 5px;
   }
   .loading{
-    color: #3d2903;
+    color: black;
   }
   
   #container span:nth-child(2){animation-delay: 100ms;}

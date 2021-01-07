@@ -17,8 +17,8 @@ import Asset4 from "../../assets/Asset4.png";
 import Asset3 from "../../assets/Asset3.png";
 import Asset2 from "../../assets/Asset2.png";
 import Asset1 from "../../assets/Asset1.png";
-import ExternalCircle from "../../assets/ExternalCircle.png";
-import EnglishExternalCircle from "../../assets/EnglishExternalCircle.png"
+import ExternalCircle from "../../assets/testFRENCH.png";
+import EnglishExternalCircle from "../../assets/testENGLISH.png"
 import "./Chart.scss";
 
 const Chart = () => {

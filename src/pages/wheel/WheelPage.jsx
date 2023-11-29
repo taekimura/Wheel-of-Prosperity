@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import questions from "../../data/questions.json";
-import QuestionContainer from "../../components/QuestionContainer/QuestionContainer";
-import Chart from "../../components/Chart/Chart";
-import QuestionModal from "../../components/Modal/Modal";
-import Loading from "../../components/Loading/Loading";
+import React, { useState, useEffect } from 'react';
+import questions from '../../data/questions.json';
+import QuestionContainer from '../../components/QuestionContainer/QuestionContainer';
+import Chart from '../../components/Chart/Chart';
+import QuestionModal from '../../components/Modal/Modal';
+import Loading from '../../components/Loading/Loading';
 import {
   initialState,
   seriesLabels,
   groupOneColors,
   groupTwoColors,
   groupThreeColors,
-  groupFourColors,
-} from "../../constants";
-import { selectCurrentUser } from "../../redux/user/user.selector";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import firebase from "../../components/firebase/firebase_utils";
-import "bootstrap/dist/css/bootstrap.min.css";
+  groupFourColors
+} from '../../constants';
+import { selectCurrentUser } from '../../redux/user/user.selector';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+// import firebase from '../../components/firebase/firebase_utils';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const Context = React.createContext("this is context!");
+export const Context = React.createContext('this is context!');
 export const Provider = Context.Provider;
 
 const WheelPage = ({ children, currentUser }) => {
   // For setting loading and languages
   const [loading, setLoading] = useState(true);
-  const [lang, setLang] = useState("english");
+  const [lang, setLang] = useState('english');
 
   // For the chart section
   const [lengthOfBar, setLengthOfBar] = useState([]);
@@ -32,7 +32,7 @@ const WheelPage = ({ children, currentUser }) => {
   const [colors, setColors] = useState(groupOneColors);
 
   // For the user input data
-  const [selectedAnwsers, setSelectedAnswers] = useState([]);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [aveAnswers] = useState(initialState);
   const [ans, setAns] = useState([]);
   const [data, setData] = useState([]);
@@ -52,24 +52,24 @@ const WheelPage = ({ children, currentUser }) => {
   const [counter, setCounter] = useState(0);
   const [question, setQuestion] = useState();
   const [inputNum, setInputNum] = useState(false);
-  const [anwserOptions, setAnwerOptions] = useState(questions[0].answers);
+  const [answerOptions, setAnswerOptions] = useState(questions[0].answers);
   const [totalQuestion] = useState(questions.length);
   const [result, setResult] = useState(false);
 
   // For Buttons and styles
-  const [title, setTitle] = useState("PROSPERITY QUIZ");
-  const [applyButton, setApplyButton] = useState("Apply");
-  const [startButton, setStartButton] = useState("Start");
-  const [englishButtonColor, setEnglishButtonColor] = useState("#babac4");
-  const [frenchButtonColor, setFrenchButtonColor] = useState("#babac4");
+  const [title, setTitle] = useState('PROSPERITY QUIZ');
+  const [applyButton, setApplyButton] = useState('Apply');
+  const [startButton, setStartButton] = useState('Start');
+  const [englishButtonColor, setEnglishButtonColor] = useState('#babac4');
+  const [frenchButtonColor, setFrenchButtonColor] = useState('#babac4');
 
   useEffect(() => {
     demoAsyncCall().then(() => setLoading(false));
-    setLangage();
+    setLanguage();
     setData(lengthOfBar);
     console.log(ans);
     console.log(aveAnswers);
-  }, [lengthOfBar, selectedAnwsers]);
+  }, [lengthOfBar, selectedAnswers]);
 
   useEffect(() => {
     sendDataToFirebasePromise();
@@ -84,28 +84,28 @@ const WheelPage = ({ children, currentUser }) => {
       const sendDataToFirebase = () => {
         const createdAt = new Date();
         const total =
-          selectedAnwsers.length > 0 ? sumOfUserInput(selectedAnwsers) : null;
+          selectedAnswers.length > 0 ? sumOfUserInput(selectedAnswers) : null;
         const displayName = currentUser.displayName;
         const email = currentUser.email;
         const role = currentUser.role;
-        firebase.firestore().collection("results").add({
-          displayName,
-          email,
-          ans,
-          total,
-          createdAt,
-        });
-        firebase.firestore().collection("users").add({
-          createdAt,
-          displayName,
-          email,
-          role
-        });
+        // firebase.firestore().collection('results').add({
+        //   displayName,
+        //   email,
+        //   ans,
+        //   total,
+        //   createdAt
+        // });
+        // firebase.firestore().collection('users').add({
+        //   createdAt,
+        //   displayName,
+        //   email,
+        //   role
+        // });
       };
-      if(result){
-      sendDataToFirebase();
+      if (result) {
+        sendDataToFirebase();
       }
-      resolve("Sent data to the firebase");
+      resolve('Sent data to the firebase');
     });
   };
 
@@ -127,115 +127,115 @@ const WheelPage = ({ children, currentUser }) => {
     }
   };
   // Set languages English or French
-  const setLangage = () => {
-    if (lang === "english" && !yesNoQuestion) {
+  const setLanguage = () => {
+    if (lang === 'english' && !yesNoQuestion) {
       setQuestion(questions[counter].questionEngLish);
-      setTitle("PROSPERITY QUIZ");
-      setApplyButton("Apply");
-      setStartButton("Start");
-      setEnglishButtonColor("#276a7c");
+      setTitle('PROSPERITY QUIZ');
+      setApplyButton('Apply');
+      setStartButton('Start');
+      setEnglishButtonColor('#276a7c');
       setInstruction(questions[0].instructionEnglish);
       setExplanation(questions[0].explanationEnglish);
-    } else if (lang === "french" && !yesNoQuestion) {
+    } else if (lang === 'french' && !yesNoQuestion) {
       setQuestion(questions[counter].questionFrench);
-      setTitle("QUIZ PROSPÉRITÉ");
-      setApplyButton("Appliquer");
-      setStartButton("Début");
+      setTitle('QUIZ PROSPÉRITÉ');
+      setApplyButton('Appliquer');
+      setStartButton('Début');
       setInstruction(questions[0].instructionFrench);
       setExplanation(questions[0].explanationFrench);
-      setFrenchButtonColor("#276a7c");
+      setFrenchButtonColor('#276a7c');
     }
   };
   // Translate to french
   const switchToFrench = () => {
     if (no) {
-      setLang("french");
+      setLang('french');
       setQuestion(
-        "Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?"
+        'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?'
       );
       setExplanation(questions[0].explanationFrench);
-      setAnwerOptions(questions[0].answers);
-      setFrenchButtonColor("#276a7c");
-      setEnglishButtonColor("#babac4");
+      setAnswerOptions(questions[0].answers);
+      setFrenchButtonColor('#276a7c');
+      setEnglishButtonColor('#babac4');
     } else if (yes) {
-      setLang("french");
+      setLang('french');
       setQuestion(
-        "En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?"
+        'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?'
       );
       setExplanation(questions[0].explanationFrench);
-      setAnwerOptions(questions[0].answers);
-      setFrenchButtonColor("#276a7c");
-      setEnglishButtonColor("#babac4");
-    } else if (selectedAnwsers.length === 9) {
-      setLang("french");
+      setAnswerOptions(questions[0].answers);
+      setFrenchButtonColor('#276a7c');
+      setEnglishButtonColor('#babac4');
+    } else if (selectedAnswers.length === 9) {
+      setLang('french');
       setExplanation(questions[0].explanationFrench);
       setQuestion(questions[9].questionFrench);
-      setAnwerOptions(questions[9].answersFren);
-      setFrenchButtonColor("#276a7c");
-      setEnglishButtonColor("#babac4");
+      setAnswerOptions(questions[9].answersFren);
+      setFrenchButtonColor('#276a7c');
+      setEnglishButtonColor('#babac4');
     } else {
-      setLang("french");
-      setTitle("QUIZ PROSPÉRITÉ");
+      setLang('french');
+      setTitle('QUIZ PROSPÉRITÉ');
       setInstruction(questions[0].instructionFrench);
       setExplanation(questions[0].explanationFrench);
       setQuestion(questions[counter].questionFrench);
-      setApplyButton("Appliquer");
-      setStartButton("Début");
-      setFrenchButtonColor("#276a7c");
-      setEnglishButtonColor("#babac4");
+      setApplyButton('Appliquer');
+      setStartButton('Début');
+      setFrenchButtonColor('#276a7c');
+      setEnglishButtonColor('#babac4');
     }
   };
   // Translate to english
   const switchToEnglish = () => {
     if (no) {
-      setLang("english");
+      setLang('english');
       setQuestion(
-        "For single people: Do you feel at peace, whole, and complete without a life partner?"
+        'For single people: Do you feel at peace, whole, and complete without a life partner?'
       );
       setExplanation(questions[0].explanationEnglish);
-      setAnwerOptions(questions[0].answers);
-      setEnglishButtonColor("#276a7c");
-      setFrenchButtonColor("#babac4");
+      setAnswerOptions(questions[0].answers);
+      setEnglishButtonColor('#276a7c');
+      setFrenchButtonColor('#babac4');
     } else if (yes) {
-      setLang("english");
+      setLang('english');
       setQuestion(
-        "With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?"
+        'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?'
       );
       setExplanation(questions[0].explanationEnglish);
-      setAnwerOptions(questions[0].answers);
-      setEnglishButtonColor("#276a7c");
-      setFrenchButtonColor("#babac4");
-    } else if (selectedAnwsers.length === 9) {
-      setLang("english");
+      setAnswerOptions(questions[0].answers);
+      setEnglishButtonColor('#276a7c');
+      setFrenchButtonColor('#babac4');
+    } else if (selectedAnswers.length === 9) {
+      setLang('english');
       setExplanation(questions[0].explanationEnglish);
       setQuestion(questions[9].questionEngLish);
-      setAnwerOptions(questions[9].answersEng);
-      setEnglishButtonColor("#276a7c");
-      setFrenchButtonColor("#babac4");
+      setAnswerOptions(questions[9].answersEng);
+      setEnglishButtonColor('#276a7c');
+      setFrenchButtonColor('#babac4');
     } else {
-      setLang("english");
-      setTitle("PROSPERITY QUIZ");
+      setLang('english');
+      setTitle('PROSPERITY QUIZ');
       setInstruction(questions[0].instructionEnglish);
       setExplanation(questions[0].explanationEnglish);
       setQuestion(questions[counter].questionEngLish);
-      setApplyButton("Apply");
-      setStartButton("Start");
-      setEnglishButtonColor("#276a7c");
-      setFrenchButtonColor("#babac4");
+      setApplyButton('Apply');
+      setStartButton('Start');
+      setEnglishButtonColor('#276a7c');
+      setFrenchButtonColor('#babac4');
     }
   };
   // Handle get value selected for question
   const handleAnswerSelected = (e) => {
     let target = e.target;
     let index = parseInt(target.value, 10);
-    // Object container & save anwsers after selected answer
-    selectedAnwsers[counter] = index;
-    setSelectedAnswers(selectedAnwsers);
-    console.log("The array of User input: " + selectedAnwsers);
-    console.log(sumOfUserInput(selectedAnwsers));
-    if (selectedAnwsers.length === 9 && yesNoQuestion) {
+    // Object container & save answers after selected answer
+    selectedAnswers[counter] = index;
+    setSelectedAnswers(selectedAnswers);
+    console.log('The array of User input: ' + selectedAnswers);
+    console.log(sumOfUserInput(selectedAnswers));
+    if (selectedAnswers.length === 9 && yesNoQuestion) {
       setInputNum(index + 100);
-    } else if (selectedAnwsers.length === 24) {
+    } else if (selectedAnswers.length === 24) {
       handleSubmitAnswers();
     } else {
       handleNextQuestion(e);
@@ -243,90 +243,89 @@ const WheelPage = ({ children, currentUser }) => {
   };
   // Handle next questions & answer
   const handleNextQuestion = (e) => {
-    if (selectedAnwsers.length === counter || selectedAnwsers.length === 0) {
-      alert("Please input a number. / Veuillez saisir un nombre.");
-    } else if (selectedAnwsers.length === 9 && lang === "english") {
+    if (selectedAnswers.length === counter || selectedAnswers.length === 0) {
+      alert('Please input a number. / Veuillez saisir un nombre.');
+    } else if (selectedAnswers.length === 9 && lang === 'english') {
       //Set Yes No Question of No.9
-      setInputNum("");
+      setInputNum('');
       movingNextQuestion();
-      setAnwerOptions(questions[9].answersEng);
+      setAnswerOptions(questions[9].answersEng);
       createNewObject();
       setYesNoQuestion(true);
-    } else if (selectedAnwsers.length === 9 && lang === "french") {
+    } else if (selectedAnswers.length === 9 && lang === 'french') {
       //Set Yes No Question of No.9
-      setInputNum("");
+      setInputNum('');
       movingNextQuestion();
-      setAnwerOptions(questions[9].answersFren);
+      setAnswerOptions(questions[9].answersFren);
       createNewObject();
       setYesNoQuestion(true);
     } else if (
-      selectedAnwsers.length === 10 &&
-      selectedAnwsers[9] === 101 &&
-      lang === "english"
+      selectedAnswers.length === 10 &&
+      selectedAnswers[9] === 101 &&
+      lang === 'english'
     ) {
-      // If the answer of No.9 is "No" and state of langage is "english", set this question.
+      // If the answer of No.9 is "No" and state of language is "english", set this question.
       setQuestion(
-        "For single people: Do you feel at peace, whole, and complete without a life partner?"
+        'For single people: Do you feel at peace, whole, and complete without a life partner?'
       );
-      setInputNum("");
-      setAnwerOptions(questions[0].answers);
+      setInputNum('');
+      setAnswerOptions(questions[0].answers);
       setYesNoQuestion(false);
       setNo(true);
     } else if (
-      selectedAnwsers.length === 10 &&
-      selectedAnwsers[9] === 101 &&
-      lang === "french"
+      selectedAnswers.length === 10 &&
+      selectedAnswers[9] === 101 &&
+      lang === 'french'
     ) {
       // If the answer of No.9 is "No" and state of langage is "french", set this question.
       setQuestion(
-        "Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?"
+        'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?'
       );
-      setInputNum("");
-      setAnwerOptions(questions[0].answers);
+      setInputNum('');
+      setAnswerOptions(questions[0].answers);
       setYesNoQuestion(false);
       setNo(true);
     } else if (
-      selectedAnwsers.length === 10 &&
-      selectedAnwsers[9] === 100 &&
-      lang === "english"
+      selectedAnswers.length === 10 &&
+      selectedAnswers[9] === 100 &&
+      lang === 'english'
     ) {
-      // If the answer of No.9 is "Yes" and state of langage is "english", set this question.
+      // If the answer of No.9 is "Yes" and state of language is "english", set this question.
       setQuestion(
-        "With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?"
+        'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?'
       );
-      setInputNum("");
-      setAnwerOptions(questions[0].answers);
+      setInputNum('');
+      setAnswerOptions(questions[0].answers);
       setYesNoQuestion(false);
       setYes(true);
     } else if (
-      selectedAnwsers.length === 10 &&
-      selectedAnwsers[9] === 100 &&
-      lang === "french"
+      selectedAnswers.length === 10 &&
+      selectedAnswers[9] === 100 &&
+      lang === 'french'
     ) {
-      // If the answer of No.9 is "Yes" and state of langage is "french", set this question.
+      // If the answer of No.9 is "Yes" and state of language is "french", set this question.
       setQuestion(
-        "En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?"
+        'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?'
       );
-      setInputNum("");
-      setAnwerOptions(questions[0].answers);
+      setInputNum('');
+      setAnswerOptions(questions[0].answers);
       setYesNoQuestion(false);
       setYes(true);
     } else {
       setYesNoQuestion(false);
       movingNextQuestion();
       createNewObject();
-      setInputNum("");
+      setInputNum('');
       setYes(false);
       setNo(false);
     }
   };
   // For a final answer
   const handleSubmitAnswers = () => {
-    const answerArray = selectedAnwsers.length;
+    const answerArray = selectedAnswers.length;
     if (answerArray.length === counter || answerArray === 0) {
-      alert("Please input a number. / Veuillez saisir un nombre.");
+      alert('Please input a number. / Veuillez saisir un nombre.');
     } else {
-      // asyncCall()
       createNewObject();
       const finalArray = [
         convertAverageToLength(aveAnswers[0].value),
@@ -340,7 +339,7 @@ const WheelPage = ({ children, currentUser }) => {
         convertAverageToLength(aveAnswers[8].value),
         convertAverageToLength(aveAnswers[9].value),
         convertAverageToLength(aveAnswers[10].value),
-        convertAverageToLength(aveAnswers[11].value),
+        convertAverageToLength(aveAnswers[11].value)
       ];
       setLengthOfBar(finalArray);
       setResult(true);
@@ -348,10 +347,10 @@ const WheelPage = ({ children, currentUser }) => {
   };
   // Show a next question and check if it's english or french
   const movingNextQuestion = () => {
-    if (lang === "english" && !yesNoQuestion) {
+    if (lang === 'english' && !yesNoQuestion) {
       setCounter(counter + 1);
       setQuestion(questions[counter + 1].questionEngLish);
-    } else if (lang === "french" && !yesNoQuestion) {
+    } else if (lang === 'french' && !yesNoQuestion) {
       setCounter(counter + 1);
       setQuestion(questions[counter + 1].questionFrench);
     }
@@ -361,49 +360,49 @@ const WheelPage = ({ children, currentUser }) => {
     if (no) {
       const newObj = {
         category: questions[counter].category,
-        value: selectedAnwsers[counter],
+        value: selectedAnswers[counter],
         questions: {
           english:
-            "For single people: Do you feel at peace, whole, and complete without a life partner?",
+            'For single people: Do you feel at peace, whole, and complete without a life partner?',
           french:
-            "Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?",
-        },
+            'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?'
+        }
       };
       let join = ans.concat(newObj);
       setAns(join);
       checkPair(newObj.category, newObj.value);
-      setTotalScore(sumOfUserInput(selectedAnwsers));
-      setColorsOfBars(sumOfUserInput(selectedAnwsers));
+      setTotalScore(sumOfUserInput(selectedAnswers));
+      setColorsOfBars(sumOfUserInput(selectedAnswers));
     } else if (yes) {
       const newObj = {
         category: questions[counter].category,
-        value: selectedAnwsers[counter],
+        value: selectedAnswers[counter],
         questions: {
           english:
-            "With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?",
+            'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?',
           french:
-            "En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?",
-        },
+            'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?'
+        }
       };
       let join = ans.concat(newObj);
       setAns(join);
       checkPair(newObj.category, newObj.value);
-      setTotalScore(sumOfUserInput(selectedAnwsers));
-      setColorsOfBars(sumOfUserInput(selectedAnwsers));
+      setTotalScore(sumOfUserInput(selectedAnswers));
+      setColorsOfBars(sumOfUserInput(selectedAnswers));
     } else {
       const newObj = {
         category: questions[counter].category,
-        value: selectedAnwsers[counter],
+        value: selectedAnswers[counter],
         questions: {
           english: questions[counter].questionEngLish,
-          french: questions[counter].questionFrench,
-        },
+          french: questions[counter].questionFrench
+        }
       };
       let join = ans.concat(newObj);
       setAns(join);
       checkPair(newObj.category, newObj.value);
-      setTotalScore(sumOfUserInput(selectedAnwsers));
-      setColorsOfBars(sumOfUserInput(selectedAnwsers));
+      setTotalScore(sumOfUserInput(selectedAnswers));
+      setColorsOfBars(sumOfUserInput(selectedAnswers));
     }
   };
   // Check a pair of same name of category. If there is an same name of category, calculate an average of 2 numbers
@@ -469,9 +468,9 @@ const WheelPage = ({ children, currentUser }) => {
     }
   };
   // calculate sum of all answers
-  const sumOfUserInput = (selectedAnwsers) => {
+  const sumOfUserInput = (selectedAnswers) => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    return selectedAnwsers.reduce(reducer);
+    return selectedAnswers.reduce(reducer);
   };
   const renderQuiz = () => {
     return <QuestionContainer />;
@@ -489,9 +488,9 @@ const WheelPage = ({ children, currentUser }) => {
         series,
         colors,
         question,
-        anwserOptions,
+        answerOptions,
         counter,
-        selectedAnwsers,
+        selectedAnswers,
         result,
         totalQuestion,
         lang,
@@ -514,7 +513,7 @@ const WheelPage = ({ children, currentUser }) => {
         renderQuiz,
         convertAverageToLength,
         switchToFrench,
-        switchToEnglish,
+        switchToEnglish
       }}
     >
       {children}
@@ -524,7 +523,7 @@ const WheelPage = ({ children, currentUser }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
+  currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(WheelPage);

@@ -88,6 +88,8 @@ const WheelPage = ({ children, currentUser }) => {
         const displayName = currentUser.displayName;
         const email = currentUser.email;
         const role = currentUser.role;
+        //Disable for portfolio
+
         // firebase.firestore().collection('results').add({
         //   displayName,
         //   email,
@@ -327,20 +329,10 @@ const WheelPage = ({ children, currentUser }) => {
       alert('Please input a number. / Veuillez saisir un nombre.');
     } else {
       createNewObject();
-      const finalArray = [
-        convertAverageToLength(aveAnswers[0].value),
-        convertAverageToLength(aveAnswers[1].value),
-        convertAverageToLength(aveAnswers[2].value),
-        convertAverageToLength(aveAnswers[3].value),
-        convertAverageToLength(aveAnswers[4].value),
-        convertAverageToLength(aveAnswers[5].value),
-        convertAverageToLength(aveAnswers[6].value),
-        convertAverageToLength(aveAnswers[7].value),
-        convertAverageToLength(aveAnswers[8].value),
-        convertAverageToLength(aveAnswers[9].value),
-        convertAverageToLength(aveAnswers[10].value),
-        convertAverageToLength(aveAnswers[11].value)
-      ];
+
+      const finalArray = Array(12)
+        .fill()
+        .map((_, i) => convertAverageToLength(aveAnswers[i].value));
       setLengthOfBar(finalArray);
       setResult(true);
     }
@@ -418,7 +410,7 @@ const WheelPage = ({ children, currentUser }) => {
   };
   // Find a same category name in "initialState" of aveAnswers, then insert a calculated average in "checkpair"function
   const insertLength = (category, average) => {
-    aveAnswers.filter((ave, counter) => {
+    aveAnswers.filter((_, counter) => {
       const index = Object.keys(aveAnswers)[counter];
       if (aveAnswers[index].category === category) {
         aveAnswers[index].value = average;

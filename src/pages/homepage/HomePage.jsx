@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import FormInput from '../../components/FormInput/FormInput.component';
 import CustomButton from '../../components/CustomButton/CustomButton.component';
 import { setCurrentUser } from '../../redux/user/user.action';
-import firebase from '../../components/firebase/firebase_utils';
 
 import './HomePage.scss';
 

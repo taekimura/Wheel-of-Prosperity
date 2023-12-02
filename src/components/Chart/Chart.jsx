@@ -538,7 +538,6 @@ const Chart = () => {
                   {convertLengthToAverage(serie)}
                 </b>
               </div>
-              {/* <label>{labels[serieIndex]}</label> */}
             </div>
           );
         })}

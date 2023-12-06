@@ -85,7 +85,6 @@ function App({ setCurrentUser, currentUser }) {
             !currentUser ? <Redirect to='/signin' /> : <WheelPage />
           }
         />
-        {/* <Route exact path='/signin' render={() => currentUser ? (<Redirect to="/wheel" />) : (<SignInAndSignUpPage />)} /> */}
         <Route
           path='/admin'
           render={() =>

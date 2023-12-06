@@ -18,8 +18,8 @@ const HomePage = ({ setCurrentUser }) => {
     event.preventDefault();
     setCurrentUser(userState);
     setUserState({
-      displayName: '',
-      email: ''
+      displayName,
+      email
     });
   };
 

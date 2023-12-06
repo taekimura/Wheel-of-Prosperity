@@ -15,7 +15,7 @@ import {
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-// import firebase from '../../components/firebase/firebase_utils';
+import firebase from '../../components/firebase/firebase_utils';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Context = React.createContext('this is context!');
@@ -88,21 +88,20 @@ const WheelPage = ({ children, currentUser }) => {
         const displayName = currentUser.displayName;
         const email = currentUser.email;
         const role = currentUser.role;
-        //Disable for portfolio
 
-        // firebase.firestore().collection('results').add({
-        //   displayName,
-        //   email,
-        //   ans,
-        //   total,
-        //   createdAt
-        // });
-        // firebase.firestore().collection('users').add({
-        //   createdAt,
-        //   displayName,
-        //   email,
-        //   role
-        // });
+        firebase.firestore().collection('results').add({
+          displayName,
+          email,
+          ans,
+          total,
+          createdAt
+        });
+        firebase.firestore().collection('users').add({
+          createdAt,
+          displayName,
+          email,
+          role
+        });
       };
       if (result) {
         sendDataToFirebase();

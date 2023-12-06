@@ -20,7 +20,7 @@ const SignIn = () => {
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      setCredentials({ email: '', password: '' });
+      setCredentials({ email, password });
     } catch (error) {
       console.log(error);
       alert(error.message);
@@ -58,7 +58,7 @@ const SignIn = () => {
           label='password'
           required
         />
-        <CustomButton type='submit'> Sign in </CustomButton>
+        <CustomButton type='submit'> Sign in</CustomButton>
       </form>
     </div>
   );

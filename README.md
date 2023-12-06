@@ -1,9 +1,13 @@
-## :dizzy: Wheel of prosperity :dizzy:
+## Wheel of Prosperity project
 This project consists of the creation of a 24-question quiz, based on an answer ranging from 0 to 10.
 The result will be accompanied by a "wheel of prosperity" visual that will show the curve of the results. 
 The wheel has 12 different coloured spokes and the 24 questions are grouped in pairs to give an average for each spoke.
 
-React / Redux / Firebase
+### Stack
+- React
+- Redux
+- Firebase
+
 
 #### :link:[Live Demo](https://wheel-of-prosperity-portfolio.netlify.app/)
 

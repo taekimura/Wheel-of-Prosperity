@@ -89,19 +89,20 @@ const WheelPage = ({ children, currentUser }) => {
         const email = currentUser.email;
         const role = currentUser.role;
 
-        firebase.firestore().collection('results').add({
-          displayName,
-          email,
-          ans,
-          total,
-          createdAt
-        });
-        firebase.firestore().collection('users').add({
-          createdAt,
-          displayName,
-          email,
-          role
-        });
+        //Disabled for portfolio purpose
+        // firebase.firestore().collection('results').add({
+        //   displayName,
+        //   email,
+        //   ans,
+        //   total,
+        //   createdAt
+        // });
+        // firebase.firestore().collection('users').add({
+        //   createdAt,
+        //   displayName,
+        //   email,
+        //   role
+        // });
       };
       if (result) {
         sendDataToFirebase();

@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
-import { Context } from "../../pages/wheel/WheelPage";
-import "./QuestionCount.scss";
-import { Progress } from "reactstrap";
+import React from 'react';
+import QuizContext from '../../pages/wheel/QuizContext';
+import './QuestionCount.scss';
+import { Progress } from 'reactstrap';
 
 const QuestionCount = () => {
-  const { counter } = useContext(Context);
+  const { quizState } = React.useContext(QuizContext);
+
   return (
     <div>
-      <Progress className="progress" value={counter} max="24" >{counter}/24</Progress>
+      <Progress className='progress' value={quizState.counter} max='24'>
+        {quizState.counter}/24
+      </Progress>
     </div>
   );
 };

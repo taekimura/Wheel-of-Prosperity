@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import { Context } from "../../pages/wheel/WheelPage";
-import "./Question.scss";
+import React from 'react';
+import QuizContext from '../../pages/wheel/QuizContext';
+import './Question.scss';
 
 const Question = () => {
-  const { question } = useContext(Context);
+  const { quizState } = React.useContext(QuizContext);
+
   return (
-    <div className="quiz--question__component">
-      <p>{question}</p>
+    <div className='quiz--question__component'>
+      <p>{quizState.question}</p>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { Button } from 'reactstrap';
 import TranslationButton from '../TranslationButton/TranslationButton';
 import QuestionContainer from '../QuestionContainer/QuestionContainer';
 import QuizContext from '../../contexts/QuizContext';
+import questions from '../../data/questions.json';
 import 'react-responsive-modal/styles.css';
 import './Modal.scss';
 
@@ -34,7 +35,8 @@ const QuestionModal = () => {
             color: '#3d2903'
           }}
         >
-          {t('PROSPERITY QUIZ')}
+          {/* {t('PROSPERITY QUIZ')} */}
+          {quizState.lang === 'english' ? 'PROSPERITY QUIZ' : 'QUIZ PROSPÉRITÉ'}
         </h3>
         <p
           id='instruction'
@@ -44,9 +46,12 @@ const QuestionModal = () => {
             fontSize: '1.1em'
           }}
         >
-          {t(
+          {quizState.lang === 'english'
+            ? questions[0].instructionEnglish
+            : questions[0].instructionFrench}
+          {/* {t(
             'To assist you in having a clear picture of your Happiness Test, we invite you to note, on a scale of 0 to 10 - 0 representing always (light) and 10 representing never (heavy) - the frequency at which the residues from patterns and/or Qualities of the Heart impact your daily life in four (4) major categories, that of 1, 2, 3, and 4.'
-          )}
+          )} */}
         </p>
         <div
           style={{

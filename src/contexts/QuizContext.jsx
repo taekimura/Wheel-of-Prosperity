@@ -198,7 +198,7 @@ export const QuizContextProvider = ({ children }) => {
     });
   };
 
-  // Find a same category name in "initialState", then insert a calculated average in "checkpair"function
+  // Find a same category name in "initialState", then insert a calculated average in "checkpair" function
   const insertLength = (category, average) => {
     initialState.filter((_, counter) => {
       const index = Object.keys(initialState)[counter];
@@ -233,37 +233,8 @@ export const QuizContextProvider = ({ children }) => {
 
       const finalArray = Array(12)
         .fill()
-        .map((_, i) => convertAverageToLength(initialState[i].value));
+        .map((_, i) => Math.abs(10 - initialState[i].value));
       setQuizState({ ...quizState, finalData: finalArray });
-    }
-  };
-
-  const convertAverageToLength = (average) => {
-    switch (average) {
-      case 0:
-        return 10;
-      case 1:
-        return 9;
-      case 2:
-        return 8;
-      case 3:
-        return 7;
-      case 4:
-        return 6;
-      case 5:
-        return 5;
-      case 6:
-        return 4;
-      case 7:
-        return 3;
-      case 8:
-        return 2;
-      case 9:
-        return 1;
-      case 10:
-        return 0;
-      default:
-        return null;
     }
   };
 

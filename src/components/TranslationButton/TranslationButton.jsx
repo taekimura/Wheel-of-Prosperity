@@ -5,8 +5,8 @@ import { ButtonGroup, Button } from 'reactstrap';
 import './TranslationButton.scss';
 
 const TranslationButton = () => {
-  const { switchToEnglish, switchToFrench } = React.useContext(Context);
-  const { quizState } = React.useContext(QuizContext);
+  const { quizState, switchToEnglish, switchToFrench } =
+    React.useContext(QuizContext);
 
   return (
     <ButtonGroup className='float-right'>

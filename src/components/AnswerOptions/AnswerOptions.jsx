@@ -1,12 +1,11 @@
 import React from 'react';
-import { Context } from '../../pages/wheel/WheelPage';
 import QuizContext from '../../pages/wheel/QuizContext';
 import { Button } from 'reactstrap';
 import './AnswerOptions.scss';
 
 const AnswerOptions = (props) => {
-  const { isBooleanQuiz, quizState } = React.useContext(QuizContext);
-  const { handleAnswerSelected, inputNum } = React.useContext(Context);
+  const { isBooleanQuiz, handleAnswerSelected } = React.useContext(QuizContext);
+
   if (isBooleanQuiz) {
     return (
       <Button

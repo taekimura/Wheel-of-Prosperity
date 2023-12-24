@@ -1,5 +1,4 @@
 import React from 'react';
-import { Context } from '../../pages/wheel/WheelPage';
 import { Modal } from 'react-responsive-modal';
 import { Button } from 'reactstrap';
 import TranslationButton from '../TranslationButton/TranslationButton';

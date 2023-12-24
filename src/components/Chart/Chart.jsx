@@ -1,5 +1,4 @@
 import React from 'react';
-import { Context } from '../../pages/wheel/WheelPage';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -23,8 +22,7 @@ import EnglishExternalCircle from '../../assets/testENGLISH.png';
 import './Chart.scss';
 
 const Chart = () => {
-  const { quizState } = React.useContext(QuizContext);
-  const { colors, totalScore } = React.useContext(Context);
+  const { quizState, totalScore, colors } = React.useContext(QuizContext);
   const [renderedBarsArray, setRenderedBarsArray] = React.useState([]);
   const [itemsRendered, setItemsRendered] = React.useState(0);
   const barHeight = 200;

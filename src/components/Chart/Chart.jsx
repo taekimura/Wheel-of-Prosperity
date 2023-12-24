@@ -24,10 +24,11 @@ import './Chart.scss';
 
 const Chart = () => {
   const { quizState } = React.useContext(QuizContext);
-  const { data, colors, lengthOfBar, totalScore } = React.useContext(Context);
+  const { colors, totalScore } = React.useContext(Context);
   const [renderedBarsArray, setRenderedBarsArray] = React.useState([]);
   const [itemsRendered, setItemsRendered] = React.useState(0);
-  const [barHeight] = React.useState(200);
+  const barHeight = 200;
+  const data = quizState.finalData || [];
 
   React.useEffect(() => {
     const timer =
@@ -232,7 +233,7 @@ const Chart = () => {
   };
 
   const renderGoldenRings = () => {
-    const minNumber = Math.min.apply(null, lengthOfBar);
+    const minNumber = Math.min.apply(null, data);
     switch (minNumber) {
       case 9:
         return (

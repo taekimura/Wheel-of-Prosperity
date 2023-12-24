@@ -10,15 +10,15 @@ import 'react-responsive-modal/styles.css';
 import './Modal.scss';
 
 const QuestionModal = () => {
-  const { result, open, setOpen } = React.useContext(Context);
-  const { quizState } = React.useContext(QuizContext);
+  const [open, setOpen] = React.useState(true);
   const [isStarter, setIsStarter] = React.useState(true);
+  const { quizState } = React.useContext(QuizContext);
 
   React.useEffect(() => {
-    if (result) {
+    if (quizState.finalData) {
       setOpen(false);
     }
-  }, [result]);
+  }, [quizState.finalData]);
 
   const startQuestionnaire = () => {
     return (

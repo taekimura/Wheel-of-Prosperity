@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Context } from '../../pages/wheel/WheelPage';
+import QuizContext from '../../pages/wheel/QuizContext';
 import { Button } from 'reactstrap';
 import './AnswerOptions.scss';
 
 const AnswerOptions = (props) => {
-  const { handleAnswerSelected, yesNoQuestion, inputNum } = useContext(Context);
-  if (yesNoQuestion) {
+  const { isBooleanQuiz, quizState } = React.useContext(QuizContext);
+  const { handleAnswerSelected, inputNum } = React.useContext(Context);
+  if (isBooleanQuiz) {
     return (
       <Button
         style={{
@@ -19,9 +21,7 @@ const AnswerOptions = (props) => {
         type='button'
         value={props.index + 100}
         onClick={handleAnswerSelected}
-        className={
-          inputNum === props.index + 100 ? 'btn-selected' : 'btn-unselected'
-        }
+        className='btn-unselected'
       >
         {props.answerContent}
       </Button>
@@ -40,7 +40,7 @@ const AnswerOptions = (props) => {
         type='button'
         value={props.index}
         onClick={handleAnswerSelected}
-        className={inputNum === props.index ? 'btn-selected' : 'btn-unselected'}
+        className='btn-unselected'
       >
         {props.answerContent}
       </Button>

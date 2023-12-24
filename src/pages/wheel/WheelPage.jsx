@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import questions from '../../data/questions.json';
 import Chart from '../../components/Chart/Chart';
 import QuestionModal from '../../components/Modal/Modal';
 import Loading from '../../components/Loading/Loading';
 import {
   initialState,
-  seriesLabels,
   groupOneColors,
   groupTwoColors,
   groupThreeColors,
@@ -40,32 +39,18 @@ const WheelPageBase = ({ currentUser }) => {
   // For setting loading and languages
   const [loading, setLoading] = useState(true);
 
-  // For the chart section
-  const [lengthOfBar, setLengthOfBar] = useState([]);
-  const [series] = useState(seriesLabels);
-  const [colors, setColors] = useState(groupOneColors);
-
   // For the user input data
-  const [aveAnswers] = useState(initialState);
   const [ans, setAns] = useState([]);
-  const [data, setData] = useState([]);
   const [totalScore, setTotalScore] = useState(0);
-
-  // For the questionnaire section
-  const [yesNoQuestion, setYesNoQuestion] = useState(false);
-  const [open, setOpen] = useState(true);
-  const [inputNum, setInputNum] = useState(false);
-  const [result, setResult] = useState(false);
 
   const { quizState, setQuizState } = React.useContext(QuizContext);
 
   useEffect(() => {
     demoAsyncCall().then(() => setLoading(false));
     setLanguage();
-    setData(lengthOfBar);
-    console.log(ans);
-    console.log(aveAnswers);
-  }, [lengthOfBar, quizState.answers]);
+  }, []);
+
+  console.log('answer', quizState.answers);
 
   useEffect(() => {
     sendDataToFirebasePromise();
@@ -102,7 +87,7 @@ const WheelPageBase = ({ currentUser }) => {
         //   role
         // });
       };
-      if (result) {
+      if (quizState.finalData) {
         sendDataToFirebase();
       }
       resolve('Sent data to the firebase');
@@ -111,12 +96,18 @@ const WheelPageBase = ({ currentUser }) => {
 
   // Set languages English or French
   const setLanguage = () => {
-    if (quizState.lang === 'english' && !yesNoQuestion) {
+    if (
+      quizState.lang === 'english' &&
+      quizState.answers.length !== indexOfBooleanAnswer
+    ) {
       setQuizState({
         ...quizState,
         question: questions[quizState.counter].questionEngLish
       });
-    } else if (quizState.lang === 'french' && !yesNoQuestion) {
+    } else if (
+      quizState.lang === 'french' &&
+      quizState.answers.length !== indexOfBooleanAnswer
+    ) {
       setQuizState({
         ...quizState,
         question: questions[quizState.counter].questionFrench
@@ -192,6 +183,7 @@ const WheelPageBase = ({ currentUser }) => {
       });
     }
   };
+
   // Handle get value selected for question
   const handleAnswerSelected = (e) => {
     let target = e.target;
@@ -201,14 +193,14 @@ const WheelPageBase = ({ currentUser }) => {
     setQuizState({ ...quizState, answers: quizState.answers });
     console.log('The array of User input: ' + quizState.answers);
     console.log(sumOfUserInput(quizState.answers));
-    if (quizState.answers.length === 9 && yesNoQuestion) {
-      setInputNum(index + 100);
+    if (quizState.answers[0] === 'Yes' || quizState.answers[0] === 'Oui') {
     } else if (quizState.answers.length === 24) {
       handleSubmitAnswers();
     } else {
       handleNextQuestion(e);
     }
   };
+
   // Handle next questions & answer
   const handleNextQuestion = (e) => {
     if (
@@ -221,7 +213,6 @@ const WheelPageBase = ({ currentUser }) => {
       quizState.lang === 'english'
     ) {
       //Set Yes No Question of No.9
-      setInputNum('');
       setQuizState({
         ...quizState,
         counter: quizState.counter + 1,
@@ -229,10 +220,8 @@ const WheelPageBase = ({ currentUser }) => {
         options: ['Yes', 'No']
       });
       createNewObject();
-      setYesNoQuestion(true);
     } else if (quizState.answers.length === 9 && quizState.lang === 'french') {
       //Set Yes No Question of No.9
-      setInputNum('');
       setQuizState({
         ...quizState,
         counter: quizState.counter + 1,
@@ -240,7 +229,6 @@ const WheelPageBase = ({ currentUser }) => {
         options: ['Oui', 'Non']
       });
       createNewObject();
-      setYesNoQuestion(true);
     } else if (
       quizState.answers.length === 10 &&
       quizState.answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO &&
@@ -253,8 +241,6 @@ const WheelPageBase = ({ currentUser }) => {
           'For single people: Do you feel at peace, whole, and complete without a life partner?',
         options: [...Array(11).keys()]
       });
-      setInputNum('');
-      setYesNoQuestion(false);
     } else if (
       quizState.answers.length === 10 &&
       quizState.answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO &&
@@ -267,8 +253,6 @@ const WheelPageBase = ({ currentUser }) => {
           'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?',
         options: [...Array(11).keys()]
       });
-      setInputNum('');
-      setYesNoQuestion(false);
     } else if (
       quizState.answers.length === 10 &&
       quizState.answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES &&
@@ -281,12 +265,9 @@ const WheelPageBase = ({ currentUser }) => {
           'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?',
         options: [...Array(11).keys()]
       });
-      setInputNum('');
-      setYesNoQuestion(false);
     } else if (
       quizState.answers.length === 10 &&
-      (quizState.answers[9] === quizState.answers[indexOfBooleanAnswer]) ===
-        CUSTOM_BOOLEAN.YES &&
+      quizState.answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES &&
       quizState.lang === 'french'
     ) {
       // If the answer of No.9 is "Yes" and state of language is "french", set this question.
@@ -296,8 +277,6 @@ const WheelPageBase = ({ currentUser }) => {
           'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?',
         options: [...Array(11).keys()]
       });
-      setInputNum('');
-      setYesNoQuestion(false);
     } else {
       setQuizState({
         ...quizState,
@@ -307,9 +286,7 @@ const WheelPageBase = ({ currentUser }) => {
             ? questions[quizState.counter + 1].questionEngLish
             : questions[quizState.counter + 1].questionFrench
       });
-      setYesNoQuestion(false);
       createNewObject();
-      setInputNum('');
     }
   };
   // For a final answer
@@ -322,9 +299,8 @@ const WheelPageBase = ({ currentUser }) => {
 
       const finalArray = Array(12)
         .fill()
-        .map((_, i) => convertAverageToLength(aveAnswers[i].value));
-      setLengthOfBar(finalArray);
-      setResult(true);
+        .map((_, i) => convertAverageToLength(initialState[i].value));
+      setQuizState({ ...quizState, finalData: finalArray });
     }
   };
 
@@ -345,7 +321,6 @@ const WheelPageBase = ({ currentUser }) => {
       setAns(join);
       checkPair(newObj.category, newObj.value);
       setTotalScore(sumOfUserInput(quizState.answers));
-      setColorsOfBars(sumOfUserInput(quizState.answers));
     } else if (quizState.answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES) {
       const newObj = {
         category: questions[quizState.counter].category,
@@ -361,7 +336,6 @@ const WheelPageBase = ({ currentUser }) => {
       setAns(join);
       checkPair(newObj.category, newObj.value);
       setTotalScore(sumOfUserInput(quizState.answers));
-      setColorsOfBars(sumOfUserInput(quizState.answers));
     } else {
       const newObj = {
         category: questions[quizState.counter].category,
@@ -375,7 +349,6 @@ const WheelPageBase = ({ currentUser }) => {
       setAns(join);
       checkPair(newObj.category, newObj.value);
       setTotalScore(sumOfUserInput(quizState.answers));
-      setColorsOfBars(sumOfUserInput(quizState.answers));
     }
   };
   // Check a pair of same name of category. If there is an same name of category, calculate an average of 2 numbers
@@ -389,12 +362,12 @@ const WheelPageBase = ({ currentUser }) => {
       return null;
     });
   };
-  // Find a same category name in "initialState" of aveAnswers, then insert a calculated average in "checkpair"function
+  // Find a same category name in "initialState", then insert a calculated average in "checkpair"function
   const insertLength = (category, average) => {
-    aveAnswers.filter((_, counter) => {
-      const index = Object.keys(aveAnswers)[counter];
-      if (aveAnswers[index].category === category) {
-        aveAnswers[index].value = average;
+    initialState.filter((_, counter) => {
+      const index = Object.keys(initialState)[counter];
+      if (initialState[index].category === category) {
+        initialState[index].value = average;
       }
       return null;
     });
@@ -428,16 +401,16 @@ const WheelPageBase = ({ currentUser }) => {
         return null;
     }
   };
-  // Set colors depends on a total score
-  const setColorsOfBars = (totalScore) => {
+  // Get colors depends on a total score
+  const getColorsOfBars = (totalScore) => {
     if (totalScore === 0) {
-      setColors(groupOneColors);
+      return groupOneColors;
     } else if (totalScore >= 1 && totalScore <= 80) {
-      setColors(groupTwoColors);
+      return groupTwoColors;
     } else if (totalScore >= 81 && totalScore <= 120) {
-      setColors(groupThreeColors);
+      return groupThreeColors;
     } else if (totalScore >= 121 && totalScore <= 240) {
-      setColors(groupFourColors);
+      return groupFourColors;
     }
   };
   // calculate sum of all answers
@@ -446,25 +419,17 @@ const WheelPageBase = ({ currentUser }) => {
     return selectedAnswers.reduce(reducer);
   };
 
-  // console.log(quizState);
-  // console.log(quizState.answers);
+  const colors = useMemo(() => getColorsOfBars(totalScore), [totalScore]);
+
+  console.log(quizState);
 
   return (
     <Provider
       value={{
-        data,
-        series,
-        colors,
-        result,
-        lengthOfBar,
-        open,
-        setOpen,
-        yesNoQuestion,
         totalScore,
-        inputNum,
+        colors,
         handleAnswerSelected,
         handleNextQuestion,
-        handleSubmitAnswers,
         convertAverageToLength,
         switchToFrench,
         switchToEnglish

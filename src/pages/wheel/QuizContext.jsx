@@ -5,24 +5,36 @@ const defaultQuizStateValue = {
   question: '',
   counter: 0,
   options: [...Array(11).keys()],
-  answers: []
+  answers: [],
+  finalData: null
 };
 
 const defaultQuizContextValue = {
   quizState: defaultQuizStateValue,
-  setQuizState: () => defaultQuizStateValue
+  setQuizState: () => defaultQuizStateValue,
+  isBooleanQuiz: false
 };
 
 const QuizContext = React.createContext(defaultQuizContextValue);
 
+const indexOfBooleanAnswer = 9;
+
 export const QuizContextProvider = ({ children }) => {
   const [quizState, setQuizState] = React.useState(defaultQuizStateValue);
+
+  const isBooleanQuiz = React.useMemo(
+    () => quizState.answers.length === indexOfBooleanAnswer,
+    [quizState]
+  );
+
+  console.log(quizState.answers.length);
 
   return (
     <QuizContext.Provider
       value={{
         quizState,
-        setQuizState
+        setQuizState,
+        isBooleanQuiz
       }}
     >
       {children}

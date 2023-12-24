@@ -13,36 +13,6 @@ export const initialState = [
   { category: 'Development', value: 10 }
 ];
 
-export const seriesLabels = [
-  'Stimulation',
-  'Comprehension',
-  'Livelihood',
-  'Intellect',
-  'Love',
-  'Bonds',
-  'Imagination',
-  'Inventiveness',
-  'Strength',
-  'Finances',
-  'Performance',
-  'Development'
-];
-
-// export const seriesLabels = [
-//     "Rejuvenation/Stimulation",
-//     "Embrace/Comprehension",
-//     "Lifestyle/Livelihood",
-//     "Self/Intellect",
-//     "Relationship/Love",
-//     "Family/Bonds",
-//     "Inspiration/Imagination",
-//     "Creativity/Inventiveness",
-//     "Health/Strength",
-//     "Money/Finances",
-//     "Work/Performance",
-//     "Expansion/Development"
-// ];
-
 export const groupDefaultColors = [
   '#00607f',
   '#008cad',

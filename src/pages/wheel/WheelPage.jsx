@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import questions from '../../data/questions.json';
-import QuestionContainer from '../../components/QuestionContainer/QuestionContainer';
 import Chart from '../../components/Chart/Chart';
 import QuestionModal from '../../components/Modal/Modal';
 import Loading from '../../components/Loading/Loading';
@@ -22,15 +21,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export const Context = React.createContext('this is context!');
 export const Provider = Context.Provider;
 
-const WheelPage = ({ children, currentUser }) => {
+const WheelPage = ({ currentUser }) => {
   return (
     <QuizContextProvider>
-      <WheelPageBase children={children} currentUser={currentUser} />
+      <WheelPageBase currentUser={currentUser} />
     </QuizContextProvider>
   );
 };
 
-const WheelPageBase = ({ children, currentUser }) => {
+const WheelPageBase = ({ currentUser }) => {
   // For setting loading and languages
   const [loading, setLoading] = useState(true);
 
@@ -47,26 +46,13 @@ const WheelPageBase = ({ children, currentUser }) => {
   const [totalScore, setTotalScore] = useState(0);
 
   // For the questionnaire section
-  const [title, setTitle] = useState('PROSPERITY QUIZ');
   const [no, setNo] = useState(false);
   const [yes, setYes] = useState(false);
   const [yesNoQuestion, setYesNoQuestion] = useState(false);
   const [open, setOpen] = useState(true);
-  const [instruction, setInstruction] = useState(
-    questions[0].explanationEnglish
-  );
-  const [explanation, setExplanation] = useState(
-    questions[0].instructionEnglish
-  );
   const [inputNum, setInputNum] = useState(false);
   const [answerOptions, setAnswerOptions] = useState(questions[0].answers);
   const [result, setResult] = useState(false);
-
-  // For Buttons and styles
-  const [applyButton, setApplyButton] = useState('Apply');
-  const [startButton, setStartButton] = useState('Start');
-  const [englishButtonColor, setEnglishButtonColor] = useState('#babac4');
-  const [frenchButtonColor, setFrenchButtonColor] = useState('#babac4');
 
   const { quizState, setQuizState } = React.useContext(QuizContext);
 
@@ -118,23 +104,6 @@ const WheelPageBase = ({ children, currentUser }) => {
     });
   };
 
-  const showLoading = () => {
-    if (loading) {
-      return (
-        <>
-          <Loading />
-          <Chart />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <QuestionModal />
-          <Chart />
-        </>
-      );
-    }
-  };
   // Set languages English or French
   const setLanguage = () => {
     if (quizState.lang === 'english' && !yesNoQuestion) {
@@ -142,38 +111,23 @@ const WheelPageBase = ({ children, currentUser }) => {
         ...quizState,
         question: questions[quizState.counter].questionEngLish
       });
-      setTitle('PROSPERITY QUIZ');
-      setApplyButton('Apply');
-      setStartButton('Start');
-      setEnglishButtonColor('#276a7c');
-      setInstruction(questions[0].instructionEnglish);
-      setExplanation(questions[0].explanationEnglish);
-    } else if (lang === 'french' && !yesNoQuestion) {
+    } else if (quizState.lang === 'french' && !yesNoQuestion) {
       setQuizState({
         ...quizState,
         question: questions[quizState.counter].questionFrench
       });
-      setTitle('QUIZ PROSPÉRITÉ');
-      setApplyButton('Appliquer');
-      setStartButton('Début');
-      setInstruction(questions[0].instructionFrench);
-      setExplanation(questions[0].explanationFrench);
-      setFrenchButtonColor('#276a7c');
     }
   };
   // Translate to french
   const switchToFrench = () => {
     if (no) {
-      setQuizState({ ...quizState, lang: 'french' });
       setQuizState({
         ...quizState,
+        lang: 'french',
         question:
           'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?'
       });
-      setExplanation(questions[0].explanationFrench);
       setAnswerOptions(questions[0].answers);
-      setFrenchButtonColor('#276a7c');
-      setEnglishButtonColor('#babac4');
     } else if (yes) {
       setQuizState({ ...quizState, lang: 'french' });
       setQuizState({
@@ -181,33 +135,20 @@ const WheelPageBase = ({ children, currentUser }) => {
         question:
           'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?'
       });
-      setExplanation(questions[0].explanationFrench);
       setAnswerOptions(questions[0].answers);
-      setFrenchButtonColor('#276a7c');
-      setEnglishButtonColor('#babac4');
     } else if (selectedAnswers.length === 9) {
-      setQuizState({ ...quizState, lang: 'french' });
-      setExplanation(questions[0].explanationFrench);
       setQuizState({
         ...quizState,
+        lang: 'french',
         question: questions[9].questionFrench
       });
       setAnswerOptions(questions[9].answersFren);
-      setFrenchButtonColor('#276a7c');
-      setEnglishButtonColor('#babac4');
     } else {
-      setQuizState({ ...quizState, lang: 'french' });
-      setTitle('QUIZ PROSPÉRITÉ');
-      setInstruction(questions[0].instructionFrench);
-      setExplanation(questions[0].explanationFrench);
       setQuizState({
         ...quizState,
+        lang: 'french',
         question: questions[quizState.counter].questionFrench
       });
-      setApplyButton('Appliquer');
-      setStartButton('Début');
-      setFrenchButtonColor('#276a7c');
-      setEnglishButtonColor('#babac4');
     }
   };
   // Translate to english
@@ -219,10 +160,7 @@ const WheelPageBase = ({ children, currentUser }) => {
         question:
           'For single people: Do you feel at peace, whole, and complete without a life partner?'
       });
-      setExplanation(questions[0].explanationEnglish);
       setAnswerOptions(questions[0].answers);
-      setEnglishButtonColor('#276a7c');
-      setFrenchButtonColor('#babac4');
     } else if (yes) {
       setQuizState({
         ...quizState,
@@ -230,33 +168,20 @@ const WheelPageBase = ({ children, currentUser }) => {
         question:
           'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?'
       });
-      setExplanation(questions[0].explanationEnglish);
       setAnswerOptions(questions[0].answers);
-      setEnglishButtonColor('#276a7c');
-      setFrenchButtonColor('#babac4');
     } else if (selectedAnswers.length === 9) {
-      setExplanation(questions[0].explanationEnglish);
       setQuizState({
         ...quizState,
         lang: 'english',
         question: questions[9].questionEngLish
       });
       setAnswerOptions(questions[9].answersEng);
-      setEnglishButtonColor('#276a7c');
-      setFrenchButtonColor('#babac4');
     } else {
-      setTitle('PROSPERITY QUIZ');
-      setInstruction(questions[0].instructionEnglish);
-      setExplanation(questions[0].explanationEnglish);
       setQuizState({
         ...quizState,
         lang: 'english',
         question: questions[quizState.counter].questionEngLish
       });
-      setApplyButton('Apply');
-      setStartButton('Start');
-      setEnglishButtonColor('#276a7c');
-      setFrenchButtonColor('#babac4');
     }
   };
   // Handle get value selected for question
@@ -514,18 +439,12 @@ const WheelPageBase = ({ children, currentUser }) => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     return selectedAnswers.reduce(reducer);
   };
-  const renderQuiz = () => {
-    return <QuestionContainer />;
-  };
 
-  const showResult = () => {
-    setOpen(false);
-  };
+  console.log(quizState);
 
   return (
     <Provider
       value={{
-        title,
         data,
         series,
         colors,
@@ -534,28 +453,29 @@ const WheelPageBase = ({ children, currentUser }) => {
         result,
         lengthOfBar,
         open,
-        applyButton,
-        startButton,
-        instruction,
-        explanation,
+        setOpen,
         yesNoQuestion,
         totalScore,
         inputNum,
-        englishButtonColor,
-        frenchButtonColor,
-
         handleAnswerSelected,
         handleNextQuestion,
         handleSubmitAnswers,
-        showResult,
-        renderQuiz,
         convertAverageToLength,
         switchToFrench,
         switchToEnglish
       }}
     >
-      {children}
-      {showLoading()}
+      {loading ? (
+        <>
+          <Loading />
+          <Chart />
+        </>
+      ) : (
+        <>
+          <QuestionModal />
+          <Chart />
+        </>
+      )}
     </Provider>
   );
 };

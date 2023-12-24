@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Context } from '../../pages/wheel/WheelPage';
 import Question from '../Questions/Question';
 import AnswerOptions from '../AnswerOptions/AnswerOptions';
 import QuestionCount from '../QuestionCount/QuestionCount';
 import TranslationButton from '../TranslationButton/TranslationButton';
+import questions from '../../data/questions.json';
+import QuizContext from '../../pages/wheel/QuizContext';
 import './QuestionContainer.scss';
 
 const QuestionContainer = () => {
-  const { answerOptions, explanation } = useContext(Context);
+  const { quizState } = React.useContext(QuizContext);
+  const { answerOptions } = React.useContext(Context);
 
   const renderAnswerOption = (data, index) => {
     return (
@@ -23,8 +26,9 @@ const QuestionContainer = () => {
         className='explanation'
         style={{ margin: '3em 0em 1em 0.5%', color: '#3d2903' }}
       >
-        {' '}
-        {explanation}
+        {quizState.lang === 'english'
+          ? questions[0].explanationEnglish
+          : questions[0].explanationFrench}
       </p>
       <QuestionCount />
       <Question />

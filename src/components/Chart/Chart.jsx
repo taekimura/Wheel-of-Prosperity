@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { Context } from '../../pages/wheel/WheelPage';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { groupDefaultColors } from '../../constants';
+import QuizContext from '../../pages/wheel/QuizContext';
 import centerWheelGray from '../../assets/centerWheel-gray.png';
 import centerWheelGold from '../../assets/centerWheel-gold.png';
 import centerWheel1To80 from '../../assets/centerWheel1To80.png';
@@ -22,12 +23,13 @@ import EnglishExternalCircle from '../../assets/testENGLISH.png';
 import './Chart.scss';
 
 const Chart = () => {
-  const { data, colors, lengthOfBar, totalScore, lang } = useContext(Context);
-  const [renderedBarsArray, setRenderedBarsArray] = useState([]);
-  const [itemsRendered, setItemsRendered] = useState(0);
-  const [barHeight] = useState(200);
+  const { quizState } = React.useContext(QuizContext);
+  const { data, colors, lengthOfBar, totalScore } = React.useContext(Context);
+  const [renderedBarsArray, setRenderedBarsArray] = React.useState([]);
+  const [itemsRendered, setItemsRendered] = React.useState(0);
+  const [barHeight] = React.useState(200);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timer =
       itemsRendered < data.length && setTimeout(updateRenderedThings, 100);
     return () => clearInterval(timer);
@@ -48,7 +50,7 @@ const Chart = () => {
   }
 
   const renderLabel = () => {
-    if (lang === 'french') {
+    if (quizState.lang === 'french') {
       return (
         <>
           <div className='harmonie2'>

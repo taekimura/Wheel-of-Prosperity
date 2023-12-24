@@ -5,8 +5,8 @@ import {
   groupTwoColors,
   groupThreeColors,
   groupFourColors
-} from '../../constants';
-import questions from '../../data/questions.json';
+} from '../constants';
+import questions from '../data/questions.json';
 
 const indexOfBooleanAnswer = 9;
 const CUSTOM_BOOLEAN = {

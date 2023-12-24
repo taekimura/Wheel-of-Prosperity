@@ -3,7 +3,7 @@ import { Modal } from 'react-responsive-modal';
 import { Button } from 'reactstrap';
 import TranslationButton from '../TranslationButton/TranslationButton';
 import QuestionContainer from '../QuestionContainer/QuestionContainer';
-import QuizContext from '../../pages/wheel/QuizContext';
+import QuizContext from '../../contexts/QuizContext';
 import questions from '../../data/questions.json';
 import 'react-responsive-modal/styles.css';
 import './Modal.scss';

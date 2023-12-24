@@ -4,7 +4,7 @@ import AnswerOptions from '../AnswerOptions/AnswerOptions';
 import QuestionCount from '../QuestionCount/QuestionCount';
 import TranslationButton from '../TranslationButton/TranslationButton';
 import questions from '../../data/questions.json';
-import QuizContext from '../../pages/wheel/QuizContext';
+import QuizContext from '../../contexts/QuizContext';
 import './QuestionContainer.scss';
 
 const QuestionContainer = () => {

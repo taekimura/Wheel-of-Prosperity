@@ -3,7 +3,7 @@ import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { groupDefaultColors } from '../../constants';
-import QuizContext from '../../pages/wheel/QuizContext';
+import QuizContext from '../../contexts/QuizContext';
 import centerWheelGray from '../../assets/centerWheel-gray.png';
 import centerWheelGold from '../../assets/centerWheel-gold.png';
 import centerWheel1To80 from '../../assets/centerWheel1To80.png';

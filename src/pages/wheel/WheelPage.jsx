@@ -7,7 +7,7 @@ import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 // import firebase from '../../components/firebase/firebase_utils';
-import QuizContext, { QuizContextProvider } from './QuizContext';
+import QuizContext, { QuizContextProvider } from '../../contexts/QuizContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const WheelPage = ({ currentUser }) => {

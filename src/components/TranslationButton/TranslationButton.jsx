@@ -1,5 +1,5 @@
 import React from 'react';
-import QuizContext from '../../pages/wheel/QuizContext';
+import QuizContext from '../../contexts/QuizContext';
 import { Context } from '../../pages/wheel/WheelPage';
 import { ButtonGroup, Button } from 'reactstrap';
 import './TranslationButton.scss';

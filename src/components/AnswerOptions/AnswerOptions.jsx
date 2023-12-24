@@ -1,5 +1,5 @@
 import React from 'react';
-import QuizContext from '../../pages/wheel/QuizContext';
+import QuizContext from '../../contexts/QuizContext';
 import { Button } from 'reactstrap';
 import './AnswerOptions.scss';
 

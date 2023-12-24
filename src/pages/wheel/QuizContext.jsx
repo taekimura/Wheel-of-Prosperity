@@ -3,7 +3,9 @@ import React from 'react';
 const defaultQuizStateValue = {
   lang: 'english',
   question: '',
-  counter: 0
+  counter: 0,
+  options: [...Array(11).keys()],
+  answers: []
 };
 
 const defaultQuizContextValue = {

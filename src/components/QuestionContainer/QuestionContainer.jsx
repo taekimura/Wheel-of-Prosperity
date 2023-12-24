@@ -1,5 +1,4 @@
 import React from 'react';
-import { Context } from '../../pages/wheel/WheelPage';
 import Question from '../Questions/Question';
 import AnswerOptions from '../AnswerOptions/AnswerOptions';
 import QuestionCount from '../QuestionCount/QuestionCount';
@@ -10,13 +9,6 @@ import './QuestionContainer.scss';
 
 const QuestionContainer = () => {
   const { quizState } = React.useContext(QuizContext);
-  const { answerOptions } = React.useContext(Context);
-
-  const renderAnswerOption = (data, index) => {
-    return (
-      <AnswerOptions key={index} index={index} answerContent={data.content} />
-    );
-  };
 
   return (
     <>
@@ -32,7 +24,15 @@ const QuestionContainer = () => {
       </p>
       <QuestionCount />
       <Question />
-      <ul style={{ padding: '0' }}>{answerOptions.map(renderAnswerOption)}</ul>
+      <ul style={{ padding: '0' }}>
+        {quizState.options.map((option, index) => (
+          <AnswerOptions
+            key={index}
+            index={index}
+            answerContent={String(option)}
+          />
+        ))}
+      </ul>
     </>
   );
 };

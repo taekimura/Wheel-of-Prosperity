@@ -1,34 +1,32 @@
 import React from 'react';
-import QuizContext from '../../contexts/QuizContext';
-import { Context } from '../../pages/wheel/WheelPage';
+import { useTranslation } from 'react-i18next';
 import { ButtonGroup, Button } from 'reactstrap';
 import './TranslationButton.scss';
 
 const TranslationButton = () => {
-  const { quizState, switchToEnglish, switchToFrench } =
-    React.useContext(QuizContext);
+  const { i18n } = useTranslation();
 
   return (
     <ButtonGroup className='float-right'>
       <Button
         className='tran'
         style={
-          quizState.lang === 'english'
+          i18n.language === 'en'
             ? { background: '#276a7c', margin: 0 }
             : { background: '#babac4', margin: 0 }
         }
-        onClick={switchToEnglish}
+        onClick={() => i18n.changeLanguage('en')}
       >
         English
       </Button>
       <Button
         className='tran'
         style={
-          quizState.lang === 'french'
+          i18n.language === 'fr'
             ? { background: '#276a7c', paddingLeft: '5%' }
             : { background: '#babac4', paddingLeft: '5%' }
         }
-        onClick={switchToFrench}
+        onClick={() => i18n.changeLanguage('fr')}
       >
         Français
       </Button>

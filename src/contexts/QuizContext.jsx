@@ -198,7 +198,7 @@ export const QuizContextProvider = ({ children }) => {
     });
   };
 
-  // Find a same category name in "initialState", then insert a calculated average in "checkpair" function
+  // Find a same category name in "initialState", then insert a calculated average in "checkPair" function
   const insertLength = (category, average) => {
     initialState.filter((_, counter) => {
       const index = Object.keys(initialState)[counter];
@@ -251,7 +251,7 @@ export const QuizContextProvider = ({ children }) => {
         options: ['Yes', 'No']
       });
       createNewObject();
-    } else if (answers.length === 9 && lang === 'french') {
+    } else if (answers.length === indexOfBooleanAnswer && lang === 'french') {
       //Set Yes No Question of No.9
       setQuizState({
         ...quizState,
@@ -261,7 +261,6 @@ export const QuizContextProvider = ({ children }) => {
       });
       createNewObject();
     } else if (
-      answers.length === 10 &&
       answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO &&
       lang === 'english'
     ) {
@@ -273,7 +272,6 @@ export const QuizContextProvider = ({ children }) => {
         options: [...Array(11).keys()]
       });
     } else if (
-      answers.length === 10 &&
       answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO &&
       lang === 'french'
     ) {
@@ -285,7 +283,6 @@ export const QuizContextProvider = ({ children }) => {
         options: [...Array(11).keys()]
       });
     } else if (
-      answers.length === 10 &&
       answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES &&
       lang === 'english'
     ) {
@@ -297,7 +294,6 @@ export const QuizContextProvider = ({ children }) => {
         options: [...Array(11).keys()]
       });
     } else if (
-      answers.length === 10 &&
       answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES &&
       lang === 'french'
     ) {

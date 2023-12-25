@@ -7,11 +7,16 @@ The wheel has 12 different coloured spokes and the 24 questions are grouped in p
 - React
 - Redux
 - Firebase
+- React-i18next
 
 
 #### :link:[Live Demo](https://wheel-of-prosperity-portfolio.netlify.app/)
 
-<img width="1428" alt="Screen Shot 2021-01-07 at 2 55 29 PM" src="https://user-images.githubusercontent.com/55253319/103958437-daa51080-5101-11eb-9583-1ce16ab2feb1.png">
 <img width="1428" alt="Screen Shot 2021-01-07 at 2 32 44 PM" src="https://user-images.githubusercontent.com/55253319/103958445-de389780-5101-11eb-90c7-670858f2e706.png">
 <img width="1431" alt="Screen Shot 2021-01-07 at 2 33 19 PM" src="https://user-images.githubusercontent.com/55253319/103958494-fb6d6600-5101-11eb-9cc4-cc725a9a9e83.png">
+<img width="1431" alt="Screen Shot 2021-01-07 at 2 33 19 PM" src="https://github.com/taekimura/react-wheel-of-prosperity/assets/55253319/aa6280be-b883-4406-b2ef-7d53471d6ac7.png">
+
+
+
+
 

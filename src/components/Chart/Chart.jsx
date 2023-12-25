@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -17,11 +18,11 @@ import Asset4 from '../../assets/Asset4.png';
 import Asset3 from '../../assets/Asset3.png';
 import Asset2 from '../../assets/Asset2.png';
 import Asset1 from '../../assets/Asset1.png';
-import ExternalCircle from '../../assets/testFRENCH.png';
 import EnglishExternalCircle from '../../assets/testENGLISH.png';
 import './Chart.scss';
 
 const Chart = () => {
+  const { t } = useTranslation();
   const { quizState, totalScore, colors } = React.useContext(QuizContext);
   const [renderedBarsArray, setRenderedBarsArray] = React.useState([]);
   const [itemsRendered, setItemsRendered] = React.useState(0);
@@ -49,125 +50,64 @@ const Chart = () => {
   }
 
   const renderLabel = () => {
-    if (quizState.lang === 'french') {
-      return (
-        <>
-          <div className='harmonie2'>
-            <div
-              style={{
-                color: '#32774b',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm',
-                transform: 'rotate(90deg)'
-              }}
-            >
-              Catégorie2
-            </div>
+    return (
+      <>
+        <div className='harmonie2'>
+          <div
+            style={{
+              color: '#32774b',
+              fontFamily: 'Playfair Display SC',
+              letterSpacing: '0.5mm',
+              transform: 'rotate(90deg)'
+            }}
+          >
+            {t('Category2')}
           </div>
-          <div className='plentitude2'>
-            <div
-              style={{
-                color: '#006c8b',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm'
-              }}
-            >
-              Catégorie1
-            </div>
+        </div>
+        <div className='plentitude2'>
+          <div
+            style={{
+              color: '#006c8b',
+              fontFamily: 'Playfair Display SC',
+              letterSpacing: '0.5mm'
+            }}
+          >
+            {t('Category1')}
           </div>
-          <div className='vitalite2'>
-            <div
-              style={{
-                color: '#c45621',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm'
-              }}
-            >
-              Catégorie3
-            </div>
+        </div>
+        <div className='vitalite2'>
+          <div
+            style={{
+              color: '#c45621',
+              fontFamily: 'Playfair Display SC',
+              letterSpacing: '0.5mm'
+            }}
+          >
+            {t('Category3')}
           </div>
-          <div className='prosperite2'>
-            <div
-              style={{
-                color: '#8c191c',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm',
-                transform: 'rotate(270deg)'
-              }}
-            >
-              Catégorie4
-            </div>
+        </div>
+        <div className='prosperite2'>
+          <div
+            style={{
+              color: '#8c191c',
+              fontFamily: 'Playfair Display SC',
+              letterSpacing: '0.5mm',
+              transform: 'rotate(270deg)'
+            }}
+          >
+            {t('Category4')}
           </div>
-          <div className='goldenCircle11'>
-            <img
-              src={ExternalCircle}
-              width='640'
-              alt='Asset1'
-              className='circle10'
-            />
-          </div>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <div className='harmonie2'>
-            <div
-              style={{
-                color: '#32774b',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm',
-                transform: 'rotate(90deg)'
-              }}
-            >
-              Category2
-            </div>
-          </div>
-          <div className='plentitude2'>
-            <div
-              style={{
-                color: '#006c8b',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm'
-              }}
-            >
-              Category1
-            </div>
-          </div>
-          <div className='vitalite2'>
-            <div
-              style={{
-                color: '#c45621',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm'
-              }}
-            >
-              Category3
-            </div>
-          </div>
-          <div className='prosperite2'>
-            <div
-              style={{
-                color: '#8c191c',
-                fontFamily: 'Playfair Display SC',
-                letterSpacing: '0.5mm',
-                transform: 'rotate(270deg)'
-              }}
-            >
-              Category4
-            </div>
-          </div>
-          <div className='goldenCircle11'>
-            <img
-              src={EnglishExternalCircle}
-              width='640'
-              alt='Asset1'
-              className='circle10'
-            />
-          </div>
-        </>
-      );
-    }
+        </div>
+        <div className='goldenCircle11'>
+          <img
+            src={EnglishExternalCircle}
+            width='640'
+            alt='Asset1'
+            className='circle10'
+          />
+        </div>
+      </>
+    );
   };
 
   const renderInnerCircle = () => {
@@ -476,35 +416,6 @@ const Chart = () => {
     }
   };
 
-  const convertLengthToAverage = (length) => {
-    switch (length) {
-      case 0:
-        return 10;
-      case 1:
-        return 9;
-      case 2:
-        return 8;
-      case 3:
-        return 7;
-      case 4:
-        return 6;
-      case 5:
-        return 5;
-      case 6:
-        return 4;
-      case 7:
-        return 3;
-      case 8:
-        return 2;
-      case 9:
-        return 1;
-      case 10:
-        return null;
-      default:
-        return '';
-    }
-  };
-
   return (
     <>
       <div className='Charts' id='Charts'>
@@ -536,7 +447,7 @@ const Chart = () => {
                     fontFamily: 'sans-serif'
                   }}
                 >
-                  {convertLengthToAverage(serie)}
+                  {Math.abs(10 - serie)}
                 </b>
               </div>
             </div>

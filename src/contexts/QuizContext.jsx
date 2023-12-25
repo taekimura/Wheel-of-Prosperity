@@ -20,13 +20,11 @@ const sumOfUserInput = (arrayOfNum) => {
 };
 
 const defaultQuizStateValue = {
-  lang: 'english',
   question: '',
   counter: 0,
   options: [...Array(11).keys()],
   answers: [],
-  finalData: null,
-  answerWithCategories: []
+  finalData: null
 };
 
 const defaultQuizContextValue = {
@@ -42,9 +40,9 @@ const QuizContext = React.createContext(defaultQuizContextValue);
 
 export const QuizContextProvider = ({ children }) => {
   const [quizState, setQuizState] = React.useState(defaultQuizStateValue);
-  const [ans, setAns] = React.useState([]);
+  const [result, setResult] = React.useState([]);
 
-  const { lang, counter, answers } = quizState;
+  const { counter, answers } = quizState;
 
   const isBooleanQuiz = React.useMemo(
     () => quizState.answers.length === indexOfBooleanAnswer,
@@ -71,127 +69,41 @@ export const QuizContextProvider = ({ children }) => {
 
   const colors = React.useMemo(() => getColorsOfBars(totalScore), [totalScore]);
 
-  // Translate to french
-  const switchToFrench = () => {
-    if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO) {
-      setQuizState({
-        ...quizState,
-        lang: 'french',
-        question:
-          'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?',
-        options: [...Array(11).keys()]
-      });
-    } else if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES) {
-      setQuizState({
-        ...quizState,
-        lang: 'french',
-        question:
-          'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?',
-        options: [...Array(11).keys()]
-      });
-    } else if (answers.length === indexOfBooleanAnswer) {
-      setQuizState({
-        ...quizState,
-        lang: 'french',
-        question: questions[answers.length].questionFrench,
-        options: ['Oui', 'Non']
-      });
-    } else {
-      setQuizState({
-        ...quizState,
-        lang: 'french',
-        question: questions[counter].questionFrench
-      });
-    }
-  };
-
-  // Translate to english
-  const switchToEnglish = () => {
-    if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO) {
-      setQuizState({
-        ...quizState,
-        lang: 'english',
-        counter: counter + 1,
-        question:
-          'For single people: Do you feel at peace, whole, and complete without a life partner?',
-        options: [...Array(11).keys()]
-      });
-    } else if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES) {
-      setQuizState({
-        ...quizState,
-        lang: 'english',
-        counter: counter + 1,
-        question:
-          'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?',
-        options: [...Array(11).keys()]
-      });
-    } else if (answers.length === indexOfBooleanAnswer) {
-      setQuizState({
-        ...quizState,
-        lang: 'english',
-        question: questions[indexOfBooleanAnswer].questionEngLish,
-        options: ['Yes', 'No']
-      });
-    } else {
-      setQuizState({
-        ...quizState,
-        lang: 'english',
-        question: questions[counter].questionEngLish
-      });
-    }
-  };
-
-  // Create new object and add to state of "ans"
+  // Create new object and add to state of "result"
   const createNewObject = () => {
     if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO) {
       const newObj = {
         category: questions[counter].category,
-        value: answers[counter],
-        questions: {
-          english:
-            'For single people: Do you feel at peace, whole, and complete without a life partner?',
-          french:
-            'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?'
-        }
+        value: answers[counter]
       };
-      let join = ans.concat(newObj);
-      setAns(join);
+      let join = result.concat(newObj);
+      setResult(join);
       checkPair(newObj.category, newObj.value);
     } else if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES) {
       const newObj = {
         category: questions[counter].category,
-        value: answers[counter],
-        questions: {
-          english:
-            'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?',
-          french:
-            'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?'
-        }
+        value: answers[counter]
       };
-      let join = ans.concat(newObj);
-      setAns(join);
+      let join = result.concat(newObj);
+      setResult(join);
       checkPair(newObj.category, newObj.value);
     } else {
       const newObj = {
         category: questions[counter].category,
-        value: quizState.answers[counter],
-        questions: {
-          english: questions[counter].questionEngLish,
-          french: questions[counter].questionFrench
-        }
+        value: quizState.answers[counter]
       };
-      let join = ans.concat(newObj);
-      setAns(join);
+      let join = result.concat(newObj);
+      setResult(join);
       checkPair(newObj.category, newObj.value);
     }
   };
 
   // Check a pair of same name of category. If there is an same name of category, calculate an average of 2 numbers
   const checkPair = (category, value) => {
-    ans.filter((_, counter) => {
-      const index = Object.keys(ans)[counter];
-      if (ans[index].category === category) {
-        const averageNum = Math.round((ans[index].value + value) / 2);
+    result.filter((_, counter) => {
+      const index = Object.keys(result)[counter];
+      if (result[index].category === category) {
+        const averageNum = Math.round((result[index].value + value) / 2);
         insertLength(category, averageNum);
       }
       return null;
@@ -213,12 +125,10 @@ export const QuizContextProvider = ({ children }) => {
   const handleAnswerSelected = (e) => {
     let target = e.target;
     let index = parseInt(target.value, 10);
-    // Object container & save answers after selected answer
     answers[counter] = index;
     setQuizState({ ...quizState, answers });
     console.log('The array of User input: ' + answers);
-    if (answers[0] === 'Yes' || answers[0] === 'Oui') {
-    } else if (answers.length === 24) {
+    if (answers.length === 24) {
       handleSubmitAnswers();
     } else {
       handleNextQuestion(e);
@@ -242,7 +152,7 @@ export const QuizContextProvider = ({ children }) => {
   const handleNextQuestion = () => {
     if (answers.length === counter || answers.length === 0) {
       alert('Please input a number. / Veuillez saisir un nombre.');
-    } else if (answers.length === indexOfBooleanAnswer && lang === 'english') {
+    } else if (answers.length === indexOfBooleanAnswer) {
       //Set Yes No Question of No.9
       setQuizState({
         ...quizState,
@@ -251,67 +161,27 @@ export const QuizContextProvider = ({ children }) => {
         options: ['Yes', 'No']
       });
       createNewObject();
-    } else if (answers.length === indexOfBooleanAnswer && lang === 'french') {
-      //Set Yes No Question of No.9
-      setQuizState({
-        ...quizState,
-        counter: counter + 1,
-        question: questions[answers.length].questionFrench,
-        options: ['Oui', 'Non']
-      });
-      createNewObject();
-    } else if (
-      answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO &&
-      lang === 'english'
-    ) {
-      // If the answer of No.9 is "No" and state of language is "english", set this question.
+    } else if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO) {
+      // If the answer of No.9 is "No", set this question.
       setQuizState({
         ...quizState,
         question:
           'For single people: Do you feel at peace, whole, and complete without a life partner?',
         options: [...Array(11).keys()]
       });
-    } else if (
-      answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO &&
-      lang === 'french'
-    ) {
-      // If the answer of No.9 is "No" and state of langage is "french", set this question.
-      setQuizState({
-        ...quizState,
-        question:
-          'Pour personnes seules: Vous sentez-vous en paix, entier et complet sans partenaire de vie?',
-        options: [...Array(11).keys()]
-      });
-    } else if (
-      answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES &&
-      lang === 'english'
-    ) {
-      // If the answer of No.9 is "Yes" and state of language is "english", set this question.
+    } else if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES) {
+      // If the answer of No.9 is "Yes", set this question.
       setQuizState({
         ...quizState,
         question:
           'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?',
         options: [...Array(11).keys()]
       });
-    } else if (
-      answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES &&
-      lang === 'french'
-    ) {
-      // If the answer of No.9 is "Yes" and state of language is "french", set this question.
-      setQuizState({
-        ...quizState,
-        question:
-          'En couple: Vous sentez-vous en paix, entier et complet sans la présence de votre partenaire de vie?',
-        options: [...Array(11).keys()]
-      });
     } else {
       setQuizState({
         ...quizState,
         counter: counter + 1,
-        question:
-          lang === 'english'
-            ? questions[counter + 1].questionEngLish
-            : questions[counter + 1].questionFrench
+        question: questions[counter + 1].questionEngLish
       });
       createNewObject();
     }
@@ -325,9 +195,7 @@ export const QuizContextProvider = ({ children }) => {
         isBooleanQuiz,
         totalScore,
         colors,
-        handleAnswerSelected,
-        switchToEnglish,
-        switchToFrench
+        handleAnswerSelected
       }}
     >
       {children}

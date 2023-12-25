@@ -22,11 +22,14 @@ const WheelPageBase = ({ currentUser }) => {
   const [loading, setLoading] = React.useState(true);
   const { quizState, setQuizState, isBooleanQuiz } =
     React.useContext(QuizContext);
-  const { lang, counter, answers, finalData } = quizState;
+  const { counter, answers, finalData } = quizState;
 
   React.useEffect(() => {
     demoAsyncCall().then(() => setLoading(false));
-    setLanguage();
+    setQuizState({
+      ...quizState,
+      question: questions[counter].questionEngLish
+    });
   }, []);
 
   React.useEffect(() => {
@@ -67,21 +70,6 @@ const WheelPageBase = ({ currentUser }) => {
       }
       resolve('Sent data to the firebase');
     });
-  };
-
-  // Set languages English or French
-  const setLanguage = () => {
-    if (lang === 'english' && !isBooleanQuiz) {
-      setQuizState({
-        ...quizState,
-        question: questions[counter].questionEngLish
-      });
-    } else if (lang === 'french' && !isBooleanQuiz) {
-      setQuizState({
-        ...quizState,
-        question: questions[counter].questionFrench
-      });
-    }
   };
 
   return (

@@ -1,54 +1,54 @@
-.btn-unselected{
-  border:none;
-  outline:none !important;
-  box-shadow:none !important;
-  background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
-  background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
+.btn-unselected {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-image: -webkit-linear-gradient(top, #3d2903, #3d2903);
+  background-image: linear-gradient(to bottom, #3d2903, #3d2903);
 }
 
 .btn-unselected:hover {
-  border:none;
+  border: none;
   background-image: -webkit-linear-gradient(top, #84123c, #84123c);
   background-image: linear-gradient(to bottom, #84123c, #84123c);
 }
 
 .btn-selected {
   border: none;
-  background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
-  background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
+  background-image: -webkit-linear-gradient(top, #3d2903, #3d2903);
+  background-image: linear-gradient(to bottom, #3d2903, #3d2903);
 }
 
 .btn-selected:focus,
 .btn-selected:active {
-  outline:none !important;
-  box-shadow:none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-@media screen and (max-width:1200px){
-  .btn-selected{
+@media screen and (max-width: 1200px) {
+  .btn-selected {
     height: 40px !important;
   }
-  .btn-unselected{
+  .btn-unselected {
     height: 40px !important;
   }
   .btn-unselected:hover {
-    border:none;
-    background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
-    background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
+    border: none;
+    background-image: -webkit-linear-gradient(top, #3d2903, #3d2903);
+    background-image: linear-gradient(to bottom, #3d2903, #3d2903);
   }
 }
-@media screen and (max-width:450px){
-  .btn-selected{
+@media screen and (max-width: 450px) {
+  .btn-selected {
     margin: 1% !important;
     width: 21% !important;
   }
-  .btn-unselected{
+  .btn-unselected {
     margin: 1% !important;
     width: 21% !important;
   }
-    .btn-unselected:hover {
-    border:none;
-    background-image: -webkit-linear-gradient(top, #3d2903,  #3d2903);
-    background-image: linear-gradient(to bottom, #3d2903,  #3d2903);
+  .btn-unselected:hover {
+    border: none;
+    background-image: -webkit-linear-gradient(top, #3d2903, #3d2903);
+    background-image: linear-gradient(to bottom, #3d2903, #3d2903);
   }
 }

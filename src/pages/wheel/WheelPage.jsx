@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import questions from '../../data/questions.json';
 import Chart from '../../components/Chart/Chart';
 import QuestionModal from '../../components/Modal/Modal';
@@ -20,11 +21,24 @@ const WheelPage = ({ currentUser }) => {
 
 const WheelPageBase = ({ currentUser }) => {
   const [loading, setLoading] = React.useState(true);
-  const { quizState, setQuizState, isBooleanQuiz } =
-    React.useContext(QuizContext);
+  const { quizState, setQuizState } = React.useContext(QuizContext);
   const { counter, answers, finalData } = quizState;
+  const { i18n } = useTranslation();
 
   React.useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+  console.log('currentUser', currentUser);
+
+  React.useEffect(() => {
+    i18n.changeLanguage('en');
     demoAsyncCall().then(() => setLoading(false));
     setQuizState({
       ...quizState,

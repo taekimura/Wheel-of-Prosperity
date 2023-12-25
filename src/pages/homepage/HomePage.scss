@@ -1,135 +1,123 @@
 .homepage {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url('https://images.unsplash.com/photo-1496629062893-b0f566065d44?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mario-ho-vV2A5OHUqsU-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+
+  .sign-up {
+    background-color: rgba($color: #fff, $alpha: 0.5);
     display: flex;
-    height: 100vh;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-    background-image: url('https://images.unsplash.com/photo-1496629062893-b0f566065d44?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mario-ho-vV2A5OHUqsU-unsplash.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: 'Open Sans', sans-serif;
+    flex-direction: column;
+    width: 580px;
+    height: 100%;
+    padding: 50px;
 
-    .sign-up {
-        background-color: rgba($color: #fff, $alpha: 0.5);
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 580px;
-        height: 100%;
-        padding: 50px;
-      
-        .title {
-          margin: 10px 0;
-        }
-      }
-
-      .sign-in-block{
-        display: block;
-        margin-top: 20px;
-      }
-  }
-
-  // @media screen and (max-width:1024px){
-  //   .homepage{
-  //     height: 110%;
-  //   }
-  //   .content{
-  //     text-align: center;
-  //   }
-  // }
-
-  @media screen and (max-width:850px){
-    .homepage{
-      width: 100%;
-      height: 110%;
-      flex-direction: row;
-    }
-    .title{
-      text-align: center;
-      margin: 0 auto;
-    }
-    .sign-in-block{
-      text-align: center;
-    }
-    .content{
-      text-align: center;
+    .title {
+      margin: 10px 0;
     }
   }
 
-  @media screen and (max-width:780px){
-    .homepage{
-      width: 100%;
-      height: 100vh;
-      flex-direction: row;
-    }
-    .title{
-      text-align: center;
-      margin: 0 auto;
-    }
-    .sign-in-block{
-      text-align: center;
-    }
+  .sign-in-block {
+    display: block;
+    margin-top: 20px;
   }
+}
 
-
-  @media screen and (max-width:767px){
-    .homepage{
-      width: 100%;
-      height: 850px;
-      flex-direction: row;
-    }
-    .title{
-      text-align: center;
-      margin: 0 auto;
-    }
-    .sign-in-block{
-      text-align: center;
-    }
+@media screen and (max-width: 850px) {
+  .homepage {
+    width: 100%;
+    height: 110%;
+    flex-direction: row;
   }
-  
-
-  @media screen and (max-width:425px){
-    .homepage{
-      width: 100%;
-      height: 850px;
-      flex-direction: row;
-    }
-    .title{
-      text-align: center;
-      margin: 0 auto;
-    }
-    .sign-in-block{
-      text-align: center;
-    }
+  .title {
+    text-align: center;
+    margin: 0 auto;
   }
-
-  @media screen and (max-width:375px){
-    .homepage{
-      width: 100%;
-      height: 850px;
-      flex-direction: row;
-    }
-    .title{
-      text-align: center;
-      margin: 0 auto;
-    }
-    .sign-in-block{
-      text-align: center;
-    }
+  .sign-in-block {
+    text-align: center;
   }
-
-  @media screen and (max-width:320px){
-    .homepage{
-      width: 100%;
-      height: 850px;
-      flex-direction: row;
-    }
-    .title{
-      text-align: center;
-      margin: 0 auto;
-    }
-    .sign-in-block{
-      text-align: center;
-    }
+  .content {
+    text-align: center;
   }
-  
+}
+
+@media screen and (max-width: 780px) {
+  .homepage {
+    width: 100%;
+    height: 100vh;
+    flex-direction: row;
+  }
+  .title {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .sign-in-block {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .homepage {
+    width: 100%;
+    height: 850px;
+    flex-direction: row;
+  }
+  .title {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .sign-in-block {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .homepage {
+    width: 100%;
+    height: 850px;
+    flex-direction: row;
+  }
+  .title {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .sign-in-block {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .homepage {
+    width: 100%;
+    height: 850px;
+    flex-direction: row;
+  }
+  .title {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .sign-in-block {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .homepage {
+    width: 100%;
+    height: 850px;
+    flex-direction: row;
+  }
+  .title {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .sign-in-block {
+    text-align: center;
+  }
+}

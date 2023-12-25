@@ -10,11 +10,6 @@ import {
 } from '../constants';
 import questions from '../data/questions.json';
 
-const sumOfUserInput = (arrayOfNum) => {
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  return arrayOfNum.length > 0 ? arrayOfNum.reduce(reducer) : 0;
-};
-
 const defaultQuizStateValue = {
   question: '',
   counter: 0,
@@ -45,10 +40,14 @@ export const QuizContextProvider = ({ children }) => {
     [quizState]
   );
 
-  const totalScore = React.useMemo(
-    () => sumOfUserInput(quizState.answers),
-    [quizState.answers]
-  );
+  const totalScore = React.useMemo(() => {
+    return answers.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+  }, [quizState]);
+
+  console.log('total: ', totalScore);
 
   // Get colors depends on a total score
   const getColorsOfBars = (totalScore) => {
@@ -63,7 +62,10 @@ export const QuizContextProvider = ({ children }) => {
     }
   };
 
-  const colors = React.useMemo(() => getColorsOfBars(totalScore), [totalScore]);
+  const colors = React.useMemo(
+    () => getColorsOfBars(totalScore),
+    [totalScore, getColorsOfBars]
+  );
 
   // Create new object and add to state of "result"
   const createNewObject = () => {

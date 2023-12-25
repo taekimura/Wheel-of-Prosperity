@@ -35,8 +35,6 @@ const WheelPageBase = ({ currentUser }) => {
     };
   }, []);
 
-  console.log('currentUser', currentUser);
-
   React.useEffect(() => {
     i18n.changeLanguage('en');
     demoAsyncCall().then(() => setLoading(false));

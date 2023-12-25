@@ -1,3 +1,9 @@
+export const indexOfBooleanAnswer = 9;
+export const CUSTOM_BOOLEAN = {
+  YES: 100,
+  NO: 101
+};
+
 export const initialState = [
   { category: 'Stimulation', value: 10 },
   { category: 'Comprehension', value: 10 },

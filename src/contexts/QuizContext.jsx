@@ -4,15 +4,11 @@ import {
   groupOneColors,
   groupTwoColors,
   groupThreeColors,
-  groupFourColors
+  groupFourColors,
+  indexOfBooleanAnswer,
+  CUSTOM_BOOLEAN
 } from '../constants';
 import questions from '../data/questions.json';
-
-const indexOfBooleanAnswer = 9;
-const CUSTOM_BOOLEAN = {
-  YES: 100,
-  NO: 101
-};
 
 const sumOfUserInput = (arrayOfNum) => {
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -110,7 +106,7 @@ export const QuizContextProvider = ({ children }) => {
     });
   };
 
-  // Find a same category name in "initialState", then insert a calculated average in "checkPair" function
+  // Find a same category name in "initialState", then insert calculated average in "checkPair" function
   const insertLength = (category, average) => {
     initialState.filter((_, counter) => {
       const index = Object.keys(initialState)[counter];

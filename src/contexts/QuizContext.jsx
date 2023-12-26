@@ -23,8 +23,7 @@ const defaultQuizContextValue = {
   setQuizState: () => defaultQuizStateValue,
   isBooleanQuiz: false,
   handleAnswerSelected: () => null,
-  switchToEnglish: () => null,
-  switchToFrench: () => null
+  result: []
 };
 
 const QuizContext = React.createContext(defaultQuizContextValue);
@@ -193,7 +192,8 @@ export const QuizContextProvider = ({ children }) => {
         isBooleanQuiz,
         totalScore,
         colors,
-        handleAnswerSelected
+        handleAnswerSelected,
+        result
       }}
     >
       {children}

@@ -1,64 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import FormInput from '../../components/FormInput/FormInput.component';
+import {
+  auth,
+  googleAuthProvider
+} from '../../components/firebase/firebase_utils';
+import Google from './google.svg';
 import CustomButton from '../../components/CustomButton/CustomButton.component';
 import { setCurrentUser } from '../../redux/user/user.action';
 
 import './HomePage.scss';
 
 const HomePage = ({ setCurrentUser }) => {
-  const [userState, setUserState] = useState({
-    displayName: '',
-    email: '',
-    role: 'user'
-  });
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setCurrentUser(userState);
-    setUserState({
-      displayName,
-      email
-    });
+  const loginWithGoogleAccount = async () => {
+    try {
+      const result = await auth.signInWithPopup(googleAuthProvider);
+      const { user } = result;
+      if (user) {
+        setCurrentUser({
+          type: 'SET_CURRENT_USER',
+          payload: {
+            displayName: user.displayName,
+            email: user.email
+          }
+        });
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setUserState((prevState) => {
-      return {
-        ...prevState,
-        [name]: value
-      };
-    });
-  };
-
-  const { displayName, email } = userState;
   return (
     <div className='homepage'>
       <div className='sign-up'>
         <h2 className='title'>Welcome!</h2>
-        <span className='content'>Sign in with your username and email</span>
-        <form className='sign-up-form' onSubmit={handleSubmit}>
-          <FormInput
-            type='text'
-            name='displayName'
-            value={displayName}
-            onChange={handleChange}
-            label='Display Name'
-            required
+        <CustomButton
+          onClick={loginWithGoogleAccount}
+          style={{
+            background: 'white',
+            color: 'black',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <img
+            src={Google}
+            alt='google-icon'
+            width='16px'
+            height='16px'
+            style={{ marginRight: '10px' }}
           />
-          <FormInput
-            type='email'
-            name='email'
-            value={email}
-            onChange={handleChange}
-            label='Email'
-            required
-          />
-          <CustomButton type='submit'>SIGN IN</CustomButton>
-        </form>
+          Sign in with Google account
+        </CustomButton>
       </div>
     </div>
   );

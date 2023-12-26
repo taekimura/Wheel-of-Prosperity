@@ -24,8 +24,7 @@ function App({ setCurrentUser, currentUser }) {
   let location = useLocation();
 
   useEffect(() => {
-    let unsubscribeFromAuth = null;
-    unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapShot) => {
@@ -49,23 +48,25 @@ function App({ setCurrentUser, currentUser }) {
 
   return (
     <>
-      {currentUser && currentUser.role === 'admin' && (
+      {currentUser && (
         <div className='admin-header'>
           <div>
             Hi, <b>{currentUser.displayName}</b>. &nbsp;
-            {location.pathname === '/admin' ? (
-              <Link to='/' className='admin-link'>
-                Go to Quiz
-              </Link>
-            ) : (
-              <Link to='/admin' className='admin-link'>
-                Go to admin dashboard
-              </Link>
-            )}
+            {currentUser.role === 'admin' ? (
+              location.pathname === '/admin' ? (
+                <Link to='/' className='admin-link'>
+                  Go to Quiz
+                </Link>
+              ) : (
+                <Link to='/admin' className='admin-link'>
+                  Go to admin dashboard
+                </Link>
+              )
+            ) : null}
           </div>
 
           <div className='options'>
-            {currentUser && currentUser.role === 'admin' && (
+            {currentUser && (
               <div className='option' onClick={() => auth.signOut()}>
                 SIGN OUT
               </div>

@@ -7,7 +7,7 @@ import Loading from '../../components/Loading/Loading';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-// import firebase from '../../components/firebase/firebase_utils';
+import firebase from '../../components/firebase/firebase_utils';
 import QuizContext, { QuizContextProvider } from '../../contexts/QuizContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,7 +21,8 @@ const WheelPage = ({ currentUser }) => {
 
 const WheelPageBase = ({ currentUser }) => {
   const [loading, setLoading] = React.useState(true);
-  const { quizState, setQuizState } = React.useContext(QuizContext);
+  const { quizState, setQuizState, totalScore, result } =
+    React.useContext(QuizContext);
   const { counter, answers, finalData } = quizState;
   const { i18n } = useTranslation();
 
@@ -57,25 +58,24 @@ const WheelPageBase = ({ currentUser }) => {
   const sendDataToFirebasePromise = () => {
     return new Promise((resolve) => {
       const sendDataToFirebase = () => {
-        // const createdAt = new Date();
-        // const total = answers.length > 0 ? totalScore : null;
-        // const displayName = currentUser.displayName;
-        // const email = currentUser.email;
-        // const role = currentUser.role;
-        //Disabled for portfolio purpose
-        // firebase.firestore().collection('results').add({
-        //   displayName,
-        //   email,
-        //   ans,
-        //   total,
-        //   createdAt
-        // });
-        // firebase.firestore().collection('users').add({
-        //   createdAt,
-        //   displayName,
-        //   email,
-        //   role
-        // });
+        const createdAt = new Date();
+        const total = answers.length > 0 ? totalScore : null;
+        const displayName = currentUser.displayName;
+        const email = currentUser.email;
+        const role = currentUser.role;
+        firebase.firestore().collection('results').add({
+          displayName,
+          email,
+          result,
+          total,
+          createdAt
+        });
+        firebase.firestore().collection('users').add({
+          createdAt,
+          displayName,
+          email,
+          role
+        });
       };
       if (finalData) {
         sendDataToFirebase();

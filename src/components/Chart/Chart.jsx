@@ -67,6 +67,7 @@ const Chart = () => {
         <div className='plentitude2'>
           <div
             style={{
+              marginTop: '20px',
               color: '#006c8b',
               fontFamily: 'Playfair Display SC',
               letterSpacing: '0.5mm'

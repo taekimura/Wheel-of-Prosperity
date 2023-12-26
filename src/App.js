@@ -7,7 +7,6 @@ import './App.scss';
 
 import HomePage from './pages/homepage/HomePage';
 import WheelPage from './pages/wheel/WheelPage';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/SignInAndSignUpPage';
 import Header from './components/Header/Header.component';
 import Dashboard from './components/Dashboard/Dashboard.component';
 import {
@@ -90,11 +89,7 @@ function App({ setCurrentUser, currentUser }) {
         <Route
           path='/admin'
           render={() =>
-            currentUser && currentUser.role === 'admin' ? (
-              <Dashboard />
-            ) : (
-              <SignInAndSignUpPage />
-            )
+            currentUser && currentUser.role === 'admin' && <Dashboard />
           }
         />
       </Switch>

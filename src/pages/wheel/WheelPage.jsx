@@ -56,8 +56,8 @@ const WheelPageBase = ({ currentUser }) => {
   };
 
   const sendDataToFirebasePromise = () => {
-    return new Promise((resolve) => {
-      const sendDataToFirebase = () => {
+    return new Promise(async (resolve) => {
+      const sendDataToFirebase = async () => {
         const createdAt = new Date();
         const total = answers.length > 0 ? totalScore : null;
         const displayName = currentUser.displayName;
@@ -78,9 +78,10 @@ const WheelPageBase = ({ currentUser }) => {
         });
       };
       if (finalData) {
-        sendDataToFirebase();
+        await sendDataToFirebase();
       }
       resolve('Sent data to the firebase');
+      setQuizState({ ...quizState, answers: [] });
     });
   };
 

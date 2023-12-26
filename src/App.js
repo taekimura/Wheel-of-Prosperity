@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Redirect, Link, useLocation } from 'react-router-dom';
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -20,7 +20,6 @@ import './i18n';
 
 function App({ setCurrentUser, currentUser }) {
   const [isLoading, setIsLoading] = useState(false);
-  let location = useLocation();
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
@@ -47,33 +46,7 @@ function App({ setCurrentUser, currentUser }) {
 
   return (
     <>
-      {currentUser && (
-        <div className='admin-header'>
-          <div>
-            Hi, <b>{currentUser.displayName}</b>. &nbsp;
-            {currentUser.role === 'admin' ? (
-              location.pathname === '/admin' ? (
-                <Link to='/' className='admin-link'>
-                  Go to Quiz
-                </Link>
-              ) : (
-                <Link to='/admin' className='admin-link'>
-                  Go to admin dashboard
-                </Link>
-              )
-            ) : null}
-          </div>
-
-          <div className='options'>
-            {currentUser && (
-              <div className='option' onClick={() => auth.signOut()}>
-                SIGN OUT
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-      <Header />
+      {currentUser && <Header currentUser={currentUser} />}
       <Switch>
         <Route
           exact

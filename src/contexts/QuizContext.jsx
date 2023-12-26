@@ -10,7 +10,7 @@ import {
 } from '../constants';
 import questions from '../data/questions.json';
 
-const defaultQuizStateValue = {
+export const defaultQuizStateValue = {
   question: '',
   counter: 0,
   options: [...Array(11).keys()],
@@ -68,31 +68,14 @@ export const QuizContextProvider = ({ children }) => {
 
   // Create new object and add to state of "result"
   const createNewObject = () => {
-    if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO) {
-      const newObj = {
-        category: questions[counter].category,
-        value: answers[counter]
-      };
-      let join = result.concat(newObj);
-      setResult(join);
-      checkPair(newObj.category, newObj.value);
-    } else if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.YES) {
-      const newObj = {
-        category: questions[counter].category,
-        value: answers[counter]
-      };
-      let join = result.concat(newObj);
-      setResult(join);
-      checkPair(newObj.category, newObj.value);
-    } else {
-      const newObj = {
-        category: questions[counter].category,
-        value: quizState.answers[counter]
-      };
-      let join = result.concat(newObj);
-      setResult(join);
-      checkPair(newObj.category, newObj.value);
-    }
+    const newObj = {
+      category: questions[counter].category,
+      value: answers[counter]
+    };
+    let join = result.concat(newObj);
+
+    setResult(join);
+    checkPair(newObj.category, newObj.value);
   };
 
   // Check a pair of same name of category. If there is an same name of category, calculate an average of 2 numbers
@@ -133,23 +116,16 @@ export const QuizContextProvider = ({ children }) => {
   };
 
   const handleSubmitAnswers = () => {
-    if (answers.length === counter || answers.length === 0) {
-      alert('Please input a number. / Veuillez saisir un nombre.');
-    } else {
-      createNewObject();
-
-      const finalArray = Array(12)
-        .fill()
-        .map((_, i) => Math.abs(10 - initialState[i].value));
-      setQuizState({ ...quizState, finalData: finalArray });
-    }
+    createNewObject();
+    const finalArray = Array(12)
+      .fill()
+      .map((_, i) => Math.abs(10 - initialState[i].value));
+    setQuizState({ ...quizState, finalData: finalArray });
   };
 
   // Handle next questions & answer
   const handleNextQuestion = () => {
-    if (answers.length === counter || answers.length === 0) {
-      alert('Please input a number. / Veuillez saisir un nombre.');
-    } else if (answers.length === indexOfBooleanAnswer) {
+    if (answers.length === indexOfBooleanAnswer) {
       //Set Yes No Question of No.9
       setQuizState({
         ...quizState,

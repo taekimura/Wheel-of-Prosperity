@@ -3,7 +3,7 @@ This project consists of the creation of a 24-question quiz, based on an answer 
 The result will be accompanied by a "wheel of prosperity" visual that will show the curve of the results. 
 The wheel has 12 different coloured spokes and the 24 questions are grouped in pairs to give an average for each spoke.
 
-I worked on the project as a final project at Cornerstone International Community College and met the client through [Riipen](https://www.riipen.com/)
+I worked on the project as a final project at Cornerstone International Community College and met the client through [Riipen](https://www.riipen.com/).
 
 ### Stack
 - React

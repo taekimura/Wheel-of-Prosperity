@@ -22,7 +22,7 @@ const defaultQuizContextValue = {
   quizState: defaultQuizStateValue,
   setQuizState: () => defaultQuizStateValue,
   isBooleanQuiz: false,
-  handleAnswerSelected: () => null,
+  handleSelectedAnswers: () => null,
   result: []
 };
 
@@ -67,7 +67,7 @@ export const QuizContextProvider = ({ children }) => {
   );
 
   // Create new object and add to state of "result"
-  const createNewObject = () => {
+  const createResultByCategory = () => {
     const newObj = {
       category: questions[counter].category,
       value: answers[counter]
@@ -75,11 +75,11 @@ export const QuizContextProvider = ({ children }) => {
     let join = result.concat(newObj);
 
     setResult(join);
-    checkPair(newObj.category, newObj.value);
+    getAverageByCategory(newObj.category, newObj.value);
   };
 
   // Check a pair of same name of category. If there is an same name of category, calculate an average of 2 numbers
-  const checkPair = (category, value) => {
+  const getAverageByCategory = (category, value) => {
     result.filter((_, counter) => {
       const index = Object.keys(result)[counter];
       if (result[index].category === category) {
@@ -90,7 +90,7 @@ export const QuizContextProvider = ({ children }) => {
     });
   };
 
-  // Find a same category name in "initialState", then insert calculated average in "checkPair" function
+  // Find a same category name in "initialState", then insert calculated average in "getAverageByCategory" function
   const insertLength = (category, average) => {
     initialState.filter((_, counter) => {
       const index = Object.keys(initialState)[counter];
@@ -101,22 +101,18 @@ export const QuizContextProvider = ({ children }) => {
     });
   };
 
-  // Handle get value selected for question
-  const handleAnswerSelected = (e) => {
+  // Handle get selected values
+  const handleSelectedAnswers = (e) => {
     let target = e.target;
     let index = parseInt(target.value, 10);
     answers[counter] = index;
     setQuizState({ ...quizState, answers });
     console.log('The array of User input: ' + answers);
-    if (answers.length === 24) {
-      handleSubmitAnswers();
-    } else {
-      handleNextQuestion(e);
-    }
+    onNext();
   };
 
-  const handleSubmitAnswers = () => {
-    createNewObject();
+  const onSubmit = () => {
+    createResultByCategory();
     const finalArray = Array(12)
       .fill()
       .map((_, i) => Math.abs(10 - initialState[i].value));
@@ -124,7 +120,7 @@ export const QuizContextProvider = ({ children }) => {
   };
 
   // Handle next questions & answer
-  const handleNextQuestion = () => {
+  const onNext = () => {
     if (answers.length === indexOfBooleanAnswer) {
       //Set Yes No Question of No.9
       setQuizState({
@@ -133,7 +129,7 @@ export const QuizContextProvider = ({ children }) => {
         question: questions[answers.length].questionEngLish,
         options: ['Yes', 'No']
       });
-      createNewObject();
+      createResultByCategory();
     } else if (answers[indexOfBooleanAnswer] === CUSTOM_BOOLEAN.NO) {
       // If the answer of No.9 is "No", set this question.
       setQuizState({
@@ -150,13 +146,15 @@ export const QuizContextProvider = ({ children }) => {
           'With your spouse: Do you feel at peace, whole and complete without the presence of your life partner?',
         options: [...Array(11).keys()]
       });
+    } else if (answers.length === 24) {
+      onSubmit();
     } else {
       setQuizState({
         ...quizState,
         counter: counter + 1,
         question: questions[counter + 1].questionEngLish
       });
-      createNewObject();
+      createResultByCategory();
     }
   };
 
@@ -168,7 +166,7 @@ export const QuizContextProvider = ({ children }) => {
         isBooleanQuiz,
         totalScore,
         colors,
-        handleAnswerSelected,
+        handleSelectedAnswers,
         result
       }}
     >

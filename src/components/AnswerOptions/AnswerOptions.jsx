@@ -6,7 +6,8 @@ import './AnswerOptions.scss';
 
 const AnswerOptions = (props) => {
   const { t } = useTranslation();
-  const { isBooleanQuiz, handleAnswerSelected } = React.useContext(QuizContext);
+  const { isBooleanQuiz, handleSelectedAnswers } =
+    React.useContext(QuizContext);
 
   return (
     <Button
@@ -16,7 +17,7 @@ const AnswerOptions = (props) => {
       }}
       type='button'
       value={isBooleanQuiz ? props.index + 100 : props.index}
-      onClick={handleAnswerSelected}
+      onClick={handleSelectedAnswers}
       className='btn-unselected'
     >
       {t(props.answerContent)}

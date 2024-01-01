@@ -14,12 +14,14 @@ I worked on the project as a final project at Cornerstone International Communit
 
 #### :link:[Live Demo](https://wheel-of-prosperity-portfolio.netlify.app/)
 
-<img width="1428" alt="Screen Shot 2021-01-07 at 2 32 44 PM" src="https://user-images.githubusercontent.com/55253319/103958445-de389780-5101-11eb-90c7-670858f2e706.png">
+![wheel](https://github.com/taekimura/react-wheel-of-prosperity/assets/55253319/32848df8-e8b0-455c-b8a1-8f382241ab08)
 <img width="1431" alt="Screen Shot 2021-01-07 at 2 33 19 PM" src="https://github.com/taekimura/react-wheel-of-prosperity/assets/55253319/aa6280be-b883-4406-b2ef-7d53471d6ac7.png">
 Admin page
 <img width="1425" alt="Screenshot 2023-12-29 at 2 10 44 PM" src="https://github.com/taekimura/react-wheel-of-prosperity/assets/55253319/354ea862-c7c6-47d4-9cc6-a606faaf81b9">
 
-![wheel](https://github.com/taekimura/react-wheel-of-prosperity/assets/55253319/32848df8-e8b0-455c-b8a1-8f382241ab08)
+
+
+
 
 
 
